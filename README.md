@@ -18,7 +18,7 @@ Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 
 
 ## Hosting
 
-Any static host. For Cloudflare Pages: no framework preset, no build command, output directory `site`.
+Cloudflare Pages, project `art-moves`. `.github/workflows/deploy.yml` uploads `site/` on every merge to `main` that changes it. It needs one repository secret, `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with the single permission Account > Cloudflare Pages > Edit.
 
 ## Publishing rule
 
