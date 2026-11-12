@@ -36,11 +36,12 @@ def result(r):
     s = money(local_price(r), r["currency"])
     return s if r["currency"] == "USD" else f"{s} ({money(r['price_usd'], 'USD')})"
 
-def estimate(r):
+def estimate(r, short=False):
+    """Estimate range. Tables use short=True so long notes stay on the sale card and in the CSV."""
     if r.get("estimate_low") is None:
-        return r.get("estimate_note") or "Not published"
+        return "No range published" if short else (r.get("estimate_note") or "Not published")
     s = f"{money(r['estimate_low'], r['currency'])} to {money(r['estimate_high'], r['currency'])}"
-    return s + (f" ({r['estimate_note']})" if r.get("estimate_note") else "")
+    return s if short else s + (f" ({r['estimate_note']})" if r.get("estimate_note") else "")
 
 def buyer(r):
     if r["buyer_status"] == "anonymous": return "Anonymous"
@@ -149,7 +150,7 @@ def sales_table(rows, order=None, sortable=False):
             f'<td>{esc(S.HOUSES[r["house"]])}<br><span class="dim">{esc(r["location"])}</span></td>'
             f'<td>{lot_label(r)}<br><span class="dim">{esc(S.CATEGORIES[r["category"]])}</span></td>'
             f'<td class="num" data-v="{r["price_usd"]}">{esc(result(r))}<br><span class="dim">{S.PRICE_BASIS[r["price_basis"]]}</span></td>'
-            f'<td>{esc(estimate(r))}</td><td>{esc(buyer(r))}</td><td>{src}</td></tr>')
+            f'<td>{esc(estimate(r, True))}</td><td>{esc(buyer(r))}</td><td>{src}</td></tr>')
     cls = "index sortable" if sortable else "index"
     return f'<div class="scroll"><table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
 
