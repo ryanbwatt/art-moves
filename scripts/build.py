@@ -47,6 +47,14 @@ def buyer(r):
     if r["buyer_status"] == "anonymous": return "Anonymous"
     return f"{r['buyer_name']} ({r['buyer_attribution']})"
 
+def buyer_html(r, short=False):
+    """Buyer name, linked in a new tab to a profile that explains who they are and where the money comes from."""
+    if r["buyer_status"] == "anonymous": return "Anonymous"
+    name = esc(r["buyer_name"])
+    if r.get("buyer_profile_url"):
+        name = f'<a href="{esc(r["buyer_profile_url"])}" target="_blank" rel="noopener">{name}</a>'
+    return name if short else f'{name} ({esc(r["buyer_attribution"])})'
+
 def evidence(r):
     return "Confirmed by the house" if r["price_source"] == "house" else "Reported by the press"
 
@@ -132,7 +140,7 @@ def sale_block(r, order):
              ("Guarantee", r["guarantee"].replace("_", " ").capitalize())]
     for k, label in (("record", "Record"), ("bidding_notes", "Bidding"), ("financing_notes", "Financing")):
         if r.get(k): facts.append((label, r[k]))
-    dl = "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in facts)
+    dl = "".join(f"<div><dt>{esc(k)}</dt><dd>{buyer_html(r) if k == 'Buyer' else esc(v)}</dd></div>" for k, v in facts)
     return (f'<article class="sale" id="{esc(r["id"])}">{figure(r)}'
             f'<p class="kicker">{esc(S.CATEGORIES[r["category"]])} · {esc(S.HOUSES[r["house"]])} {esc(r["location"])}</p>'
             f'<h3 class="sale-title">{lot_label(r)}</h3><p class="figure-price">{esc(result(r))}</p><dl class="facts">{dl}</dl>'
@@ -150,7 +158,7 @@ def sales_table(rows, order=None, sortable=False):
             f'<td>{esc(S.HOUSES[r["house"]])}<br><span class="dim">{esc(r["location"])}</span></td>'
             f'<td>{lot_label(r)}<br><span class="dim">{esc(S.CATEGORIES[r["category"]])}</span></td>'
             f'<td class="num" data-v="{r["price_usd"]}">{esc(result(r))}<br><span class="dim">{S.PRICE_BASIS[r["price_basis"]]}</span></td>'
-            f'<td>{esc(estimate(r, True))}</td><td>{esc(buyer(r))}</td><td>{src}</td></tr>')
+            f'<td>{esc(estimate(r, True))}</td><td>{buyer_html(r, True)}</td><td>{src}</td></tr>')
     cls = "index sortable" if sortable else "index"
     return f'<div class="scroll"><table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
 
@@ -163,7 +171,7 @@ def sale_rows(rows, href):
                  else f'<span class="tile">{esc(S.CATEGORIES[r["category"]])}</span>')
         out.append(f'<a class="row" href="{href}#{esc(r["id"])}"><span class="row-thumb">{thumb}</span>'
                    f'<span class="row-main"><span class="row-title">{lot_label(r)}</span>'
-                   f'<span class="dim">{esc(S.HOUSES[r["house"]])} {esc(r["location"])} · {day(r["sale_date"])} · Buyer: {esc(buyer(r))}</span></span>'
+                   f'<span class="dim">{esc(S.HOUSES[r["house"]])} {esc(r["location"])} · {day(r["sale_date"])} · Buyer: {buyer_html(r, True)}</span></span>'
                    f'<span class="row-price">{esc(result(r))}</span></a>')
     return f'<div class="rows">{"".join(out)}</div>'
 

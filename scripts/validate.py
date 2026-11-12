@@ -56,6 +56,9 @@ def check_row(r, seen):
     if r["buyer_status"] == "anonymous" and r.get("buyer_name"): e.append("anonymous row has buyer_name")
     if r["buyer_status"] != "anonymous" and not (r.get("buyer_name") and r.get("buyer_attribution")):
         e.append("named/reported buyer needs buyer_name and buyer_attribution")
+    if r.get("buyer_profile_url") and not str(r["buyer_profile_url"]).startswith("https://"): e.append("buyer_profile_url must be https")
+    if r["buyer_status"] != "anonymous" and not r.get("buyer_profile_url"):
+        print(f"WARN {r['id']}: named buyer has no buyer_profile_url")
     if len(r["why_it_matters"].split()) > 60: e.append("why_it_matters over 60 words")
     for s in r["sources"]:
         if not str(s.get("url", "")).startswith("https://"): e.append("source url must be https")

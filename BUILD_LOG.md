@@ -200,3 +200,25 @@ A thought partner on where Art Moves should live, then: its own repo and URL (fo
 - Link checker reports 10 warnings: sites that block scripted requests. The pages were read during research.
 
 **Cost:** credit use not measured per step; check the usage page for this task. Elapsed research time roughly 40 minutes.
+
+## Session 6: buyer rule and Issue 1 draft (11 Nov 2026)
+
+**Asked:** always name the buyer and link, in a new tab, to a profile showing who they are and how they made their money. Merge the personal-site PR.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| ryanbwatt.com PR #3 | Merged on Ryan's instruction. |
+| Buyer rule | New field `buyer_profile_url`. Named buyers link out in a new tab on sale cards, the issue table and the home list. Validator warns when a named buyer has no profile link. Method page updated. |
+| Popova row | Changed from anonymous to reported: Beaumont Nathan, credited to Apollo citing the Baer Faxt. |
+| Issue 1 | Written in `src/issues/001.md`: top line, seven featured sales, who bought, market signal, outside fine art, how to read the numbers, full table. |
+
+**Decisions**
+
+- "Name the buyer" is applied to every buyer a credible outlet has reported. No further names were found for the other 32 lots after a targeted search, so they stay anonymous with what is on the record about the bidding.
+- The two named parties are an adviser and a boutique head, each likely acting for someone else. Their profile links explain their role, not a fortune. The rule fits better once a principal is named.
+
+**What worked well:** re-reading my own draft against the data caught a wrong claim (that the Kandinsky hammered near its low estimate; it hammered above the high) before it shipped.
+
+**Limitations:** every statement in the issue traces to a fetched page, but press sources were read through summaries, not line by line. Ryan should spot-check the seven featured sales before merging.

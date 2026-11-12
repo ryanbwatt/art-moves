@@ -329,13 +329,13 @@
     "price_basis": "with_premium",
     "guarantee": "unknown",
     "seller": "Collection of Peter Simon",
-    "buyer_status": "anonymous",
-    "buyer_name": null,
-    "buyer_attribution": null,
-    "bidding_notes": "Eight minutes of bidding in the room and on phones (Christie's). Buyer reports differ: Apollo, citing the Baer Faxt, says the advisers Beaumont Nathan; Artnet says the winning bid was taken by Christie's president Alex Rotter. Not confirmed.",
+    "buyer_status": "reported",
+    "buyer_name": "Beaumont Nathan",
+    "buyer_attribution": "art advisers in London and New York; reported by Apollo, citing the Baer Faxt newsletter. Whether the firm bought for a client is not stated",
+    "bidding_notes": "Eight minutes of bidding in the room and on phones (Christie's). Artnet reports the winning bid was taken by Christie's president Alex Rotter.",
     "financing_notes": "All 41 lots in the Simon sale were guaranteed, 11 by Christie's and the rest by third parties, per The Art Newspaper. The backer of this lot is not stated.",
     "record": "Auction record for the artist, per Artnet.",
-    "why_it_matters": "Hammered at more than three times the low estimate after eight minutes of bidding. The clearest case this month of real competition rather than a pre-arranged result.",
+    "why_it_matters": "Hammered at more than three times the low estimate after eight minutes of bidding, and reported sold to an advisory firm. Advisers bid when a client wants the work and not the attention.",
     "featured": true,
     "sources": [
       {
@@ -375,7 +375,8 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 10135988
+    "price_usd": 10135988,
+    "buyer_profile_url": "https://beaumontnathan.com/the-team"
   },
   {
     "id": "2026-10-14-christies-anderson-last-house",
@@ -1467,8 +1468,8 @@
     "guarantee": "unknown",
     "seller": null,
     "buyer_status": "reported",
-    "buyer_name": "Shawn Mehta, head of F.P. Journe's London boutique, bidding for an unnamed friend",
-    "buyer_attribution": "Hodinkee, which reports Mehta won the bidding and later told the author the watch was bought for a friend and not for the brand",
+    "buyer_name": "Shawn Mehta",
+    "buyer_attribution": "head of F.P. Journe's London boutique; reported by Hodinkee, which says he later told its author he bid for a friend and not for the brand",
     "bidding_notes": "Phillips withdrew its claim that this was the first pre-production Résonance sold or delivered, per Hodinkee.",
     "financing_notes": null,
     "record": null,
@@ -1500,7 +1501,8 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 6027843
+    "price_usd": 6027843,
+    "buyer_profile_url": "https://manofthehour.tv/episode-8-mb-f/"
   },
   {
     "id": "2026-11-07-phillips-cartier-portico-mystery-clock-4",
