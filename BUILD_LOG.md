@@ -149,3 +149,76 @@ A thought partner on where Art Moves should live, then: its own repo and URL (fo
 | Font request | Asking Fontshare for both families in one URL silently returned only one, so headlines fell back to Times | Split into two requests; caught in the screenshot review |
 | Images are scarce | Most contemporary works and all watches, cars and jewelry have no free image | Sales without one show a plain category tile |
 | Cloudflare not connected | Computer cannot create the hosting project | Ryan creates it, or connects Cloudflare |
+
+## Session 5: launch, personal-site link, Phase 2 research (11 Nov 2026)
+
+**Asked:** merge the scaffold, host on free Cloudflare, add a Projects link on ryanbwatt.com, bring contact details onto its About page, start the research.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| Merged PR #1 (scaffold) and PR #2 (deploy workflow) on `art-moves` | On Ryan's explicit instruction each time. Default stays: he merges. |
+| Hosting | Cloudflare Pages project `art-moves`, deployed by a GitHub Actions workflow on merges to `main` that touch `site/`. Live at art-moves.pages.dev. No DNS changed. |
+| ryanbwatt.com | PR #3: new Projects page (last in nav) with Art Moves and a one-sentence description; contact details added to About. Contact page left in place. Not merged. |
+| Phase 2 research | 34 sale rows, 12 Oct to 11 Nov 2026, in `src/data/sales.json`. Draft PR on branch `issue/001`. |
+
+**Capabilities used:** web search and page fetching, structured extraction from fetched pages run in parallel, GitHub CLI, Python scripts in a cloud sandbox, headless browser screenshots. Connectors: GitHub. Model: Claude (orchestrator); a smaller model for page extraction.
+
+**Research method**
+
+1. About 45 pages fetched: house press releases and results pages first, then trade press (The Art Newspaper, Artnet, Apollo, Observer, Reuters, Hodinkee, Rapaport, WatchPro).
+2. Each page reduced to structured lot records (529 lot mentions), then deduplicated by hand into 34 rows.
+3. Every figure in a row comes from a fetched page. Where sources disagreed, the row says so in its notes.
+4. USD conversion by script, ECB reference rate on the sale date.
+5. `validate.py` passes on all 34 rows.
+
+**Decisions**
+
+- Kept only rows above the thresholds. Dropped the two sample rows and the sample issue.
+- Popova buyer: two outlets report different things (an advisory firm; a Christie's executive taking the bid). Row is marked anonymous with both reports in the notes.
+- One reported buyer only: Shawn Mehta, on a Journe watch, attributed to Hodinkee, including his statement that he bid for a friend.
+- Removed a Lalanne design row because the source did not say which Lalanne made the work.
+- Issue table now shows the estimate range only; long notes stay on the sale card and in the CSV.
+
+**What worked well**
+
+- Parallel fetch plus extraction turned 45 pages into comparable records in a few minutes.
+- Cross-checking press against house releases caught real errors: a hammer price reported as the final price (Journe Régence, CHF 7.1m vs 8.68m), and two different totals for one watch set.
+- The validator caught nothing wrong, but it forced every row to carry sources, a price basis and an estimate comparison.
+
+**Limitations, failures, and workarounds**
+
+- Cloudflare: the connector had no Pages actions; the dashboard's Git connection looped (Cloudflare changed its GitHub flow on 10 Nov); the Global API Key was the wrong credential type. Workaround: deploy from GitHub Actions with a Pages-only token stored as a repo secret. First run failed until the secret existed.
+- No 1Password connector exists, and the desktop view was not available from a phone, so Ryan had to add the secret himself.
+- Sotheby's auction pages do not expose sold prices to a fetch. All 9 Sotheby's rows rely on press, so none is better than medium confidence.
+- Christie's and Phillips press releases do not say on the page whether lot prices include premium. Confirmed indirectly (Christie's results pages state totals include premium; hammer prices reported by press are lower by the expected margin).
+- Extraction hit a concurrency cap of 16 parallel calls; reran the remainder in a pool of 6.
+- Gaps: no fashion or handbag result in the window with a readable price (Christie's Paris handbag sale closes 13 Nov). Design is one low-confidence row. Jewelry is one row; Sotheby's Geneva jewels sold on 11 Nov and had no results yet. No Hong Kong sales fell in the window.
+- Images: only the Kandinsky has a verified public-domain image. Others need title-level matching on Wikimedia Commons before use.
+- Several sale dates (Phillips watch sessions, Christie's Paris evening sale, Al Thani session) are not confirmed to the day.
+- Link checker reports 10 warnings: sites that block scripted requests. The pages were read during research.
+
+**Cost:** credit use not measured per step; check the usage page for this task. Elapsed research time roughly 40 minutes.
+
+## Session 6: buyer rule and Issue 1 draft (11 Nov 2026)
+
+**Asked:** always name the buyer and link, in a new tab, to a profile showing who they are and how they made their money. Merge the personal-site PR.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| ryanbwatt.com PR #3 | Merged on Ryan's instruction. |
+| Buyer rule | New field `buyer_profile_url`. Named buyers link out in a new tab on sale cards, the issue table and the home list. Validator warns when a named buyer has no profile link. Method page updated. |
+| Popova row | Changed from anonymous to reported: Beaumont Nathan, credited to Apollo citing the Baer Faxt. |
+| Issue 1 | Written in `src/issues/001.md`: top line, seven featured sales, who bought, market signal, outside fine art, how to read the numbers, full table. |
+
+**Decisions**
+
+- "Name the buyer" is applied to every buyer a credible outlet has reported. No further names were found for the other 32 lots after a targeted search, so they stay anonymous with what is on the record about the bidding.
+- The two named parties are an adviser and a boutique head, each likely acting for someone else. Their profile links explain their role, not a fortune. The rule fits better once a principal is named.
+
+**What worked well:** re-reading my own draft against the data caught a wrong claim (that the Kandinsky hammered near its low estimate; it hammered above the high) before it shipped.
+
+**Limitations:** every statement in the issue traces to a fetched page, but press sources were read through summaries, not line by line. Ryan should spot-check the seven featured sales before merging.

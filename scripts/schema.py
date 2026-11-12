@@ -15,5 +15,5 @@ REQUIRED = ["id", "issue", "sale_date", "house", "location", "sale_name", "categ
             "currency", "price_basis", "fx_rate_to_usd", "fx_date", "fx_source", "price_usd", "vs_estimate",
             "guarantee", "buyer_status", "why_it_matters", "featured", "sources", "price_source", "confidence"]
 OPTIONAL = ["lot_number", "year_made", "estimate_low", "estimate_high", "estimate_note", "price_hammer",
-            "price_with_premium", "seller", "buyer_name", "buyer_attribution", "bidding_notes",
+            "price_with_premium", "seller", "buyer_name", "buyer_attribution", "buyer_profile_url", "bidding_notes",
             "financing_notes", "record", "updated_at", "update_note", "sample", "image"]

@@ -20,7 +20,8 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 
 ## Buyers
 
-- A buyer is named only when a credible outlet has reported the name, and the report is credited.
+- When a credible outlet reports who bought a lot, the buyer is named and the report is credited.
+- Each named buyer links to a profile that explains who they are and where their money comes from.
 - Otherwise the buyer is listed as anonymous. What is on the record about the bidding is described; guesses about private individuals are not printed.
 
 ## Prices
