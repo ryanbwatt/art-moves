@@ -1,6 +1,6 @@
 # Art Moves Build Log
 
-Kept in the Computer workspace until a repo is chosen, then moved into the repo.
+Kept in this repo. Sessions 1 to 3 were written before the repo existed and were moved in at Session 4.
 
 ## Session 1: Wed Nov 11, 2026. Planning
 
@@ -222,3 +222,80 @@ A thought partner on where Art Moves should live, then: its own repo and URL (fo
 **What worked well:** re-reading my own draft against the data caught a wrong claim (that the Kandinsky hammered near its low estimate; it hammered above the high) before it shipped.
 
 **Limitations:** every statement in the issue traces to a fetched page, but press sources were read through summaries, not line by line. Ryan should spot-check the seven featured sales before merging.
+
+## Session 7: deploy fix, Project setup, Sunday automation (11 Nov 2026)
+
+Two Computer threads worked this session. The build thread fixed the personal-site deploy. A second thread set up the Project and the automation, and wrote this entry from the build thread's transcript and the repo.
+
+**Asked**
+
+- Build thread: "status? how come projects not showing on ryanbwatt.com?", then "just added ryanbwatt.com", then "merge".
+- Second thread: a pasted context pack to turn into a Project; "what do you recommend? when should I use a project?"; "go"; "yes"; then "do all 3 of the suggested", read as the three items the build thread had left open: the Sunday automation, this log entry, and the one-paragraph explanation of Computer.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| Issue 1 | Art Moves PR #3 merged by Ryan. The deploy workflow ran and Issue 1 is live at art-moves.pages.dev. |
+| Personal-site deploy fix | ryanbwatt.com PR #3 was merged but Cloudflare never built it. Ryan restored the Cloudflare GitHub app's access to the repo. PR #4, a one-paragraph README note, gave Cloudflare a new commit to build, and was merged on Ryan's instruction. The Projects page and the About contact details are live. |
+| Project | Created as "Ryan HQ", since renamed "Art Moves". Ryan's context pack is the Project instructions. The build thread was moved in, and a snapshot of this log and the architecture proposal sit in Project files. Section 4 of the instructions was rewritten to match the build as it stands. |
+| Sunday automation | "Art Moves weekly issue draft". Sundays 9:00 AM ET, first run 15 Nov 2026. Fresh session each run, inside the Project, Standard mode. It opens a pull request and has no merge step. Its saved instructions are copied to `WEEKLY_RUN.md`. |
+| Explanation of Computer | One paragraph, at the end of this file. |
+
+**Capabilities used:** GitHub CLI, page fetching, Projects (instructions, files, moving a thread), memory search across threads, reading another thread's transcript, scheduled automation. Second thread's model: Claude Fable 5.2 as orchestrator, no sub-agents.
+
+**Computer on its own vs. Ryan**
+
+| Computer on its own | Ryan |
+|---|---|
+| Diagnosed the missing build from the absent Cloudflare check on the merge commit, without Cloudflare access | Restored the Cloudflare app's repo access in GitHub; Computer could neither see nor change that setting |
+| From a new thread, found the build thread, its documents and its three open items without being given links | Said "merge" for each merge |
+| Checked for an existing Project and an existing automation before creating either | Approved moving the build thread into the Project, which Computer could not undo |
+| Wrote the automation's instructions from the approved proposal, the repo's scripts and the failures recorded in this log | Approved the rewrite of the Project instructions |
+
+**Decisions**
+
+| Decision | Reason |
+|---|---|
+| Fresh session per run, all state in the repo | As proposed. A run must not depend on what an earlier chat happened to remember |
+| The window starts where the last merged issue ended | Issue 1 ran to 11 Nov, so a fixed Sunday-to-Saturday week would cover 8 to 11 Nov twice. It also survives a skipped week |
+| Full instructions saved in the automation, with a copy in the repo | The run works even if the repo copy is missing. The copy keeps a record under version control. The saved automation is what runs |
+| No test run tonight | Issue 1 covers through today, so there is nothing new to collect. The 15 Nov run is the test, three days before the onsite |
+| One-off 18 Nov run for marquee week not created | It was a default in the proposal but not one of the three items asked for. Flagged to Ryan |
+| This entry arrives as a pull request | The publishing rule: nothing is pushed to `main` |
+
+**What worked well**
+
+- One thread picked up another's open items: memory search found the build thread, its transcript gave the three items.
+- Checking state before acting. By the time "do all 3" arrived, the Projects link was already live, so nothing was redone.
+- A missing build check on one commit was enough to diagnose the deploy failure from outside Cloudflare.
+
+**Limitations, failures, and workarounds**
+
+| Issue | What happened | Workaround |
+|---|---|---|
+| Cloudflare did not build the merge | Probably caused by Session 5: while connecting Art Moves in Cloudflare, the Cloudflare GitHub app's repository access was narrowed to `art-moves`. Cause not confirmed, but restoring access fixed it | Ryan restored access |
+| Restored access does not rebuild an old commit | Cloudflare only builds on a new commit | A small README pull request |
+| Ambiguous instruction | "Do all 3 of the suggested" did not say which three | Read the build thread's last message, which listed exactly three; stated the assumption in the reply |
+| Two threads, one log | The second thread cannot write to the build thread's workspace, and the build thread's checkout is now behind `main` | This pull request; the build thread should pull before its next change |
+| Project renamed mid-session | The Project's title changed while the second thread was saving files. The file path changed with it and a save failed | Re-synced under the new name and saved again |
+| Project instructions out of date | The context pack still described a page on ryanbwatt.com in its planning phase | Flagged, then rewritten on approval |
+| Thread move is one-way | Computer can move a thread into another Project but not back to no Project | Asked first |
+| Automation untested | No run has happened yet | First run is the test; fix on 15 Nov if needed |
+| `status: draft` | The builder ignores `status` unless it is `sample`, so merged Issue 1 still says draft in its source | Cosmetic; left as is |
+| Method page ahead of the build | It said a Sunday run existed before one did | True as of this session |
+
+**Would land with an enterprise buyer**
+
+- Approval gates hold when no one is watching: the scheduled run can open a pull request and cannot merge one.
+- Standing instructions: a team writes its rules once in a Project and every session there starts with them.
+- It asked before the one step it could not undo, and did not ask before the steps it could.
+- It said what it could not see (a hosting setting) and handed the person the exact place to fix it.
+
+**Cost:** credit use not measured; check the usage page for both threads.
+
+## Explaining Computer to a customer new to AI agents
+
+Based on this build:
+
+Perplexity Computer is an assistant that does the work instead of describing it. You give it a goal in plain language. It plans the steps, searches and reads sources, writes and runs code on its own cloud machine, uses the accounts you connect (here, GitHub), and comes back with a finished thing: in this build, a live website, a sourced dataset of 34 sales and a first issue, inside a day. Three things make it safe to hand real work to. It shows its sources, so every number can be checked. It stops where you tell it to: nothing reached the live site without a person merging a pull request, and the weekly scheduled run is held to the same rule. And it tells you what it could not do: here it could not read one auction house's prices, guessed the site's framework wrong from the outside, and could not see a hosting setting, and each time it said so and offered a way round. Treat it like a capable new analyst. Give it a clear brief, access to the right systems and a review step, and it will take a multi-step job from research to a recurring process while you keep the final say.

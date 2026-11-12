@@ -13,12 +13,17 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `scripts/build.py` | Renders everything into `site/` |
 | `site/` | The published site. Generated; do not edit by hand |
 | `BUILD_LOG.md` | Running record of the build |
+| `WEEKLY_RUN.md` | Copy of the instructions the Sunday automation follows |
 
 Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 scripts/build.py`. Python 3, no packages.
 
 ## Hosting
 
 Cloudflare Pages, project `art-moves`. `.github/workflows/deploy.yml` uploads `site/` on every merge to `main` that changes it. It needs one repository secret, `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with the single permission Account > Cloudflare Pages > Edit.
+
+## Weekly run
+
+A Perplexity Computer automation runs on Sundays at 9:00 AM Eastern. It researches the week, adds rows, drafts the next issue and opens a pull request from a branch named `issue/NNN`. It has no merge step. See `WEEKLY_RUN.md`.
 
 ## Publishing rule
 
