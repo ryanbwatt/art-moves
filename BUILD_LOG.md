@@ -294,6 +294,61 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Cost:** credit use not measured; check the usage page for both threads.
 
+## Session 8: guiding principles from the editor (13 Nov 2026)
+
+**Asked:** in what reads as a dictated note, after a conversation with his mother, Ryan added principles for the product. Paraphrased prompt: when someone like Ken Griffin buys a $100M Rembrandt, say what it means for Rembrandt and, more to the point, for similar artists, the way AMD moves when Nvidia does; explain why prices move; say whether a peer is now a buy and how to buy it. Add a set of questions on the site (budget, timing, painting or photograph or sculpture) that tailor it for readers who know nothing about art. Through all of it keep answering one question: why do people who are careful with money buy art at all?
+
+**Done**
+
+| Step | Result |
+|---|---|
+| Read current state first | This log, the open PR #4, `WEEKLY_RUN.md`, the data schema and the Project's notes from the earlier product discussion |
+| Checked the premise against research | Five searches: art returns, collector motives, price spillover between artists, current buyer's premium rates, and Rembrandt's circle. Sources are linked in `PRINCIPLES.md` |
+| Wrote `PRINCIPLES.md` | The thesis, read-through rules, verdict form, reader questions, guardrails, and a proposed build |
+| Did not build | Ryan's rule is architecture first. The read-through data, the questions page and the weekly-run changes wait for his approval |
+
+**Capabilities used:** Project memory, GitHub CLI, web search, file writing. Model: Claude Fable 5.2 as orchestrator, no sub-agents.
+
+**Computer on its own vs. Ryan**
+
+| Computer on its own | Ryan |
+|---|---|
+| Treated a loose dictated note as a brief and separated it into three ideas: read-through, reader questions, thesis | Supplied the ideas and the analogy |
+| Tested the stock analogy against published research instead of accepting it, and wrote down where it breaks | To decide: verdict wording, whether routes include gallery works, whether to prototype before 18 Nov |
+| Noticed two conflicts with existing rules and wrote guardrails for them (below) | |
+| Left the Sunday automation alone so its first run on 15 Nov tests one thing | |
+
+**Decisions**
+
+| Decision | Reason |
+|---|---|
+| Principles go in the repo as their own file | The weekly run starts fresh each time and reads the repo. A principle that lives only in a chat is lost |
+| Read-through is keyed to the sale, not the buyer | Only 2 of 34 Issue 1 buyers were named, and both were intermediaries. A feature that needs a named billionaire would rarely fire |
+| Verdicts proposed as Worth a look, Wait or Pass, with no price targets | The About page says nothing on the site is investment advice. An opinion with its basis shown fits that; a predicted return does not |
+| Routes over listings | A route (this artist's etchings sell for this range at these sales) stays true for months. A single lot is gone in a week |
+| Reader answers stay in the browser | No account, no tracking and no new service, so nothing needs approval. The cost: no record of what readers choose |
+| Corrected the example | Bruegel is not in Rembrandt's circle, as Ryan said himself. The file uses Lievens, Dou, Flinck and Bol so the example is not copied into an issue by mistake |
+
+**Limitations, failures, and workarounds**
+
+| Issue | What happened | Workaround |
+|---|---|---|
+| The analogy is weaker than it sounds | The one study found on peer prices puts the effect at 2 to 3% for a 10% move in peers, and it is a single working paper on abstract artists | Read-throughs carry a signal label (observed, pattern, none yet) and the issue checks peers' actual results |
+| The honest answer to the thesis may be unwelcome | After correcting for which paintings get resold, broad art returns are 6.3% a year with a Sharpe ratio of 0.11, and the buyer pays 28% on top of the hammer price | The thesis is framed as use, identity and access first, with holding value as a constraint. Said plainly in the file |
+| Motives conflict with the buyer rule | "Why they bought" invites guessing about private people | Motives are printed only when reported or stated; otherwise the issue reads the structure of the sale |
+| Suggesting things to buy raises the stakes on the gallery disclosure | The editor works with a gallery | Any gallery work suggested would be labelled; auction-only is the proposed default |
+| Open PR #4 touches this file | A second branch from `main` would conflict | This branch is stacked on `log/session-7`. Merge #4 first, or merge this one and close #4 |
+| Dictation | Names came through as "Broegel" and "Maddie" | Read as Bruegel and Matt from context |
+
+**Would land with an enterprise buyer**
+
+- It took a spoken, unstructured idea and returned a structured proposal with sources, without being asked to check the premise.
+- It disagreed with part of the brief, showed the evidence and still delivered what was asked.
+- It found where a new request collided with rules written in earlier sessions and resolved the conflict in writing.
+- It stopped at the approval line the team had set: a proposal and a pull request, no build.
+
+**Cost:** credit use not measured; check the usage page for this thread.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
