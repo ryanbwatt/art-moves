@@ -13,6 +13,7 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `scripts/build.py` | Renders everything into `site/` |
 | `site/` | The published site. Generated; do not edit by hand |
 | `PRINCIPLES.md` | Guiding principles: the question each issue answers, read-through to peer artists, verdicts, reader questions. Includes a proposed build that is not started |
+| `PRESSURE_TEST.md` | Audit of the project and the open questions for the editor |
 | `BUILD_LOG.md` | Running record of the build |
 | `WEEKLY_RUN.md` | Copy of the instructions the Sunday automation follows |
 

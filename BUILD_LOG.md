@@ -349,6 +349,56 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Cost:** credit use not measured; check the usage page for this thread.
 
+## Session 9: merges and a pressure test (14 Nov 2026)
+
+**Asked:** merge PRs #4 and #5. Then look across this thread and the other thread in the Project, and come back with questions that harden the project against critics now and after. Use Tom Bilyeu's public Instagram captions on validating a business with AI as the model. Stated goal: get young and middle-aged men engaged in art; the payoff is not meant to be money.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| Merged PR #4, then PR #5 | On Ryan's instruction. Neither touched `site/`, so nothing was redeployed |
+| Read the other thread | The build thread, 28 exchanges, including the product discussion of 12 Nov (way-in pyramid, guess-the-price card, picks) |
+| Read Bilyeu's posts | One Instagram caption and his profile fetched in full; three more captions read as search excerpts. Quoted and linked in `PRESSURE_TEST.md` |
+| Ran his tests on Art Moves | Three searches (competing newsletters, beginner collectors, arts attendance by sex) plus the repo's own data |
+| Wrote `PRESSURE_TEST.md` | Audit, the attacks to expect, 14 questions with a lean on each |
+
+**Capabilities used:** GitHub CLI, memory search and reading another thread's transcript, web search, page fetching (a public Instagram caption was readable without a login), file writing. Model: Claude Fable 5.2 as orchestrator, no sub-agents.
+
+**Computer on its own vs. Ryan**
+
+| Computer on its own | Ryan |
+|---|---|
+| Found and read the other thread without a link | Said "merge" for both PRs |
+| Turned a creator's sales-flavoured posts into five tests and adapted "will 1,000 people pay $100" for a project with no revenue goal | Chose the framework |
+| Audited its own earlier work and reversed its own recommendation from Session 8 | To answer: the 14 questions |
+
+**Decisions**
+
+| Decision | Reason |
+|---|---|
+| Call: change it, do not kill it | Six features proposed across two sessions, no confirmed reader, no way to count one |
+| Recommend a feature freeze for now | Session 8 recommended prototyping the read-through. Under these tests, a reader's reaction and a first scheduled run are worth more than a seventh feature |
+| Questions carry a lean | The same format got a full set of answers on 12 Nov |
+
+**Limitations, failures, and workarounds**
+
+| Issue | What happened | Workaround |
+|---|---|---|
+| Thread list | Asking for the Project's threads returned every personal thread | Picked the build thread by title and content |
+| Dictation | "Arvise" and "Tom Billia" | Read as Art Moves and Tom Bilyeu |
+| Premise check | The stated gap in men's interest is 16% against 20% for museum and gallery visits; the larger barrier in the survey is time | Recorded in the audit; question 1 asks what stops Matt |
+| Competitor scan | Not exhaustive; four searches | Labelled as such |
+| No reader data | The site has no sign-up or visit counts, so nothing about real use could be checked | Questions 5 to 7 |
+
+**Would land with an enterprise buyer**
+
+- It was asked to attack its own work and did, down to withdrawing advice it gave the day before.
+- It carried context across two threads without being handed either one.
+- It checked the sponsor's premise against public data before building on it.
+
+**Cost:** credit use not measured; check the usage page for this thread.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
