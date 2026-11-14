@@ -100,6 +100,17 @@ li { margin-bottom: 0.4em; }
 main > .scroll { padding-bottom: 72px; }
 .sources { padding-left: 1.4em; margin: 0; font-size: 14px; }
 
+/* Sign-up for the Sunday email. One field, one button, no colour. */
+.signup { max-width: 520px; }
+.signup label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px; }
+.signup-row { display: flex; }
+.signup input[type="email"] { flex: 1; min-width: 0; height: 48px; padding: 0 14px; border: 1px solid var(--ink); border-right: 0; border-radius: 0; background: #fff; color: var(--ink); font: inherit; -webkit-appearance: none; appearance: none; }
+.signup input[type="email"]::placeholder { color: var(--dim); }
+.signup button { height: 48px; padding: 0 22px; border: 1px solid var(--ink); border-radius: 0; background: var(--ink); color: #fff; font: inherit; font-weight: 500; cursor: pointer; }
+.signup button:hover { background: #fff; color: var(--ink); }
+.signup input:focus-visible, .signup button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.small { font-size: 13px; margin: 10px 0 0; }
+
 .pager { display: flex; gap: 28px; border-top: 1px solid var(--ink); padding: 16px 0 72px; font-weight: 500; }
 .foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 16px var(--gutter) 28px; border-top: 1px solid var(--ink); margin: 0 var(--gutter); padding-left: 0; padding-right: 0; font-size: 13px; color: var(--dim); }
 
@@ -120,4 +131,6 @@ main > .scroll { padding-bottom: 72px; }
   .row-title { font-size: 17px; }
   .index { min-width: 680px; }
   .facts div { grid-template-columns: 90px 1fr; }
+  .signup-row { flex-direction: column; gap: 8px; }
+  .signup input[type="email"] { border-right: 1px solid var(--ink); flex: none; width: 100%; }
 }

@@ -53,6 +53,8 @@ def check_row(r, seen):
         usd = p * r["fx_rate_to_usd"]
         if abs(usd - r["price_usd"]) / usd > 0.005: e.append(f"price_usd off: expected about {round(usd)}")
         if r["vs_estimate"] != expected_vs(r): e.append(f"vs_estimate should be {expected_vs(r)}")
+    if r["guarantee"] == "unknown" and "guarantee" in (r.get("financing_notes") or "").lower():
+        e.append("financing_notes mentions a guarantee but guarantee is unknown; use guaranteed, house, third_party or none")
     if r["buyer_status"] == "anonymous" and r.get("buyer_name"): e.append("anonymous row has buyer_name")
     if r["buyer_status"] != "anonymous" and not (r.get("buyer_name") and r.get("buyer_attribution")):
         e.append("named/reported buyer needs buyer_name and buyer_attribution")

@@ -4,7 +4,10 @@ CATEGORIES = {"fine_art": "Fine art", "design": "Design", "watches": "Watches", 
               "cars": "Cars", "fashion": "Fashion", "other": "Other"}
 PRICE_BASIS = {"hammer": "hammer", "with_premium": "incl. premium"}
 VS_ESTIMATE = {"below", "within", "above", "no_estimate"}
-GUARANTEE = {"none", "house", "third_party", "irrevocable_bid", "unknown"}
+# "guaranteed" means a source says the lot was guaranteed but not by whom. "unknown" means nothing was reported.
+GUARANTEE = {"none": "None", "house": "By the house", "third_party": "By a third party",
+             "irrevocable_bid": "Irrevocable bid", "guaranteed": "Guaranteed, backer not stated",
+             "unknown": "Not reported"}
 BUYER_STATUS = {"named", "reported", "anonymous"}
 PRICE_SOURCE = {"house", "press"}
 CONFIDENCE = {"high", "medium", "low"}

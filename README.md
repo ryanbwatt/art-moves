@@ -10,14 +10,18 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `src/assets/` | Stylesheet and images. Images must be public domain or openly licensed, with credit recorded on the sale |
 | `scripts/fx.py` | Fills USD conversions from ECB reference rates |
 | `scripts/validate.py` | Checks every row; must pass before a pull request |
+| `src/config.json` | Site address, the sign-up form's target, and the email footer. The sign-up form stays off the site until `subscribe.action` is filled in |
 | `scripts/build.py` | Renders everything into `site/` |
+| `scripts/newsletter.py` | Drafts the Sunday email for an issue into `email/` as HTML and plain text. Drafts only; the editor sends |
+| `email/` | Email drafts. Not published |
 | `site/` | The published site. Generated; do not edit by hand |
 | `PRINCIPLES.md` | Guiding principles: the question each issue answers, read-through to peer artists, verdicts, reader questions. Includes a proposed build that is not started |
 | `PRESSURE_TEST.md` | Audit of the project and the open questions for the editor |
+| `ACCURACY.md` | Re-check of Issue 1 against its sources, and what the auction houses' sites allow |
 | `BUILD_LOG.md` | Running record of the build |
 | `WEEKLY_RUN.md` | Copy of the instructions the Sunday automation follows |
 
-Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 scripts/build.py`. Python 3, no packages.
+Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 scripts/build.py`, `python3 scripts/newsletter.py`. Python 3, no packages.
 
 ## Hosting
 

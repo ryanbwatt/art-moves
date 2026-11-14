@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render Art Moves from data and Markdown into static HTML.
 
-Inputs:  src/data/sales.json, src/issues/NNN.md, src/pages/about.md, src/assets/
+Inputs:  src/data/sales.json, src/issues/NNN.md, src/pages/about.md, src/assets/, src/config.json
 Outputs: site/ (home, one page per issue, archive, data, method, images, CSV, JSON)
 
 Standard library only. Output is committed, so the host needs no build step.
@@ -137,8 +137,8 @@ def sale_block(r, order):
              ("Sale", f"{S.HOUSES[r['house']]} {r['location']}, {day(r['sale_date'])}" + (f", lot {r['lot_number']}" if r.get("lot_number") else "")),
              ("Seller", r.get("seller") or "Not disclosed"),
              ("Buyer", buyer(r)),
-             ("Guarantee", r["guarantee"].replace("_", " ").capitalize())]
-    for k, label in (("record", "Record"), ("bidding_notes", "Bidding"), ("financing_notes", "Financing")):
+             ("Guarantee", S.GUARANTEE[r["guarantee"]])]
+    for k, label in (("record", "Record"), ("bidding_notes", "Bidding"), ("financing_notes", "Financing"), ("update_note", "Updated")):
         if r.get(k): facts.append((label, r[k]))
     dl = "".join(f"<div><dt>{esc(k)}</dt><dd>{buyer_html(r) if k == 'Buyer' else esc(v)}</dd></div>" for k, v in facts)
     return (f'<article class="sale" id="{esc(r["id"])}">{figure(r)}'
@@ -180,6 +180,20 @@ def source_list(order):
     li = "".join(f'<li id="s{n}"><a href="{esc(u)}">{esc(p)}</a></li>' for u, (n, p) in order.items())
     return f'<section class="sec"><h2 class="label">Sources</h2><div class="sec-body"><ol class="sources">{li}</ol></div></section>'
 
+def subscribe(cfg, place):
+    """Sign-up form for the Sunday email. A plain HTML form that posts to whichever
+    email service is named in src/config.json. Renders nothing until an action is set."""
+    sub = cfg.get("subscribe") or {}
+    if not sub.get("action"): return ""
+    hidden = "".join(f'<input type="hidden" name="{esc(k)}" value="{esc(str(v))}">' for k, v in (sub.get("hidden") or {}).items())
+    return (f'<section class="sec" id="subscribe-{place}"><h2 class="label">Sunday email</h2><div class="sec-body">'
+            '<p class="standfirst">The week\'s biggest sales in art, watches and cars, in three minutes. One email, every Sunday. Free.</p>'
+            f'<form class="signup" action="{esc(sub["action"])}" method="{esc(sub.get("method", "post"))}" target="_blank" rel="noopener">{hidden}'
+            f'<label for="email-{place}">Email address</label>'
+            f'<div class="signup-row"><input id="email-{place}" type="email" name="{esc(sub.get("email_field", "email"))}" autocomplete="email" placeholder="you@example.com" required>'
+            '<button type="submit">Subscribe</button></div>'
+            '<p class="dim small">Your address is used for this email and nothing else. Unsubscribe any time.</p></form></div></section>')
+
 SORT_JS = """<script>document.querySelectorAll('.sortable th').forEach(function(th,i){th.tabIndex=0;th.setAttribute('role','button');function go(){var tb=th.closest('table').tBodies[0],d=th.dataset.d==='a'?'d':'a';th.dataset.d=d;[].slice.call(tb.rows).sort(function(a,b){var x=a.cells[i].dataset.v||a.cells[i].textContent,y=b.cells[i].dataset.v||b.cells[i].textContent,n=parseFloat(x)-parseFloat(y);n=isNaN(n)||/-/.test(x)?x.localeCompare(y):n;return d==='a'?n:-n}).forEach(function(r){tb.appendChild(r)})}th.addEventListener('click',go);th.addEventListener('keydown',function(e){if(e.key==='Enter')go()})});</script>"""
 
 def page(title, body, current=None, description="", script=""):
@@ -198,6 +212,7 @@ def page(title, body, current=None, description="", script=""):
 def main():
     rows = json.loads((SRC / "data" / "sales.json").read_text())
     by_id = {r["id"]: r for r in rows}
+    cfg = json.loads((SRC / "config.json").read_text())
     issues = []
     for f in sorted((SRC / "issues").glob("*.md")):
         meta, text = read_md(f)
@@ -230,7 +245,7 @@ def main():
             '<a href="archive.html">All issues</a>'] if x)
         body = (f'{banner(it)}<header class="issue-head"><p class="label">{issue_meta(it)}</p>'
                 f'<h1 class="display">{esc(it["title"])}</h1><p class="standfirst">{esc(it.get("topline", ""))}</p></header>'
-                f'\n{markdown(it["text"], directive)}\n{source_list(order)}<nav class="pager" aria-label="Issues">{pager}</nav>')
+                f'\n{markdown(it["text"], directive)}\n{subscribe(cfg, "issue")}{source_list(order)}<nav class="pager" aria-label="Issues">{pager}</nav>')
         (OUT / f"{it['slug']}.html").write_text(page(it["title"], body, description=it.get("topline", "")))
 
     # home
@@ -239,7 +254,7 @@ def main():
         hero = figure(top["lead_row"], "plate hero") if top.get("lead_row") else ""
         home = (f'{banner(top)}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
                 f'<div><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
-                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>'
+                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{subscribe(cfg, "home")}'
                 f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_rows(top["rows"], href)}</div></section>')
         if issues[1:]:
             earlier = "".join(f'<a class="row" href="{i["slug"]}.html"><span class="row-main"><span class="row-title">{esc(i["title"])}</span>'
