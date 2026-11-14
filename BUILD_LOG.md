@@ -34,7 +34,7 @@ Model: Claude Fable 5.2 as orchestrator. No sub-agents.
 ### What worked well
 - Identifying the host without any account access: the `pages.dev` address serves a byte-identical copy of the site.
 - Parallel research: ten searches and page reads at once surfaced enough verified material to outline Issue #1.
-- Reading the auction calendar exposed a scheduling point the brief did not anticipate: New York marquee week lands on the interview week, after Issue #1.
+- Reading the auction calendar exposed a scheduling point the brief did not anticipate: New York marquee week falls after Issue #1.
 
 ### Limitations, failures, and workarounds
 | Issue | What happened | Workaround |
@@ -260,7 +260,7 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 | Fresh session per run, all state in the repo | As proposed. A run must not depend on what an earlier chat happened to remember |
 | The window starts where the last merged issue ended | Issue 1 ran to 11 Nov, so a fixed Sunday-to-Saturday week would cover 8 to 11 Nov twice. It also survives a skipped week |
 | Full instructions saved in the automation, with a copy in the repo | The run works even if the repo copy is missing. The copy keeps a record under version control. The saved automation is what runs |
-| No test run tonight | Issue 1 covers through today, so there is nothing new to collect. The 15 Nov run is the test, three days before the onsite |
+| No test run tonight | Issue 1 covers through today, so there is nothing new to collect. The 15 Nov run is the test |
 | One-off 18 Nov run for marquee week not created | It was a default in the proposal but not one of the three items asked for. Flagged to Ryan |
 | This entry arrives as a pull request | The publishing rule: nothing is pushed to `main` |
 
