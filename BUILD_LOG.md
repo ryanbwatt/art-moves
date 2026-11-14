@@ -351,7 +351,7 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 ## Session 9: merges and a pressure test (14 Nov 2026)
 
-**Asked:** merge PRs #4 and #5. Then look across this thread and the other thread in the Project, and come back with questions that harden the project before Wednesday and after it. Use Tom Bilyeu's public Instagram captions on validating a business with AI as the model. Stated goal: get young and middle-aged men engaged in art; the payoff is not meant to be money.
+**Asked:** merge PRs #4 and #5. Then look across this thread and the other thread in the Project, and come back with questions that harden the project against critics now and after. Use Tom Bilyeu's public Instagram captions on validating a business with AI as the model. Stated goal: get young and middle-aged men engaged in art; the payoff is not meant to be money.
 
 **Done**
 
@@ -378,7 +378,7 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 | Decision | Reason |
 |---|---|
 | Call: change it, do not kill it | Six features proposed across two sessions, no confirmed reader, no way to count one |
-| Recommend a feature freeze until Wednesday | Session 8 recommended prototyping the read-through. Under these tests, a reader's reaction and a first scheduled run are worth more than a seventh feature |
+| Recommend a feature freeze for now | Session 8 recommended prototyping the read-through. Under these tests, a reader's reaction and a first scheduled run are worth more than a seventh feature |
 | Questions carry a lean | The same format got a full set of answers on 12 Nov |
 
 **Limitations, failures, and workarounds**

@@ -1,6 +1,6 @@
 # Art Moves: pressure test
 
-14 Nov 2026. An audit of the project against Tom Bilyeu's public validation rules, followed by the questions the editor needs to answer. Answers get added to this file.
+14 Nov 2026. An audit of the project against Tom Bilyeu's public validation rules, followed by the questions the editor needs to answer. The editor's answers are at the end.
 
 ## The rules used
 
@@ -67,11 +67,58 @@ Each has a lean. "Agree" is a valid answer.
 
 10. In one sentence, why lead with price if return is a poor reason to buy?
 11. Will Art Moves ever point to an artist your gallery shows? Lean: no for the first twelve issues, then only with a label.
-12. Did you spot-check the seven featured sales in Issue 1? Lean: do it before Wednesday and log what you find.
+12. Did you spot-check the seven featured sales in Issue 1? Lean: do it this week and log what you find.
 
-**Wednesday**
+**This week**
 
-13. Will you send Issue 1 to Matt by Saturday and ask for three blunt reactions? Lean: yes. It turns the weakest answer into the strongest.
-14. Freeze features until Wednesday, or prototype? Lean: freeze. Let Sunday's run and Matt's reaction be the demo. This reverses the earlier recommendation to prototype the read-through first.
+13. Will you send Issue 1 to the first reader by Saturday and ask for three blunt reactions? Lean: yes. It turns the weakest answer into the strongest.
+14. Freeze features for now, or prototype? Lean: freeze. Let Sunday's run and a reader's reaction come first. This reverses the earlier recommendation to prototype the read-through first.
 
 Still open from earlier sessions: image policy, view wording (Worth a look / Wait / Pass).
+
+## Answers from the editor (14 Nov 2026)
+
+Given in one dictated reply and condensed here. Names of private people and commercial terms are kept out of this file.
+
+**On the audit**
+
+| Finding | Editor's answer | What follows |
+|---|---|---|
+| Pain unproven | The pain is first-hand. The editor feels it, his parents feel it, and so does the first reader, who was standing in for all of them | Three households is still a small sample. The Sunday send is the first test outside the editor's head |
+| Premise weaker than assumed | People visit once and do not go back or buy, or they do not know how to talk about what they saw. The aim is to speed up interest that is already there | This fits the survey better than "men are not interested". The site should give readers words to use, not only prices |
+| Nothing tested | Add a sign-up to the site. The editor sends an email each Sunday: headline first, easy to digest, in the manner of the Wall Street Journal editor's newsletter | Being built on a separate branch. It needs an email service, which is a new service and waits for approval |
+| No target number | Success is the editor placing works with readers, on behalf of artists and through the gallery he works with, and earning an advisory fee when he refers a purchase. No paid subscription before 1,000 subscribers, if ever | The site stays free. This changes the disclosure question: see answer 11 |
+
+**On the attacks**
+
+| Attack | Editor's answer |
+|---|---|
+| No readers on record | It is new. For now it is for the editor and his friends |
+| Accuracy | Use the auction houses' own results more. A separate note covers what their public pages allow |
+
+**On the questions**
+
+| # | Answer | What follows |
+|---|---|---|
+| 1 | Lack of knowledge to feel confident in a purchase, and not knowing where to buy. Taste, fear of overpaying and time all apply | Confidence is the product. Each issue should leave the reader able to say one true thing about one work |
+| 2 | Five named readers plus the first reader | These six are the test group |
+| 3 | Agreed. Readers talk about art more, go to openings and shows at weekends, or work with the editor to buy. "All men talk about is sports. This is something new." | Count conversations and visits. Purchases will be rare |
+| 4 | Agreed: the site gives routes and views, personal advice stays private | |
+| 5 | The Sunday email | See the audit table above |
+| 6 | Not settled. The editor asked what a scoreboard is, and is interested in an analytics view later. Reader accounts with saved works are a possible second version | A scoreboard is three numbers checked each week. Start with what the email service reports (opens, clicks, replies). Visit counting and accounts are new services and wait |
+| 7 | No engagement threshold: the editor would keep writing it for himself. Two things would stop it: sale data becoming expensive to get, and objections from private collectors about being written about | The second is what the buyer rule exists to prevent. A way to ask for a correction should be on the method page |
+| 8 | The edge is translation for finance readers. The name question was not answered | Open |
+| 9 | Agreed: 60 minutes | |
+| 10 | "Because that's the language of my reader." | |
+| 11 | No artist the editor has an interest in will be recommended at first. Later the site may recommend artists who work with the editor, as a digital gallery or as editorial | From the first such recommendation, the item itself must say the editor may earn a fee, and the disclosure on the method page must change the same day |
+| 12 | Not done | Still owed. A machine re-check of the seven featured sales is logged separately; it does not replace the editor's read |
+| 13 | Yes. Issue 1 goes to the six test readers on Sunday 15 Nov, and to the editor himself. Feedback from two of them matters most | |
+| 14 | Freeze most features, without making a rule of it | The sign-up and the Sunday email are the exceptions |
+
+**Still open**
+
+| Item | State |
+|---|---|
+| Image policy | The editor wants to use more images. The published rule (public domain or openly licensed only) stays in force until a replacement is written and agreed |
+| View wording | Worth a look / Wait / Pass: not answered |
+| Editor's name | Off the site for now. It will matter once readers are invited to buy with the editor's help |
