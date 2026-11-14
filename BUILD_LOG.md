@@ -359,11 +359,11 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 |---|---|
 | Merged PR #4, then PR #5 | On Ryan's instruction. Neither touched `site/`, so nothing was redeployed |
 | Read the other thread | The build thread, 28 exchanges, including the product discussion of 12 Nov (way-in pyramid, guess-the-price card, picks) |
-| Read Bilyeu's posts | Four Instagram captions and his profile, quoted and linked in `PRESSURE_TEST.md` |
+| Read Bilyeu's posts | One Instagram caption and his profile fetched in full; three more captions read as search excerpts. Quoted and linked in `PRESSURE_TEST.md` |
 | Ran his tests on Art Moves | Three searches (competing newsletters, beginner collectors, arts attendance by sex) plus the repo's own data |
 | Wrote `PRESSURE_TEST.md` | Audit, the attacks to expect, 14 questions with a lean on each |
 
-**Capabilities used:** GitHub CLI, memory search and reading another thread's transcript, web search, page fetching (Instagram captions were readable), file writing. Model: Claude Fable 5.2 as orchestrator, no sub-agents.
+**Capabilities used:** GitHub CLI, memory search and reading another thread's transcript, web search, page fetching (a public Instagram caption was readable without a login), file writing. Model: Claude Fable 5.2 as orchestrator, no sub-agents.
 
 **Computer on its own vs. Ryan**
 
