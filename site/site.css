@@ -171,3 +171,4 @@ main > .scroll { padding-bottom: 72px; }
   .timeline li { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; }
   .ticker-chart .axis { font-size: 20px; }
 }
+.prose-table { min-width: 0; } .prose-table td, .prose-table th { vertical-align: top; }

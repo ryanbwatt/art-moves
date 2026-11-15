@@ -14,7 +14,7 @@ import schema as S
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC, OUT = ROOT / "src", ROOT / "site"
-NAV = [("Latest", "index.html"), ("Issues", "archive.html"), ("Data", "data.html"), ("Method", "about.html")]
+NAV = [("Latest", "index.html"), ("Issues", "archive.html"), ("Data", "data.html"), ("Trade", "trade.html"), ("Method", "about.html")]
 FONTS = ["https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap",
          "https://api.fontshare.com/v2/css?f[]=gambetta@400,401&display=swap"]
 TAGLINE = "Where serious money moves in art and luxury."
@@ -76,13 +76,22 @@ def inline(t):
 def markdown(text, directive=lambda name, arg: ""):
     """Paragraphs, lists, links, bold, and ## headings. Each ## opens a section
     whose heading sits in the left-hand label column."""
-    out, para, items, open_sec = [], [], [], False
+    out, para, items, rows, open_sec = [], [], [], [], False
     def flush():
         if para: out.append("<p>" + inline(" ".join(para)) + "</p>"); para.clear()
         if items: out.append("<ul>" + "".join(f"<li>{inline(i)}</li>" for i in items) + "</ul>"); items.clear()
+        if rows:
+            cells = [[c.strip() for c in r.strip("|").split("|")] for r in rows if not re.fullmatch(r"\|[\s:|-]+\|", r)]
+            th = "".join(f"<th>{inline(c)}</th>" for c in cells[0])
+            tb = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in cells[1:])
+            out.append(f'<div class="scroll"><table class="index prose-table"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table></div>'); rows.clear()
     for line in text.splitlines():
         s = line.strip()
         m = re.fullmatch(r"\{\{(\w+)(?::([^}]+))?\}\}", s)
+        if s.startswith("|"):
+            if para or items: flush()
+            rows.append(s); continue
+        if rows: flush()
         if not s: flush()
         elif m: flush(); out.append(directive(m.group(1), m.group(2)))
         elif s.startswith("## "):
@@ -420,6 +429,13 @@ def main():
     _, about = read_md(SRC / "pages" / "about.md")
     body = '<header class="issue-head"><p class="label">How it is made</p><h1 class="display">Method</h1></header>' + markdown(about)
     (OUT / "about.html").write_text(page("Method", body, "Method", "How Art Moves is sourced and made."))
+    # trade (concept page)
+    _, trade = read_md(SRC / "pages" / "trade.md")
+    body = ('<header class="issue-head"><p class="label">Concept</p><h1 class="display">Trade</h1>'
+            '<p class="standfirst">An idea Art Moves is thinking through: helping people who inherit art they do not want find it a good home, '
+            'and bring home something they will live with.</p></header>'
+            '<p class="banner">A concept, not a service. Art Moves is not taking submissions, holding works or arranging trades.</p>' + markdown(trade))
+    (OUT / "trade.html").write_text(page("Trade", body, "Trade", "A concept for trading inherited art."))
     print(f"build: {len(issues)} issue(s), {len(rows)} row(s) -> {OUT}")
 
 if __name__ == "__main__":
