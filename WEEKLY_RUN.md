@@ -1,18 +1,18 @@
 # Weekly run
 
-A copy of the instructions saved in the Perplexity Computer automation "Art Moves weekly issue draft", as of 15 Nov 2026. The automation runs on Sundays at 9:00 AM Eastern, in a fresh session, and opens a pull request. It cannot merge.
+A copy of the instructions saved in the Perplexity Computer automation "Art Moves weekly issue", as of 15 Nov 2026. The automation runs on Sundays at 9:00 AM Eastern, in a fresh session. It opens a pull request for the new issue and merges it itself when the checks in step 9 pass, which publishes the issue. It does not send the email.
 
 The saved automation is what runs. Editing this file does not change the run; change the automation, then update this copy.
 
 ---
 
-Draft the next weekly issue of Art Moves and open it as a pull request for the editor to review. Do not publish anything.
+Draft the next weekly issue of Art Moves, open it as a pull request, and merge it to publish the issue when every check in step 9 passes. Do not send the email.
 
-Art Moves is a free weekly brief on notable auction sales in art and luxury: who bought, what they paid, and what the sale says about how wealthy families protect and grow capital. The reader knows finance and is new to the art market. Repo: `ryanbwatt/art-moves` (public). Live site: https://art-moves.pages.dev/. Merging a pull request to `main` publishes the site, and only the editor merges.
+Art Moves is a free weekly brief on notable auction sales in art and luxury: who bought, what they paid, and what the sale says about how wealthy families protect and grow capital. The reader knows finance and is new to the art market. Repo: `ryanbwatt/art-moves` (public). Live site: https://art-moves.pages.dev/. Merging a pull request to `main` publishes the site. The editor has authorized this run to merge its own issue pull request each Sunday, under the conditions in step 9. The editor reads the published issue afterwards and asks for corrections.
 
 ## Hard rules
 
-- Never push to `main`. Never merge a pull request. Work on a branch and open one pull request.
+- Never push to `main`. Work on a branch and open one pull request. The only pull request you may merge is this run's own issue pull request, and only under step 9. Never merge any other pull request.
 - Do not change the deploy workflow, hosting, DNS, repo settings, or any other repo. Do not email or message anyone.
 - Every figure must come from a page you fetched in this run. If you cannot source a number, leave the sale out and list it under gaps.
 - Keep the editor's name off the site and out of the issue.
@@ -44,7 +44,14 @@ Cover Sotheby's, Christie's and Phillips in all categories, plus other houses (`
 | Fashion, handbags, memorabilia | $100k | $500k |
 | Story override | Any price | Named buyer, record, restitution, unusual guarantee |
 
-Cap the week at about 40 rows, highest value first. Aim for at least one row outside fine art when one qualifies.
+Price is not the only test. Pick sales a young, finance-literate reader with a short attention span would want to read about. Treat these as reasons to include a sale at any price (the story override), and favor them when choosing what to feature:
+
+- Something went wrong: sold below the low estimate, failed to sell, withdrawn, sold at a loss against an earlier sale, a catalogue caveat (untested, restored, doubtful attribution or provenance), a guarantor left holding the lot.
+- A wild multiple: far above estimate, or a record.
+- A known person: a named buyer, a famous seller or past owner, a celebrity object.
+- A strange or funny object, or a fight: family disputes, restitution, a royal objecting to the sale.
+
+Every week, look for at least one notable sale in each of watches, jewelry, cars, design and fashion or memorabilia, and include it through the story override when it is interesting even if it is under the floor. Do not write "nothing qualified" for a category without having looked; if nothing notable happened, say what is coming up instead. A lot that failed to sell has no price, so it cannot be a row; cover it in the prose with its source. Cap the week at about 40 rows. When over the cap, keep the story overrides and drop the least interesting low-value rows.
 
 Sources, in order: the auction house's results page or press release, then established trade press (The Art Newspaper, Artnet, Apollo, ARTnews, Reuters, Hodinkee, Rapaport, WatchPro and similar). Known limits from earlier runs:
 
@@ -88,7 +95,7 @@ Sections, as in the latest issue:
 6. `## How to read these numbers`: a short primer for a newcomer. Do not repeat last week's terms.
 7. `## All sales in this issue`: a single line, `{{table}}`.
 
-Voice: opinionated, plain, short sentences. Link each factual claim inline to its source, as the latest issue does. Summarize in your own words; do not reproduce article text. No emojis. Do not use: delve, explore, seamless, game-changer, robust, leverage, testament, cutting-edge.
+Voice: opinionated, plain, short sentences, written to be read on a phone in two minutes. Lead with tension: who won, who lost, what went wrong, who paid too much. Readers come for the flop, the loss, the bidding war and the strange caveat as much as the record, so put those first and say plainly what they cost someone. Write the title and the first sentence of each section as a hook, the way a good headline is written, while staying accurate and fair: no mockery of named private people, and every claim sourced. Prefer one striking number to three averages. Cut throat-clearing and anything that reads like a catalogue. Link each factual claim inline to its source, as the latest issue does. Summarize in your own words; do not reproduce article text. No emojis. Do not use: delve, explore, seamless, game-changer, robust, leverage, testament, cutting-edge.
 
 The page builder only understands paragraphs, `- ` lists, `**bold**`, links, `##` and `###` headings, and directives on their own line. Do not use tables, italics or nested lists in the issue file.
 
@@ -109,13 +116,17 @@ Append a dated entry to `BUILD_LOG.md` in the same pull request, in the format o
 - If validation fails and you cannot fix it, open the pull request as a draft titled `Needs attention: Issue N` and list the failing rows.
 - Pull request body: a five-line summary; the window; row counts by category; named buyers and their sources; everything unverified or low confidence; gaps (sales with no readable result); and the three things most worth spot-checking. End with the line `<sub>Created with [Perplexity](<this run's thread URL>)</sub>`.
 
-## 9. Report
+## 9. Merge and publish
 
-Finish with a short message: the pull request link, the five-line summary, and the unverified list. If the run failed, say what failed and that nothing was published.
+Merge the issue pull request yourself only when all of these are true:
 
----
+- `python3 scripts/validate.py` passed and the pull request is not a draft or a "Needs attention" pull request.
+- No step failed, and the issue has at least one sale with a price confirmed by two sources or by the house.
+- Every featured sale has at least one source, and nothing in the issue rests only on a single weak source.
+- Any required checks on the pull request have passed (wait for them if they are running).
 
-## Change history
+If all are true, merge with `gh pr merge <number> --merge`. Then wait for the "Publish site to Cloudflare Pages" GitHub Actions run on `main` to finish, and confirm that https://art-moves.pages.dev/ links to the new issue and that https://art-moves.pages.dev/NNN.html loads. If any condition fails, do not merge: leave the pull request open and say why at the top of its body. If the merge or the deploy fails, stop and report it; do not work around it.
 
-- 11 Nov 2026: first saved.
-- 15 Nov 2026: five changes applied to the saved automation, nine hours before its first run. The `guarantee` field gained the value `guaranteed`; the run now drafts the Sunday email with `scripts/newsletter.py` and commits `email/`; the issue front matter carries the email lines; corrections to published issues are dated and recorded; the repo is described as public, with a rule to keep private names and commercial terms out of it.
+## 10. Report
+
+Finish with a short message: the published issue link (or the open pull request link if it was not merged, and why), the five-line summary, and the unverified list. If the run failed, say what failed and whether anything was published.

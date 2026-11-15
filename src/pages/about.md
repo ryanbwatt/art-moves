@@ -34,7 +34,7 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 
 ## How it is made
 
-Each Sunday an automated run in Perplexity Computer researches the week's results, adds them to the dataset, checks the numbers, and drafts an issue. A human editor reads, edits and approves every issue before it is published. Code, data and text are kept under version control, so every change is on the record.
+Each Sunday an automated run in Perplexity Computer researches the week's results, adds them to the dataset, checks the numbers, writes the issue and publishes it once the checks pass. A human editor reads every issue after it goes out, and anything wrong is fixed with a dated correction at the foot of the issue. Code, data and text are kept under version control, so every change is on the record.
 
 ## Sunday email
 
