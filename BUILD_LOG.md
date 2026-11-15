@@ -561,6 +561,23 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 - No P/E or market-cap equivalent. A single work has no earnings and no float; the nearest honest measures are the multiple, the holding period and the annualized change.
 - Not built: questionnaire, accounts, and any trade or consignment page. See the pull request for the reasoning.
 
+## Session 14: Trade concept tab (15 Nov 2026)
+
+**Asked for:** a separate tab that lays out a trade service as a possible expansion, not something to build: inherited art, sell at market value or trade it to a good home, custody in rented fine-art storage.
+
+| Change | Detail |
+|---|---|
+| Trade page | New `src/pages/trade.md` built to `site/trade.html`, in the nav between Data and Method. Banner: a concept, not a service |
+| Worked example | An anonymised family with inherited Robert Pilot paintings. Market figures from MutualArt and Cowley Abbott; Canada's export-control rule for paintings over CAD 15,000 flagged |
+| Content | Who it would serve, a six-step trade flow, The RealReal's custody model and what carries over, what Art Moves would and would not check, illustrative fees, US barter tax, why it might not work, what would need to be true |
+| Build | `markdown()` now renders pipe tables |
+
+**Decisions made by Computer, for the editor to check:**
+
+- The family is not named and is not identified as the editor's.
+- The 5% a side fee is labelled illustrative. Canadian tax is not covered.
+- Stacked on the price-history branch (#16), which needs to merge first.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
