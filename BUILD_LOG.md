@@ -459,6 +459,20 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Cost:** credit use not measured; check the usage page for this thread.
 
+### Session 10, later the same evening: merge, service chosen, and a correction to a correction
+
+| Step | Result |
+|---|---|
+| Merged PR #8 | On the editor's instruction. The deploy ran in under a minute. Checked on the live address in a fresh browser: corrections showing, lot numbers showing, sign-up form absent as intended, data table still sorting, no sideways scroll at phone width |
+| Email service | The editor chose Buttondown. The form is already built for it. Switching it on needs one thing only he can do: create the account. Then one line in `src/config.json` |
+| Found an error in the correction | The note published an hour earlier said nine sale cards had shown the guarantee as unknown. One card did; the other eight were data rows with no card. Found while checking the live page, where the new label appeared once, not nine times. Fixed and dated |
+
+**Computer on its own vs. Ryan:** Ryan said "merge" and picked the service. Computer checked the live result against what it had claimed, caught its own overstatement, and opened the fix without being asked.
+
+**Limit:** Computer cannot open an account with a new service on the editor's behalf; that step is his.
+
+**Would land with an enterprise buyer:** the check after release is what found the error. The claim in the pull request and the page on the live address disagreed by a count of eight, and the agent reported it against itself.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
