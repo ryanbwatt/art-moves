@@ -537,7 +537,7 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 
 **Would land with an enterprise buyer:** the run held to rules written a week earlier with nobody watching. It left out an image it could have used, kept a weakly sourced claim out of the published text, and flagged its own uncertain numbers in the pull request instead of smoothing them over.
 
-**Elapsed time:** about one hour from start to pull request. **Cost:** credit use not measured; check the usage page for this thread.
+**Elapsed time:** not measured reliably inside the run; the thread timestamps have it. **Cost:** credit use not measured; check the usage page for this thread.
 
 ## Explaining Computer to a customer new to AI agents
 
