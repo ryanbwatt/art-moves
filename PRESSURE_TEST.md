@@ -119,6 +119,6 @@ Given in one dictated reply and condensed here. Names of private people and comm
 
 | Item | State |
 |---|---|
-| Image policy | The editor wants to use more images. The published rule (public domain or openly licensed only) stays in force until a replacement is written and agreed |
+| Image policy | Settled 15 Nov 2026: images found through search are allowed, each with a credit and a link to its source page. The Method page, `WEEKLY_RUN.md` and `README.md` state the rule |
 | View wording | Worth a look / Wait / Pass: not answered |
 | Editor's name | Off the site for now. It will matter once readers are invited to buy with the editor's help |
