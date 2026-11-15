@@ -591,7 +591,7 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 
 - The family is not named and is not identified as the editor's.
 - The 5% a side fee is labelled illustrative. Canadian tax is not covered.
-- Stacked on the price-history branch (#16), which needs to merge first.
+- Built on the price-history branch. Deleting that branch after #16 merged closed the first PR (#17); this was rebased onto `main` and reopened as #19. For stacked PRs, keep the base branch until the PR on top is retargeted.
 
 ## Explaining Computer to a customer new to AI agents
 
