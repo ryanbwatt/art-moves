@@ -66,7 +66,7 @@ The reader does not know what they are looking for. The site asks a few broad qu
 
 - Motives of named people are printed only when reported or stated by them. Otherwise the issue describes what the structure of the sale shows (guarantee, estimate, bidding), not what a private person was thinking.
 - Every figure in a read-through, a route or a verdict traces to a source, as in the sales data.
-- Images in the taste question are public domain or openly licensed, with credit.
+- Images in the taste question follow the image rule on the Method page: found through search, each with a credit and a link to its source.
 - The gallery disclosure applies with more force once the site points readers toward things to buy. If gallery works are ever suggested, each one is labelled.
 
 ## 6. Proposed build (not started)

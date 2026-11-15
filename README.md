@@ -7,7 +7,7 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `src/data/sales.json` | One object per sale. The source of truth |
 | `src/issues/NNN.md` | Issue text. `{{sale:ID}}` renders a sale, `{{table}}` renders the issue's table |
 | `src/pages/about.md` | Method page |
-| `src/assets/` | Stylesheet and images. Images must be public domain or openly licensed, with credit recorded on the sale |
+| `src/assets/` | Stylesheet and images. Images may be found through web search; each records its credit and source page on the sale, and none are taken from sothebys.com |
 | `scripts/fx.py` | Fills USD conversions from ECB reference rates |
 | `scripts/validate.py` | Checks every row; must pass before a pull request |
 | `src/config.json` | Site address, the sign-up form's target, and the email footer. The sign-up form shows only while `subscribe.action` is filled in; it posts to Buttondown |
