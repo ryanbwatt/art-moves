@@ -4,7 +4,7 @@
 
 ## Part 1. Re-check of Issue 1
 
-**Result:** all seven prices match their sources. Two statements in the issue text were wrong and nine rows had a field that contradicted their own notes. All are corrected in this change and listed on the issue under Corrections.
+**Result:** all seven prices match their sources. Two statements in the issue text were wrong and nine rows had a field that contradicted their own notes. All are corrected and listed on the issue under Corrections.
 
 This was a machine re-read of the sources by Perplexity Computer. It does not replace the editor's own check, which is still owed.
 
@@ -26,7 +26,7 @@ This was a machine re-read of the sources by Perplexity Computer. It does not re
 |---|---|---|
 | 1 | The Market signal section listed the Popova beside "the unguaranteed Monet" as a real contest, which read as if it had no guarantee. The Art Newspaper: "All 41 lots were guaranteed, with 11 of them guaranteed by the house and the rest by third-party." | Sentence rewritten: the Popova is a guaranteed lot that sold at more than three times its low estimate |
 | 2 | The top line said "the biggest prices came with the least pre-arranged support". True of the Monet only. The second and third prices, the Kandinsky and the large Mondrian, had third-party guarantees | Now "the biggest price came with no pre-arranged support" |
-| 3 | Nine rows (six Simon lots, the de Kooning, the Rothko, the Modigliani) had `guarantee: unknown` while their own financing note said a source reported a guarantee. Sale cards printed "Guarantee: Unknown" | New value `guaranteed` (shown as "Guaranteed, backer not stated"). `unknown` now prints "Not reported". The validator fails any row whose financing note mentions a guarantee while the field says unknown |
+| 3 | Nine rows (six Simon lots, the de Kooning, the Rothko, the Modigliani) had `guarantee: unknown` while their own financing note said a source reported a guarantee. One of the nine, the Popova, has a sale card on the issue, which printed "Guarantee: Unknown"; the other eight appear in the table and the downloads | New value `guaranteed` (shown as "Guaranteed, backer not stated"). `unknown` now prints "Not reported". The validator fails any row whose financing note mentions a guarantee while the field says unknown |
 | 4 | Lot numbers missing on the Monet and the Kandinsky | Added from the houses' lot pages |
 
 ### Soft spots left as they are
