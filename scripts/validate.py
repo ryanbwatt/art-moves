@@ -71,6 +71,20 @@ def check_row(r, seen):
         for k in ("file", "credit", "license", "source_url"):
             if not img.get(k): e.append(f"image missing {k}")
         if img.get("file") and not (DATA.parents[1] / "assets" / "img" / img["file"]).exists(): e.append("image file not found")
+    prev = ""
+    for h in r.get("history") or []:
+        for k in h:
+            if k not in S.HISTORY_FIELDS: e.append(f"history: unknown field {k}")
+        d = str(h.get("date", ""))
+        if not re.fullmatch(r"\d{4}(-\d{2}(-\d{2})?)?", d): e.append(f"history: bad date {d!r}")
+        if d < prev: e.append("history: not in date order")
+        if d >= r["sale_date"]: e.append("history: entry on or after the sale date")
+        prev = d
+        if h.get("event") not in S.HISTORY_EVENTS: e.append(f"history: event {h.get('event')!r}")
+        if h.get("basis") not in S.HISTORY_BASIS: e.append(f"history: basis {h.get('basis')!r}")
+        if h.get("price") is not None and not h.get("currency"): e.append("history: price without currency")
+        if h.get("price_usd") is not None and h.get("price") is None: e.append("history: price_usd without price")
+        if not str(h.get("source_url", "")).startswith("https://") or not h.get("publisher"): e.append("history: needs https source_url and publisher")
     if r["price_source"] == "house" and not any(s.get("type") == "primary" for s in r["sources"]):
         e.append("price_source=house but no primary source")
     return e
