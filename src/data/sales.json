@@ -6,7 +6,7 @@
     "house": "christies",
     "location": "London",
     "sale_name": "20th/21st Century: London Evening Sale",
-    "lot_number": null,
+    "lot_number": "115",
     "category": "fine_art",
     "maker": "Wassily Kandinsky",
     "title": "Das bunte Leben",
@@ -14,7 +14,7 @@
     "currency": "GBP",
     "estimate_low": 18000000,
     "estimate_high": 25000000,
-    "estimate_note": "Estimate as reported by The Art Newspaper (high £25m) and Whitebank (£18m to £25m). Apollo gives £18m to £35m.",
+    "estimate_note": "Christie's published no range (\"estimate on request\"). Range as reported by The Art Newspaper (high £25m) and Whitebank (£18m to £25m). Apollo gives £18m to £35m, which would put the £27m hammer inside the estimate.",
     "price_hammer": 27000000,
     "price_with_premium": 31560000,
     "price_basis": "with_premium",
@@ -52,6 +52,12 @@
         "publisher": "Artnet News",
         "type": "press",
         "accessed": "2026-11-11"
+      },
+      {
+        "url": "https://www.christies.com/en/lot/lot-6609206",
+        "publisher": "Christie's lot page",
+        "type": "primary",
+        "accessed": "2026-11-14"
       }
     ],
     "price_source": "house",
@@ -66,7 +72,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 41870652
+    "price_usd": 41870652,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: lot number added from Christie's lot page; estimate note now says the house published no range."
   },
   {
     "id": "2026-10-14-christies-mondrian-composition-iii",
@@ -144,7 +152,7 @@
     "price_hammer": 14500000,
     "price_with_premium": 17185000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon, founder of Monsoon",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -186,7 +194,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 22799340
+    "price_usd": 22799340,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-14-christies-mondrian-composition-a",
@@ -207,7 +217,7 @@
     "price_hammer": 8000000,
     "price_with_premium": 9710000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -249,7 +259,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 12882257
+    "price_usd": 12882257,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-14-christies-miro-peinture-les-amants",
@@ -270,7 +282,7 @@
     "price_hammer": 7000000,
     "price_with_premium": 8560000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -306,7 +318,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 11356552
+    "price_usd": 11356552,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-14-christies-popova-painterly-architectonic",
@@ -327,7 +341,7 @@
     "price_hammer": 6200000,
     "price_with_premium": 7640000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon",
     "buyer_status": "reported",
     "buyer_name": "Beaumont Nathan",
@@ -376,7 +390,9 @@
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 10135988,
-    "buyer_profile_url": "https://beaumontnathan.com/the-team"
+    "buyer_profile_url": "https://beaumontnathan.com/the-team",
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-14-christies-anderson-last-house",
@@ -397,7 +413,7 @@
     "price_hammer": 4600000,
     "price_with_premium": 5702000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -439,7 +455,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 7564843
+    "price_usd": 7564843,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-14-christies-riley-streak-2",
@@ -460,7 +478,7 @@
     "price_hammer": null,
     "price_with_premium": 5214000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Collection of Peter Simon",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -496,7 +514,9 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 6917414
+    "price_usd": 6917414,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
   },
   {
     "id": "2026-10-15-sothebys-de-kooning-untitled",
@@ -517,7 +537,7 @@
     "price_hammer": 8200000,
     "price_with_premium": 9800000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": null,
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -553,7 +573,9 @@
     "fx_rate_to_usd": 1.3247,
     "fx_date": "2026-10-15",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 12982060
+    "price_usd": 12982060,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
   },
   {
     "id": "2026-10-15-sothebys-richter-abstraktes-bild",
@@ -625,7 +647,7 @@
     "price_hammer": 3000000,
     "price_with_premium": 3800000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": "Consignor bought it at auction in 1992, per Art Centron",
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -655,7 +677,9 @@
     "fx_rate_to_usd": 1.3247,
     "fx_date": "2026-10-15",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 5033860
+    "price_usd": 5033860,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
   },
   {
     "id": "2026-10-15-phillips-richter-mathis",
@@ -715,11 +739,11 @@
     "house": "sothebys",
     "location": "Paris",
     "sale_name": "La Collection Schlumberger: Le Temps retrouvé",
-    "lot_number": null,
+    "lot_number": "4",
     "category": "fine_art",
     "maker": "Claude Monet",
     "title": "Iris",
-    "year_made": null,
+    "year_made": "c. 1924-25",
     "currency": "EUR",
     "estimate_low": 22000000,
     "estimate_high": 30000000,
@@ -761,6 +785,12 @@
         "publisher": "MutualArt",
         "type": "press",
         "accessed": "2026-11-11"
+      },
+      {
+        "url": "https://www.sothebys.com/en/buy/auction/2026/la-collection-schlumberger-le-temps-retrouve/iris?locale=en",
+        "publisher": "Sotheby's lot page",
+        "type": "primary",
+        "accessed": "2026-11-14"
       }
     ],
     "price_source": "press",
@@ -769,7 +799,9 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 56025000
+    "price_usd": 56025000,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: lot number and date of the work added from Sotheby's lot page. The lot page shows the estimate but no sold price, so the price stays press-reported."
   },
   {
     "id": "2026-10-22-sothebys-monet-saule-pleureur",
@@ -1153,7 +1185,7 @@
     "price_hammer": null,
     "price_with_premium": 6205000,
     "price_basis": "with_premium",
-    "guarantee": "unknown",
+    "guarantee": "guaranteed",
     "seller": null,
     "buyer_status": "anonymous",
     "buyer_name": null,
@@ -1183,7 +1215,9 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 6952702
+    "price_usd": 6952702,
+    "updated_at": "2026-11-14",
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
   },
   {
     "id": "2026-11-06-sothebys-printz-desk",

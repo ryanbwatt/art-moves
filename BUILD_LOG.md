@@ -399,6 +399,66 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Cost:** credit use not measured; check the usage page for this thread.
 
+## Session 10: answers, a sign-up, the Sunday email, and a re-check (14 Nov 2026)
+
+**Asked:** the editor answered the 14 pressure-test questions in one dictated reply and said to merge PR #6. Then: add a sign-up to the site; he will send an email each Sunday, headline first and easy to digest, in the manner of the Wall Street Journal editor's daily note; use the auction houses' own databases more; and be more aggressive with images, since they are public on the internet. He had not done the spot check of Issue 1.
+
+**Done**
+
+| Step | Result |
+|---|---|
+| Recorded the answers | Added to `PRESSURE_TEST.md` in general terms, then merged PR #6 on the editor's instruction. Docs only, so nothing was redeployed |
+| Sign-up section | Built into the home page and each issue page. It is a plain HTML form with no script, pointed at whichever email service is named in `src/config.json`. It renders nothing until that line is filled in, so this change can merge before a service is chosen |
+| Sunday email | `scripts/newsletter.py` drafts `email/NNN.html` and `.txt` from the issue's front matter and the data: headline as subject, a "Plus" line, five short numbered sections, a link to the full issue. Issue 1 comes to 527 words, about two minutes. A plain-text copy was placed in the editor's own drafts folder, addressed to himself. Nothing was sent |
+| Re-check of Issue 1 | All seven featured prices match their sources. Two statements in the text were wrong and nine rows contradicted their own notes. Corrected, dated and listed on the issue. See `ACCURACY.md` |
+| Auction-house data | Read the houses' terms. No public feed; two of three forbid automated collection. Wrote up the route that holds: press offices, one page at a time, and a licensed database if wanted |
+| Image question | Answered in the reply, not built. The published rule stands until a replacement is agreed |
+
+**Capabilities used:** GitHub CLI, web search and page fetching (house terms, lot pages, pricing pages for four email services), code execution, a headless browser for checks at desktop and phone widths, the connected email account for one draft, memory. Model: Claude Fable 5.2 as orchestrator, no sub-agents.
+
+**Computer on its own vs. Ryan**
+
+| Computer on its own | Ryan |
+|---|---|
+| Noticed the repo had been made public since the last session and kept private names and commercial terms out of everything committed | Said "merge" for PR #6 |
+| Checked the connected email-marketing account before using it, found it belongs to another organisation the editor works with, and did not use it | To decide: which email service. That is a new service, so it waits for his approval |
+| Re-read its own Issue 1 against the sources and published corrections to its own work | Still owes his own read of the seven sales |
+| Declined to act on "public images are free to use" and came back with three routes that are | To decide: the image rule |
+| Added a validator rule so the guarantee error cannot recur silently | |
+
+**Decisions**
+
+| Decision | Reason |
+|---|---|
+| Form is switched off by configuration, not by leaving it out | The page work is done and reviewed once; turning it on is a one-line change after a service is approved |
+| The email is drafted by script and sent by a person | Same gate as the site: the automation prepares, the editor publishes. The weekly run's rule against emailing anyone stays |
+| Email text lives in the issue's front matter | One file per issue for the Sunday run to write and the editor to edit |
+| New guarantee value, `guaranteed` | "Unknown" was being used for two different things: nothing reported, and reported without a named backer |
+| Corrections printed on the issue, with dates | The method page promises it |
+| Named `newsletter.py`, not `email.py` | A file called `email.py` in `scripts/` would shadow Python's own `email` module and break the link checker |
+| Proposed changes to the Sunday run are listed, not applied | The saved automation runs from `main` tomorrow morning; changing its instructions before this merges would point it at a script that is not there yet |
+
+**Limitations, failures, and workarounds**
+
+| Issue | What happened | Workaround |
+|---|---|---|
+| Wrong claim carried over | An earlier session described the repo as private. It was made public from another thread | Checked the repo's visibility before writing; rewrote the answers without names |
+| Branch drift | The PR #6 branch had picked up a merge commit from another thread | Reset to the remote branch and re-applied the one commit |
+| Email account | The connected marketing account is another organisation's list and sender, and the connector cannot create a new list | Not used. Four services compared for the editor to choose from |
+| House sites | Sotheby's lot pages show the estimate but no sold price; Phillips' terms page would not open | Monet price stays press-reported; Phillips' terms are marked unverified |
+| Own error | The Popova was written up as if it had no guarantee, while the row's own note said every lot in that sale was guaranteed. The validator passed it | Corrected, and the validator now catches the pattern |
+| Context limit | The session ran long enough that earlier steps were summarised. The summary's figures were treated as unverified | Re-opened the lot pages and the press report before printing a correction |
+| Email layout | Drafted as HTML and plain text; only the plain text can be placed in the drafts folder through the connector | The HTML version is in `email/` for whichever service is chosen |
+
+**Would land with an enterprise buyer**
+
+- It audited its own published output, found it wrong in two places, and filed the correction with dates and a control to stop a repeat.
+- It refused the convenient route twice: another organisation's mailing list, and a data collector that would break two sets of website terms. Both times it gave the compliant alternative and its cost.
+- It treated its own summary of earlier work as unverified and went back to the sources before publishing.
+- New services stayed behind an approval: the form is built, tested and switched off.
+
+**Cost:** credit use not measured; check the usage page for this thread.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:

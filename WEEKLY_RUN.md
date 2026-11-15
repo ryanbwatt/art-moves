@@ -107,3 +107,15 @@ Append a dated entry to `BUILD_LOG.md` in the same pull request, in the format o
 ## 9. Report
 
 Finish with a short message: the pull request link, the five-line summary, and the unverified list. If the run failed, say what failed and that nothing was published.
+
+---
+
+## Pending changes (not yet in the saved automation)
+
+Added 14 Nov 2026. These are proposed edits to the instructions above. They take effect only when the saved automation is changed.
+
+- Step 4, `guarantee`: the allowed values are now none, house, third_party, irrevocable_bid, guaranteed, or unknown. Use `guaranteed` when a source says the lot was guaranteed but not by whom. Use `unknown` only when nothing was reported. The validator fails a row that says unknown while its financing note mentions a guarantee.
+- Step 6, front matter: add the email lines `email_plus`, `email_desk`, `email_number`, `email_number_line`, `email_sales`, `email_term` and `email_term_line`, each on one line. `scripts/newsletter.py` documents them.
+- Step 5, after the build: run `python3 scripts/newsletter.py` and commit `email/NNN.html` and `email/NNN.txt`. The run drafts the email. It does not send it; the hard rule against emailing anyone stands.
+- Step 6, corrections: when a published issue is corrected, add a dated line under `## Corrections` at the end of that issue and set `updated_at` and `update_note` on the row.
+- The description above still calls the repo private. It is public. Keep names of private people and commercial terms out of everything committed.

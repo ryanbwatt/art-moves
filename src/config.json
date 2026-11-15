@@ -1,0 +1,13 @@
+{
+  "site_url": "https://art-moves.pages.dev",
+  "subscribe": {
+    "action": "",
+    "method": "post",
+    "email_field": "email",
+    "hidden": {}
+  },
+  "email": {
+    "unsubscribe": "To stop getting this email, reply and say so.",
+    "postal_address": ""
+  }
+}
