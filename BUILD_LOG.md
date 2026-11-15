@@ -554,6 +554,28 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 
 **Would land with an enterprise buyer:** the human approval step was removed by the owner, but the agent still has explicit conditions under which it stops and waits, and the public page was corrected so it doesn't overstate the oversight.
 
+## Session 13: price history and the three questions (15 Nov 2026)
+
+**Asked for:** a data view a finance reader would recognise (a price chart and key statistics under each work, as on Google Finance), a clearer statement of what the site is for, and a view on reader tailoring and a trade service.
+
+| Change | Detail |
+|---|---|
+| Price history | New optional `history` field on a sale: earlier changes of hands, oldest first, each with date, event, venue, price, basis and source. A sale with history gets a panel: current price, change since the last documented sale, an inline SVG chart, eight statistics and the full record. Hover or keyboard focus on a point shows that sale |
+| Data filled in | De Kooning (2015 auction, 2018 private sale), Richter (2011 auction), Rothko (1992 auction), Kandinsky (1927, 1940, 1972, 2023), Bacon (1994, 2006, both private), and from Issue 2 the Romanov sapphire (1927, 1971, 1992, prices not reported) and Zao Wou-Ki's Mars (2019, a loss, one source). Every entry has a source |
+| Rebased | Rebuilt on top of Issue 2 (#14) after it merged. The panel shows the full documented history for each work; no range buttons, at the editor's call |
+| Data page | A Price history section above the table; works with a dollar comparison first |
+| Home page | "Every issue asks" strip with the three questions |
+| Method | The three questions, and a Price history section on what counts as a price and what the figures leave out |
+| Checks | `validate.py` checks the history entries: fields, date format and order, event and basis values, sources |
+
+**Decisions made by Computer, for the editor to check:**
+
+- Annualized figures appear only when an earlier sale has a reported dollar price. The Kandinsky's 1940 and 1972 prices are in guilders and are shown without a return.
+- HENI lists a 2002 Christie's New York sale of the Richter at $1.05m. The catalogue provenance does not mention it, so it is noted and left out of the chart.
+- The Rothko's 1992 price is $264,000 with fees (Artnet), not HENI's $240,000, so both ends of the comparison include fees.
+- No P/E or market-cap equivalent. A single work has no earnings and no float; the nearest honest measures are the multiple, the holding period and the annualized change.
+- Not built: questionnaire, accounts, and any trade or consignment page. See the pull request for the reasoning.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:

@@ -131,6 +131,114 @@ def figure(r, cls="plate"):
     return (f'<figure class="{cls}"><div class="wall"><img src="img/{esc(img["file"])}" alt="{esc(r["maker"])}, {esc(r["title"])}" loading="lazy"></div>'
             f'<figcaption>{cap}</figcaption></figure>')
 
+# ---------- price history ----------
+
+RETURNS_PAPER = "https://academic.oup.com/rfs/article-abstract/29/4/1007/1896045"
+
+def year_of(d):
+    """'2015-05-12', '1927-11' or '1972' as a fractional year."""
+    p = [int(x) for x in str(d).split("-")]
+    return p[0] + ((p[1] - 1) / 12 if len(p) > 1 else 0.5) + ((p[2] - 1) / 365 if len(p) > 2 else 0)
+
+def when(d):
+    p = str(d).split("-")
+    if len(p) == 3: return day(d)
+    if len(p) == 2: return f"{datetime.date(int(p[0]), int(p[1]), 1):%b %Y}"
+    return p[0]
+
+def history_events(r):
+    """Every documented change of hands, oldest first, ending with this sale."""
+    now = {"date": r["sale_date"], "event": "auction", "venue": f"{S.HOUSES[r['house']]} {r['location']}" + (f", lot {r['lot_number']}" if r.get("lot_number") else ""),
+           "currency": r["currency"], "price": local_price(r), "price_usd": r["price_usd"], "basis": r["price_basis"], "current": True}
+    return list(r.get("history") or []) + [now]
+
+def returns(r):
+    """Change since the last earlier sale with a dollar price: (event, multiple, years, annualized)."""
+    priced = [h for h in r.get("history") or [] if h.get("price_usd") and h["event"] in ("auction", "private_sale")]
+    if not priced: return None
+    last = priced[-1]
+    yrs = year_of(r["sale_date"]) - year_of(last["date"])
+    mult = r["price_usd"] / last["price_usd"]
+    return last, mult, yrs, (mult ** (1 / yrs) - 1 if yrs >= 1 else None)
+
+def pct(x, sign=True):
+    return (f"{x:+.1%}" if sign else f"{x:.1%}").replace("-", "−")
+
+def chart(r):
+    """Inline SVG: documented prices as points on a time axis. Dashed lines join them because
+    nothing traded in between. Undisclosed changes of hands are ticks on the axis."""
+    ev = history_events(r)
+    pts = [h for h in ev if h.get("price_usd")]
+    if len(pts) < 2: return ""
+    W, H, L, R_, T, B = 640, 220, 64, 16, 16, 30
+    x0 = min(year_of(h["date"]) for h in ev); x1 = year_of(r["sale_date"])
+    x0 = min(x0, x1 - 5); span = x1 - x0
+    top = max(h["price_usd"] for h in pts)
+    mag = 10 ** (len(str(int(top))) - 1)
+    step_v = next(s * mag for s in (0.25, 0.5, 1, 2, 2.5, 5) if top / (s * mag) <= 4)
+    ymax = (int(top // step_v) + 1) * step_v
+    X = lambda y: L + (year_of(y) - x0) / span * (W - L - R_)
+    Y = lambda v: T + (1 - v / ymax) * (H - T - B)
+    out = [f'<svg class="ticker-chart" viewBox="0 0 {W} {H}" role="img" aria-label="Documented sale prices for {esc(r["title"])}, in US dollars">']
+    for i in range(int(round(ymax / step_v)) + 1):
+        v = i * step_v
+        out.append(f'<line class="grid" x1="{L}" x2="{W-R_}" y1="{Y(v):.1f}" y2="{Y(v):.1f}"/><text class="axis" x="{L-8}" y="{Y(v)+4:.1f}" text-anchor="end">{money(v, "USD") if v else "$0"}</text>')
+    step = 10 if span > 25 else 5 if span > 10 else 2
+    for yr in range(int(x0) // step * step + step, int(x1) + 1, step):
+        out.append(f'<text class="axis" x="{X(str(yr)) - (W-L-R_)/span*0.5:.1f}" y="{H-8}" text-anchor="middle">{yr}</text>')
+    line = " ".join(f'{X(h["date"]):.1f},{Y(h["price_usd"]):.1f}' for h in pts)
+    out.append(f'<polyline class="link" points="{line}"/>')
+    for h in ev:
+        if not h.get("price_usd"):
+            out.append(f'<line class="tick" x1="{X(h["date"]):.1f}" x2="{X(h["date"]):.1f}" y1="{Y(0)-7:.1f}" y2="{Y(0)+7:.1f}"><title>{esc(when(h["date"]))}: {esc(S.HISTORY_EVENTS[h["event"]].lower())}, price not disclosed</title></line>')
+    for h in pts:
+        local = money(h["price"], h["currency"]) + ("" if h["currency"] == "USD" else f' ({money(h["price_usd"], "USD")})')
+        out.append(f'<circle class="pt{" now" if h.get("current") else ""}" cx="{X(h["date"]):.1f}" cy="{Y(h["price_usd"]):.1f}" r="6" tabindex="0" '
+                   f'data-price="{esc(money(h["price_usd"], "USD"))}" data-when="{esc(when(h["date"]))}" data-where="{esc(h["venue"])}" '
+                   f'aria-label="{esc(when(h["date"]))}, {esc(h["venue"])}: {esc(local)}"><title>{esc(when(h["date"]))}, {esc(h["venue"])}: {esc(local)}</title></circle>')
+    out.append("</svg>")
+    return "".join(out)
+
+def ticker(r, heading=False):
+    """Google Finance-style panel for one object: the price, what it did since the last
+    documented sale, a chart, key statistics and the full record of changes of hands."""
+    ret = returns(r)
+    first_public = not any(h["event"] == "auction" for h in r.get("history") or [])
+    if ret:
+        last, mult, yrs, ann = ret
+        change = (f'<span class="chg">{"+" if mult >= 1 else "−"}{money(abs(r["price_usd"] - last["price_usd"]), "USD")} ({pct(mult - 1)})</span> '
+                  f'<span class="dim">since {esc(when(last["date"]))}</span>')
+    else:
+        change = '<span class="dim">' + ("First time at public auction. No earlier public price in dollars." if first_public else "No earlier price in comparable dollars.") + '</span>'
+    stats = [("Price", money(r["price_usd"], "USD") + f' <span class="dim">{S.PRICE_BASIS[r["price_basis"]]}</span>'),
+             ("Last documented sale", f'{money(ret[0]["price_usd"], "USD")} <span class="dim">{esc(when(ret[0]["date"]))}</span>' if ret
+              else next((f'{money(h["price"], h["currency"])} <span class="dim">{esc(when(h["date"]))}</span>' for h in reversed(r.get("history") or [])
+                         if h.get("price") and h["event"] in ("auction", "private_sale")), "None public")),
+             ("Held", f"{ret[2]:.1f} years" if ret else "—"),
+             ("Multiple", f"{ret[1]:.2f}×" if ret else "—"),
+             ("Annualized", pct(ret[3]) if ret and ret[3] is not None else "—"),
+             ("Versus estimate", {"below": "Below", "within": "Within", "above": "Above", "no_estimate": "No range"}[r["vs_estimate"]]),
+             ("Guarantee", esc(S.GUARANTEE[r["guarantee"]])),
+             ("Changes of hands on record", str(len(history_events(r))))]
+    dl = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in stats)
+    li = []
+    for h in reversed(history_events(r)):
+        price = (money(h["price"], h["currency"]) + ("" if h["currency"] == "USD" or not h.get("price_usd") else f' ({money(h["price_usd"], "USD")})')
+                 + f' <span class="dim">{S.HISTORY_BASIS.get(h["basis"], S.PRICE_BASIS.get(h["basis"], ""))}</span>') if h.get("price") else '<span class="dim">Price not disclosed</span>'
+        src = "" if h.get("current") else f' · <a class="dim" href="{esc(h["source_url"])}" target="_blank" rel="noopener">{esc(h["publisher"])}</a>'
+        note = f'<br><span class="dim">{esc(h["note"])}</span>' if h.get("note") else ""
+        li.append(f'<li><span class="tl-when">{esc(when(h["date"]))}</span><span class="tl-what">{esc(S.HISTORY_EVENTS[h["event"]])}{" (this sale)" if h.get("current") else ""} · {esc(h["venue"])}<br>{price}{src}{note}</span></li>')
+    head = f'<h3 class="sale-title">{lot_label(r)}</h3>' if heading else ""
+    return (f'<section class="ticker" aria-label="Price history">{head}<p class="label">Price history</p>'
+            f'<p class="quote"><span class="q-price" data-default="{esc(money(r["price_usd"], "USD"))}">{esc(money(r["price_usd"], "USD"))}</span> '
+            f'<span class="q-note" data-default="{esc(change)}">{change}</span></p>'
+            f'{chart(r)}<dl class="stats">{dl}</dl><ol class="timeline">{"".join(li)}</ol>'
+            f'<p class="dim small">Nominal US dollars as reported at the time, before the seller\'s commission, insurance, storage and tax. '
+            f'Only works that come back to market get a second price, which flatters returns '
+            f'(<a href="{RETURNS_PAPER}" target="_blank" rel="noopener">Korteweg, Kräussl and Verwijmeren, 2016</a>). Not investment advice.</p></section>')
+
+TICKER_JS = """<script>document.querySelectorAll('.ticker').forEach(function(t){var p=t.querySelector('.q-price'),n=t.querySelector('.q-note');function show(c){p.textContent=c.dataset.price;n.innerHTML='';var s=document.createElement('span');s.className='dim';s.textContent=c.dataset.when+' · '+c.dataset.where;n.appendChild(s)}function reset(){p.textContent=p.dataset.default;n.innerHTML=n.dataset.default}t.querySelectorAll('.pt').forEach(function(c){c.addEventListener('mouseenter',function(){show(c)});c.addEventListener('focus',function(){show(c)});c.addEventListener('mouseleave',reset);c.addEventListener('blur',reset)})});</script>"""
+
 def sale_block(r, order):
     facts = [("Price", ("Includes buyer's premium. " if r["price_basis"] == "with_premium" else "Hammer price, before fees. ") + evidence(r)),
              ("Estimate", estimate(r)),
@@ -144,7 +252,8 @@ def sale_block(r, order):
     return (f'<article class="sale" id="{esc(r["id"])}">{figure(r)}'
             f'<p class="kicker">{esc(S.CATEGORIES[r["category"]])} · {esc(S.HOUSES[r["house"]])} {esc(r["location"])}</p>'
             f'<h3 class="sale-title">{lot_label(r)}</h3><p class="figure-price">{esc(result(r))}</p><dl class="facts">{dl}</dl>'
-            f'<p class="why"><strong>Why it matters.</strong> {esc(r["why_it_matters"])} {cites(r, order)}</p></article>')
+            f'<p class="why"><strong>Why it matters.</strong> {esc(r["why_it_matters"])} {cites(r, order)}</p>'
+            f'{ticker(r) if r.get("history") else ""}</article>')
 
 def sales_table(rows, order=None, sortable=False):
     head = ["Date", "House", "Lot", "Result", "Estimate", "Buyer", "Source"]
@@ -207,6 +316,12 @@ def page(title, body, current=None, description="", script=""):
             f'<footer class="foot"><span>Art Moves. {TAGLINE} Published Sundays.</span>'
             f'<span>Researched and drafted with Perplexity Computer; edited by a human. <a href="about.html">Method</a></span></footer>{script}</body></html>\n')
 
+QUESTIONS = ('<section class="sec"><h2 class="label">Every issue asks</h2><div class="sec-body wide"><ol class="questions">'
+             '<li><strong>Who paid what?</strong><span>The price with and without fees, the estimate, any guarantee, and the buyer when it is on the record.</span></li>'
+             '<li><strong>What did it fetch last time?</strong><span>Earlier documented sales of the same object, and what the change works out to a year. <a href="data.html">Price history</a></span></li>'
+             '<li><strong>Why would a careful person buy art?</strong><span>What a sale says to a reader who knows finance and is weighing a first purchase.</span></li>'
+             '</ol></div></section>')
+
 # ---------- pages ----------
 
 def main():
@@ -246,7 +361,8 @@ def main():
         body = (f'{banner(it)}<header class="issue-head"><p class="label">{issue_meta(it)}</p>'
                 f'<h1 class="display">{esc(it["title"])}</h1><p class="standfirst">{esc(it.get("topline", ""))}</p></header>'
                 f'\n{markdown(it["text"], directive)}\n{subscribe(cfg, "issue")}{source_list(order)}<nav class="pager" aria-label="Issues">{pager}</nav>')
-        (OUT / f"{it['slug']}.html").write_text(page(it["title"], body, description=it.get("topline", "")))
+        js = TICKER_JS if 'class="ticker"' in body else ""
+        (OUT / f"{it['slug']}.html").write_text(page(it["title"], body, description=it.get("topline", ""), script=js))
 
     # home
     if issues:
@@ -254,7 +370,7 @@ def main():
         hero = figure(top["lead_row"], "plate hero") if top.get("lead_row") else ""
         home = (f'{banner(top)}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
                 f'<div><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
-                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{subscribe(cfg, "home")}'
+                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{QUESTIONS}{subscribe(cfg, "home")}'
                 f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_rows(top["rows"], href)}</div></section>')
         if issues[1:]:
             earlier = "".join(f'<a class="row" href="{i["slug"]}.html"><span class="row-main"><span class="row-title">{esc(i["title"])}</span>'
@@ -283,10 +399,17 @@ def main():
     # data
     data = (f'<header class="issue-head"><p class="label">{len(rows)} sales tracked</p><h1 class="display">Data</h1>'
             '<p class="standfirst">Every sale Art Moves has covered, one row per sale. Select a column heading to sort. '
-            'Download as <a href="sales.csv">CSV</a> or <a href="sales.json">JSON</a>.</p></header>' + sales_table(rows, sortable=True))
-    (OUT / "data.html").write_text(page("Data", data, "Data", "The Art Moves sales dataset.", SORT_JS))
+            'Download as <a href="sales.csv">CSV</a> or <a href="sales.json">JSON</a>.</p></header>')
+    hist = sorted((r for r in rows if r.get("history")), key=lambda r: (returns(r) is None, -r["price_usd"]))
+    if hist:
+        data += ('<section class="sec"><h2 class="label">Price history</h2><div class="sec-body wide">'
+                 '<p class="standfirst">What the same object fetched the last time it changed hands, where that is on the record. '
+                 'Hover or tab to a point for the sale behind it.</p>'
+                 + "".join(ticker(r, heading=True) for r in hist) + '</div></section>')
+    data += '<section class="sec"><h2 class="label">Every sale</h2><div class="sec-body wide">' + sales_table(rows, sortable=True) + '</div></section>'
+    (OUT / "data.html").write_text(page("Data", data, "Data", "The Art Moves sales dataset.", SORT_JS + TICKER_JS))
     (OUT / "sales.json").write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
-    cols = [c for c in S.REQUIRED + S.OPTIONAL if c not in ("sources", "image")] + ["source_urls"]
+    cols = [c for c in S.REQUIRED + S.OPTIONAL if c not in ("sources", "image", "history")] + ["source_urls"]
     buf = io.StringIO(); w = csv.DictWriter(buf, cols, extrasaction="ignore"); w.writeheader()
     for r in rows: w.writerow({**r, "source_urls": " | ".join(s["url"] for s in r["sources"])})
     (OUT / "sales.csv").write_text(buf.getvalue())

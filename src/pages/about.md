@@ -2,6 +2,12 @@
 
 Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and Phillips, across fine art and other collectibles: watches, jewelry, cars, design and fashion. It is written for a reader who knows finance and is new to the art market.
 
+Every issue asks three questions:
+
+- **Who paid what?** The price with and without fees, the estimate, any guarantee, and the buyer when it is on the record.
+- **What did it fetch last time?** Earlier documented sales of the same object, and what the change works out to a year.
+- **Why would a careful person buy art?** What a sale says to a reader weighing a first purchase.
+
 ## Sources
 
 - Prices and estimates come from the auction house's own results page or press release wherever possible. When a figure comes from the press instead, the row says so.
@@ -31,6 +37,15 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 - Each price states whether it is the hammer price or includes the buyer's premium, the fee the house adds on top of the hammer.
 - Estimates are published without fees. Where only a fee-inclusive result is available, the comparison with the estimate is flattering to the result, and the row is labelled.
 - Other currencies are converted to US dollars at the European Central Bank reference rate for the sale date.
+
+## Price history
+
+- Where the same object has changed hands before, its sale carries a price history: a chart of documented prices, the change since the last one, and every change of hands on the record, each with its source.
+- A price counts only if an auction house, a catalogue or a named outlet reported it. Private sales with no disclosed price appear as ticks on the time axis, without a number. Restitutions and inheritances are listed but are not sales.
+- The chart joins prices with a dashed line because nothing traded in between. It is not a price series.
+- Change and annualized figures compare fee-inclusive prices at both ends, in US dollars as reported at the time. They are nominal, and they leave out the seller's commission, insurance, storage and tax, so the owner's own return is lower.
+- Only works that come back to market get a second price. Works that did badly tend not to be resold, so repeat-sale returns flatter art as an asset ([Korteweg, Kräussl and Verwijmeren, Review of Financial Studies, 2016](https://academic.oup.com/rfs/article-abstract/29/4/1007/1896045)).
+- No figure is estimated. Where there is no earlier public price, the history says so.
 
 ## How it is made
 
