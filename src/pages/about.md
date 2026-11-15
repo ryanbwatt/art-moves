@@ -5,8 +5,8 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 Every issue asks three questions:
 
 - **Who paid what?** The price with and without fees, the estimate, any guarantee, and the buyer when it is on the record.
-- **What did it fetch last time?** Earlier documented sales of the same object, and what the change works out to a year.
-- **Why would a careful person buy art?** What a sale says to a reader weighing a first purchase.
+- **What did it fetch last time?** What the same object sold for before, and how much it has gained or lost a year since.
+- **Why would a careful person buy art?** What the week's results mean if you are thinking about buying something yourself.
 
 ## Sources
 

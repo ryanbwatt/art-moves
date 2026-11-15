@@ -3,7 +3,7 @@
 - A lot of art changes hands by inheritance, not by choice. The new owners often like the person who left it more than the work itself.
 - Selling costs money twice. A commission is charged on the way out, and fees and premiums are charged again when the cash buys something new.
 - Holding costs money too: insurance, storage and wall space for something nobody looks at.
-- The aim would be to get a work to someone who wants it, at a fair value, and bring home something the owner would rather live with. Cash would be the fallback, not the point.
+- The aim would be to get a work to someone who wants it, at a fair value, and bring home something the owner would rather live with. Cash would be the fallback.
 
 ## A worked example
 
@@ -11,7 +11,7 @@ This is based on a real family. Personal details stay private.
 
 - A couple in Canada inherited several paintings by Robert Pilot (1898 to 1967) from a grandmother. Pilot was a Montreal painter of Quebec streets, harbours and winters. They don't want to hang the paintings. They would either sell at market value or, better, trade them to someone who will.
 - Pilot is well documented. MutualArt lists more than 500 auction results, with a record of $262,469 at Heffel in 2018 and an average of about $8,294 for paintings over the past 12 months ([MutualArt](https://www.mutualart.com/Artist/Robert-Pilot/B29CB2C37BF94FEB)). Recent results at Cowley Abbott run from CAD 9,600 to CAD 84,000 ([Cowley Abbott](https://cowleyabbott.ca/artist/robert_pilot/portfolio)).
-- That is the profile this would be built for: real, documented, saleable works whose market is mostly domestic, held by owners who want an outcome rather than a windfall.
+- That is the profile this would be built for: real, documented, saleable works whose market is mostly domestic, held by owners who want them dealt with fairly more than they want a big payday.
 
 | Option | What the family gets | What it costs them |
 |---|---|---|
@@ -39,11 +39,11 @@ This is based on a real family. Personal details stay private.
 - **5. Hold.** Both works go to a third-party fine-art storage facility. Each is unpacked, photographed and condition-reported on arrival.
 - **6. Release.** Once both works are in and both owners accept the condition reports, both are released at the same time. If one side falls through, each work goes back to its owner.
 
-## Custody: the lesson from The RealReal
+## Custody: what The RealReal shows
 
 The RealReal resells luxury goods on consignment. Its pitch is that it inspects every item, and that inspection is what makes buyers and sellers trust it.
 
-- **What carries over.** Inspection is the product. The RealReal says more than a million items a month pass through its authentication centres, checked against records of tens of millions of authentic items ([The RealReal](https://www.therealreal.com/authentication)).
+- **What carries over.** The inspection is what it sells. The RealReal says more than a million items a month pass through its authentication centres, checked against records of tens of millions of authentic items ([The RealReal](https://www.therealreal.com/authentication)).
 - **What it cost.** It had built up an accumulated deficit of about $1.3 billion by the end of 2025 ([10-K summary](https://www.stocktitan.net/sec-filings/REAL/10-k-the-real-real-inc-files-annual-report-7d721a7c41a5.html)). It reported its first operating profit, $1.5 million, in the third quarter of 2026 ([investor relations](https://investor.therealreal.com/financials/quarterly-results/default.aspx)).
 - **What doesn't carry over.** A handbag can be checked against thousands of identical ones. A painting is unique. Its authenticity rests on the catalogue raisonné, the artist's foundation or estate, and named experts.
 - **So:** rent space and handling from an existing fine-art storage firm instead of building a warehouse, and keep the volume small and documented.
@@ -68,7 +68,7 @@ The RealReal resells luxury goods on consignment. Its pitch is that it inspects 
 - **Each side has to want what the other has.** An algorithm can rank possible matches, but it can't make two owners want each other's work.
 - **The wrong works would come in.** People offer what they can't sell, so the pool could fill with weak works and high expectations.
 - **A price is not liquidity.** A comparable sale shows what someone once paid, not what someone will pay now.
-- **Handling is the real cost.** Storage, condition reports, insurance and claims may cost more than the software.
+- **Handling is expensive.** Storage, condition reports, insurance and claims may cost more than the software.
 - **Conflict of interest.** The editor works part-time with a commercial gallery. Any live service would need a written conflict policy first.
 
 ## What would need to be true
