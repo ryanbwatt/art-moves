@@ -29,8 +29,8 @@ Cloudflare Pages, project `art-moves`. `.github/workflows/deploy.yml` uploads `s
 
 ## Weekly run
 
-A Perplexity Computer automation runs on Sundays at 9:00 AM Eastern. It researches the week, adds rows, drafts the next issue and opens a pull request from a branch named `issue/NNN`. It has no merge step. See `WEEKLY_RUN.md`.
+A Perplexity Computer automation runs on Sundays at 9:00 AM Eastern. It researches the week, adds rows, drafts the next issue, opens a pull request from a branch named `issue/NNN`, and merges that pull request itself when validation and the other checks in step 9 pass. It does not send the email. See `WEEKLY_RUN.md`.
 
 ## Publishing rule
 
-Changes go on a branch and a pull request. The editor merges. Nothing is pushed to `main` directly.
+Changes go on a branch and a pull request. Nothing is pushed to `main` directly. The weekly run may merge its own issue pull request (editor's decision, 15 Nov 2026); every other pull request is merged by the editor.

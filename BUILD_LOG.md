@@ -539,6 +539,21 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 
 **Elapsed time:** not measured reliably inside the run; the thread timestamps have it. **Cost:** credit use not measured; check the usage page for this thread.
 
+### Session 12, afternoon: Issue 2 published, Sunday run now publishes itself
+
+| Step | Result |
+|---|---|
+| Merged PR #14 | On the editor's instruction. Deploy finished; the home page leads with Issue 2 and `/002` loads |
+| Editor's decision | The Sunday run should merge and publish its own issue. With no readers yet, review before publishing slows iteration more than it protects anyone. He reads after publication instead |
+| Automation updated | It now merges its own issue pull request only when validation passes, nothing failed, and nothing rests on one weak source; then it confirms the deploy. Any other pull request still waits for the editor. Email is still sent by hand |
+| Selection and voice | The run now picks sales for story as well as price: flops, losses on resale, catalogue caveats, wild multiples, famous owners, odd objects, at any price, and looks in every category before saying a week was empty. Voice leads with who won, who lost and what went wrong, written to be read on a phone |
+| Method page | It said a human approves every issue before publication. Reworded to say the editor reads every issue after it goes out, with dated corrections |
+| `WEEKLY_RUN.md` | Regenerated from the saved automation after the edit |
+
+**Computer on its own vs. Ryan:** Ryan made the call to drop the review step and gave the editorial direction. Computer chose the conditions under which the run may merge, and found the public method page claim that the change would make untrue.
+
+**Would land with an enterprise buyer:** the human approval step was removed by the owner, but the agent still has explicit conditions under which it stops and waits, and the public page was corrected so it doesn't overstate the oversight.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
