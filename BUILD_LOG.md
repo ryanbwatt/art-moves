@@ -488,6 +488,28 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Would land with an enterprise buyer:** a standing rule written days earlier (keep the editor unnamed) was applied to a third-party page nobody asked it to look at.
 
+## Session 11: sign-up live, Sunday run brought up to date (15 Nov 2026)
+
+Just after midnight, nine hours before the first Sunday run.
+
+| Step | Result |
+|---|---|
+| Merged PR #10 | On the editor's instruction. He had renamed the newsletter in the email service between the warning and the merge; the service's public page showed "Art Moves" when checked afterwards. The form is live on the home page and the issue page |
+| Editor tested the sign-up | He signed up with his own address and reported that it worked. Computer did not submit one, since that creates a real subscriber |
+| Sunday automation updated | The five changes listed as pending in `WEEKLY_RUN.md` were applied to the saved automation. Before the edit, the saved instructions were compared with the copy in the repo and matched exactly. After it, the saved text was read back and `WEEKLY_RUN.md` was regenerated from it, so the two cannot drift |
+| Dry run of a second issue | In a throwaway copy, four rows were moved to a made-up Issue 2. Validation passed, the site built, the sign-up form appeared on the new page, and the email draft was written with fallbacks for the lines a draft might lack. Nothing from the dry run was committed |
+| Postal address | The editor asked where it goes. Answered in the conversation: the email service's footer setting. No address has been added to the repo |
+
+**Computer on its own vs. Ryan:** Ryan merged by instruction, tested the form, and gave the go-ahead on the automation in one dictated line. Computer read that line as a yes, said so in its reply, and made the change in a way that is easy to undo: the previous instructions are in this repo's history.
+
+**Failures and limits:**
+
+- The automation has still never run. A matching copy and a passing dry run show the instructions and the scripts agree; they do not show that an unattended run finishes.
+- If this pull request is still open when the run starts, both will add to this log and one will need a small manual merge.
+- The email service says its own lawyers read the US postal-address rule as applying to advertising, which it does not allow. That is the service's reading, not legal advice, and the address goes in anyway.
+
+**Would land with an enterprise buyer:** the instructions that run unattended are kept as a file under version control, checked against the live automation before and after every change. Anyone can see what the agent is told to do each week and when that changed.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:

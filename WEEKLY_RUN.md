@@ -1,6 +1,6 @@
 # Weekly run
 
-A copy of the instructions saved in the Perplexity Computer automation "Art Moves weekly issue draft", as of 11 Nov 2026. The automation runs on Sundays at 9:00 AM Eastern, in a fresh session, and opens a pull request. It cannot merge.
+A copy of the instructions saved in the Perplexity Computer automation "Art Moves weekly issue draft", as of 15 Nov 2026. The automation runs on Sundays at 9:00 AM Eastern, in a fresh session, and opens a pull request. It cannot merge.
 
 The saved automation is what runs. Editing this file does not change the run; change the automation, then update this copy.
 
@@ -8,7 +8,7 @@ The saved automation is what runs. Editing this file does not change the run; ch
 
 Draft the next weekly issue of Art Moves and open it as a pull request for the editor to review. Do not publish anything.
 
-Art Moves is a free weekly brief on notable auction sales in art and luxury: who bought, what they paid, and what the sale says about how wealthy families protect and grow capital. The reader knows finance and is new to the art market. Repo: `ryanbwatt/art-moves` (private). Live site: https://art-moves.pages.dev/. Merging a pull request to `main` publishes the site, and only the editor merges.
+Art Moves is a free weekly brief on notable auction sales in art and luxury: who bought, what they paid, and what the sale says about how wealthy families protect and grow capital. The reader knows finance and is new to the art market. Repo: `ryanbwatt/art-moves` (public). Live site: https://art-moves.pages.dev/. Merging a pull request to `main` publishes the site, and only the editor merges.
 
 ## Hard rules
 
@@ -16,6 +16,7 @@ Art Moves is a free weekly brief on notable auction sales in art and luxury: who
 - Do not change the deploy workflow, hosting, DNS, repo settings, or any other repo. Do not email or message anyone.
 - Every figure must come from a page you fetched in this run. If you cannot source a number, leave the sale out and list it under gaps.
 - Keep the editor's name off the site and out of the issue.
+- The repo is public. Keep the names of private people and any commercial terms out of everything committed, including the build log and the pull request.
 - If cloning, pushing, or opening the pull request fails, stop and report what failed. Do not work around it through another route.
 
 ## 1. Set up
@@ -59,7 +60,7 @@ Add one object per sale to `src/data/sales.json`, using the fields in `scripts/s
 - `id`: `YYYY-MM-DD-house-short-slug`. `issue`: N.
 - Prices: record `price_hammer` and `price_with_premium` where known and set `price_basis` to the one the row reports. Keep the original currency. Leave the FX fields for the script.
 - Estimate: low and high without fees, and `vs_estimate` comparing the hammer price to the range.
-- `guarantee`: none, house, third_party, irrevocable_bid, or unknown. Buyer financing is rarely public, so track guarantees and irrevocable bids; use `financing_notes` only for something a source states.
+- `guarantee`: none, house, third_party, irrevocable_bid, guaranteed, or unknown. Use `guaranteed` when a source says the lot was guaranteed but not by whom. Use `unknown` only when nothing was reported; the validator fails a row that says unknown while its financing note mentions a guarantee. Buyer financing is rarely public, so track guarantees and irrevocable bids; use `financing_notes` only for something a source states.
 - Buyer: set `buyer_status: reported` with `buyer_name`, `buyer_attribution` (the outlet) and `buyer_profile_url` only when a credible outlet names the buyer. The profile link must be an https page that explains who they are and how they made their money, and you must open it to confirm. Otherwise set `anonymous` and put what is on the record about the bidding in `bidding_notes`. A claim with one weak source stays out of the data and goes in the pull request notes. Never print a guess about a private person.
 - `why_it_matters`: 60 words or fewer, plain English, for a finance reader.
 - `sources`: every page used, with `url` (https), `publisher`, `type` (primary or press) and `accessed`.
@@ -71,9 +72,11 @@ Then recheck the anonymous rows from the previous three issues for newly reporte
 
 Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 scripts/build.py`. Validation must pass. Confirm `site/NNN.html` exists and that `site/index.html` leads with the new issue.
 
+After the issue file is written (step 6), run `python3 scripts/newsletter.py` and confirm `email/NNN.html` and `email/NNN.txt` exist. This drafts the Sunday email. It does not send it; the hard rule against emailing anyone stands.
+
 ## 6. Write the issue
 
-Create `src/issues/NNN.md` with this front matter: `number`, `title`, `date` (today), `window` (for example `12 to 14 November 2026`), `status: draft`, `lead` (the id of the lead sale) and `topline` (two or three sentences).
+Create `src/issues/NNN.md` with this front matter: `number`, `title`, `date` (today), `window` (for example `12 to 14 November 2026`), `status: draft`, `lead` (the id of the lead sale) and `topline` (two or three sentences). Also add the email lines, each on one line: `email_plus`, `email_desk`, `email_number`, `email_number_line`, `email_sales`, `email_term` and `email_term_line`. `scripts/newsletter.py` documents them and the latest issue shows the pattern.
 
 Sections, as in the latest issue:
 
@@ -91,7 +94,9 @@ The page builder only understands paragraphs, `- ` lists, `**bold**`, links, `##
 
 If fewer than three sales qualify, write a short quiet-week issue: one sale, one signal, and what is coming up next week.
 
-Before committing, re-read the draft against the data. Every number in the prose must match a row or a linked source. Then rebuild.
+Corrections: when a fact in a published issue turns out to be wrong, add a dated line under `## Corrections` at the end of that issue and set `updated_at` and `update_note` on the row. The new issue starts without a Corrections section.
+
+Before committing, re-read the draft against the data. Every number in the prose must match a row or a linked source. Then rebuild and rerun `python3 scripts/newsletter.py`.
 
 ## 7. Log the run
 
@@ -100,7 +105,7 @@ Append a dated entry to `BUILD_LOG.md` in the same pull request, in the format o
 ## 8. Open the pull request
 
 - Check the git author and committer identity before committing. End the commit message with the trailer `Co-authored-by: Perplexity <noreply@perplexity.ai>`.
-- Commit `src/`, `site/` and `BUILD_LOG.md` on the branch, push it, and open a pull request titled `Issue N: <title>`.
+- Commit `src/`, `site/`, `email/` and `BUILD_LOG.md` on the branch, push it, and open a pull request titled `Issue N: <title>`.
 - If validation fails and you cannot fix it, open the pull request as a draft titled `Needs attention: Issue N` and list the failing rows.
 - Pull request body: a five-line summary; the window; row counts by category; named buyers and their sources; everything unverified or low confidence; gaps (sales with no readable result); and the three things most worth spot-checking. End with the line `<sub>Created with [Perplexity](<this run's thread URL>)</sub>`.
 
@@ -110,12 +115,7 @@ Finish with a short message: the pull request link, the five-line summary, and t
 
 ---
 
-## Pending changes (not yet in the saved automation)
+## Change history
 
-Added 14 Nov 2026. These are proposed edits to the instructions above. They take effect only when the saved automation is changed.
-
-- Step 4, `guarantee`: the allowed values are now none, house, third_party, irrevocable_bid, guaranteed, or unknown. Use `guaranteed` when a source says the lot was guaranteed but not by whom. Use `unknown` only when nothing was reported. The validator fails a row that says unknown while its financing note mentions a guarantee.
-- Step 6, front matter: add the email lines `email_plus`, `email_desk`, `email_number`, `email_number_line`, `email_sales`, `email_term` and `email_term_line`, each on one line. `scripts/newsletter.py` documents them.
-- Step 5, after the build: run `python3 scripts/newsletter.py` and commit `email/NNN.html` and `email/NNN.txt`. The run drafts the email. It does not send it; the hard rule against emailing anyone stands.
-- Step 6, corrections: when a published issue is corrected, add a dated line under `## Corrections` at the end of that issue and set `updated_at` and `update_note` on the row.
-- The description above still calls the repo private. It is public. Keep names of private people and commercial terms out of everything committed.
+- 11 Nov 2026: first saved.
+- 15 Nov 2026: five changes applied to the saved automation, nine hours before its first run. The `guarantee` field gained the value `guaranteed`; the run now drafts the Sunday email with `scripts/newsletter.py` and commits `email/`; the issue front matter carries the email lines; corrections to published issues are dated and recorded; the repo is described as public, with a rule to keep private names and commercial terms out of it.
