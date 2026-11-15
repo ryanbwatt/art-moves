@@ -15,6 +15,7 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `scripts/newsletter.py` | Drafts the Sunday email for an issue into `email/` as HTML and plain text. Drafts only; the editor sends |
 | `email/` | Email drafts. Not published |
 | `site/` | The published site. Generated; do not edit by hand |
+| `functions/`, `analytics/` | Visit logging. Not part of the build; see Visit logging below |
 | `PRINCIPLES.md` | Guiding principles: the question each issue answers, read-through to peer artists, verdicts, reader questions. Includes a proposed build that is not started |
 | `PRESSURE_TEST.md` | Audit of the project and the open questions for the editor |
 | `ACCURACY.md` | Re-check of Issue 1 against its sources, and what the auction houses' sites allow |
@@ -26,6 +27,14 @@ Run, in order: `python3 scripts/fx.py`, `python3 scripts/validate.py`, `python3 
 ## Hosting
 
 Cloudflare Pages, project `art-moves`. `.github/workflows/deploy.yml` uploads `site/` on every merge to `main` that changes it. It needs one repository secret, `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with the single permission Account > Cloudflare Pages > Edit.
+
+## Visit logging
+
+Page views are counted on the server, not in the page. `functions/_middleware.js` serves each page untouched, then writes one row to a Cloudflare D1 database: the page, the referring site, city and country, device type, and the network the reader is on. No script or cookie is added to the pages, and no IP address is stored.
+
+The database is shared with ryanbwatt.com, and the report is at `ryanbwatt.com/admin` with a site filter. `analytics/log.js` is an identical copy of the file in the `ryanbwatt/ryanbwatt.com` repository, where its tests live; change both together. It needs the D1 database `ryanbwatt-visits` bound to this Pages project as `DB`, Production only. Without the binding the site behaves as before and logs nothing.
+
+A link ending in `?via=name`, such as `art-moves.pages.dev/002?via=email`, is recorded under that name. `src/assets/_routes.json` keeps images, the stylesheet and the data files from invoking the function.
 
 ## Weekly run
 

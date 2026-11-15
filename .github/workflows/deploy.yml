@@ -1,11 +1,12 @@
 name: Publish site to Cloudflare Pages
 
-# Uploads the committed site/ folder. Runs when a pull request that changes
-# site/ is merged to main, or when started by hand from the Actions tab.
+# Uploads the committed site/ folder, with the visit-logging function in
+# functions/. Runs when a pull request that changes either is merged to main,
+# or when started by hand from the Actions tab.
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/deploy.yml"]
+    paths: ["site/**", "functions/**", "analytics/**", ".github/workflows/deploy.yml"]
   workflow_dispatch:
 
 concurrency:
