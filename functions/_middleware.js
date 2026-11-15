@@ -3,8 +3,8 @@
 // Images, the stylesheet and the data files are excluded in _routes.json and
 // never reach this.
 //
-// Rows go to the same D1 database as ryanbwatt.com, labelled with SITE, and
-// are read at ryanbwatt.com/admin. This site has no report page of its own.
+// Rows go to the same D1 database as ryanwatt.ca, labelled with SITE, and
+// are read at ryanwatt.ca/admin. This site has no report page of its own.
 //
 // If the D1 binding `DB` is missing, or the write fails, the reader gets the
 // same page either way: logging can never break the site.

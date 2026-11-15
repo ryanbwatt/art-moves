@@ -32,7 +32,7 @@ Cloudflare Pages, project `art-moves`. `.github/workflows/deploy.yml` uploads `s
 
 Page views are counted on the server, not in the page. `functions/_middleware.js` serves each page untouched, then writes one row to a Cloudflare D1 database: the page, the referring site, city and country, device type, and the network the reader is on. No script or cookie is added to the pages, and no IP address is stored.
 
-The database is shared with ryanbwatt.com, and the report is at `ryanbwatt.com/admin` with a site filter. `analytics/log.js` is an identical copy of the file in the `ryanbwatt/ryanbwatt.com` repository, where its tests live; change both together. It needs the D1 database `ryanbwatt-visits` bound to this Pages project as `DB`, Production only. Without the binding the site behaves as before and logs nothing.
+The database is shared with ryanwatt.ca, and the report is at `ryanwatt.ca/admin` with a site filter. `analytics/log.js` is an identical copy of the file in the `ryanbwatt/ryanbwatt.com` repository, where its tests live; change both together. It needs the D1 database `ryanbwatt-visits` bound to this Pages project as `DB`, Production only. Without the binding the site behaves as before and logs nothing.
 
 A link ending in `?via=name`, such as `art-moves.pages.dev/002?via=email`, is recorded under that name. `src/assets/_routes.json` keeps images, the stylesheet and the data files from invoking the function.
 
