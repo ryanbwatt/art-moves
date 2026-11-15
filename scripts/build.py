@@ -73,6 +73,10 @@ def inline(t):
     t = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
     return t
 
+def slug(heading):
+    """'Market signal' -> 'market-signal', so a section can be linked to."""
+    return re.sub(r"[^a-z0-9]+", "-", heading.lower()).strip("-")
+
 def markdown(text, directive=lambda name, arg: ""):
     """Paragraphs, lists, links, bold, and ## headings. Each ## opens a section
     whose heading sits in the left-hand label column."""
@@ -97,7 +101,7 @@ def markdown(text, directive=lambda name, arg: ""):
         elif s.startswith("## "):
             flush()
             if open_sec: out.append("</div></section>")
-            out.append(f'<section class="sec"><h2 class="label">{inline(s[3:])}</h2><div class="sec-body">'); open_sec = True
+            out.append(f'<section class="sec" id="{slug(s[3:])}"><h2 class="label">{inline(s[3:])}</h2><div class="sec-body">'); open_sec = True
         elif s.startswith("### "): flush(); out.append(f"<h3>{inline(s[4:])}</h3>")
         elif s.startswith("- "):
             if para: flush()
@@ -325,11 +329,15 @@ def page(title, body, current=None, description="", script=""):
             f'<footer class="foot"><span>Art Moves. {TAGLINE} Published Sundays.</span>'
             f'<span>Researched and drafted with Perplexity Computer; edited by a human. <a href="about.html">Method</a></span></footer>{script}</body></html>\n')
 
-QUESTIONS = ('<section class="sec"><h2 class="label">Every issue asks</h2><div class="sec-body wide"><ol class="questions">'
-             '<li><strong>Who paid what?</strong><span>The price with and without fees, the estimate, any guarantee, and the buyer when it is on the record.</span></li>'
-             '<li><strong>What did it fetch last time?</strong><span>Earlier documented sales of the same object, and what the change works out to a year. <a href="data.html">Price history</a></span></li>'
-             '<li><strong>Why would a careful person buy art?</strong><span>What a sale says to a reader who knows finance and is weighing a first purchase.</span></li>'
-             '</ol></div></section>')
+def questions(top):
+    """The three questions on the home page. Each ends with a link to where the latest answer is."""
+    issue = f'{top["slug"]}.html'
+    signal = issue + ("#market-signal" if "## Market signal" in top["text"] else "")
+    qs = [("Who paid what?", "The price with and without fees, the estimate, any guarantee, and the buyer when it is on the record.", "data.html#every-sale", "Every sale"),
+          ("What did it fetch last time?", "What the same object sold for before, and how much it has gained or lost a year since.", "data.html#price-history", "Price history"),
+          ("Why would a careful person buy art?", "What the week's results mean if you are thinking about buying something yourself.", signal, "This week's read")]
+    li = "".join(f'<li><strong>{q}</strong><span>{esc(a)} <a href="{href}">{link}</a></span></li>' for q, a, href, link in qs)
+    return f'<section class="sec"><h2 class="label">Every issue asks</h2><div class="sec-body wide"><ol class="questions">{li}</ol></div></section>'
 
 # ---------- pages ----------
 
@@ -381,7 +389,7 @@ def main():
         hero = figure(top["lead_row"], "plate hero") if top.get("lead_row") else ""
         home = (f'{banner(top)}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
                 f'<div><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
-                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{QUESTIONS}{subscribe(cfg, "home")}'
+                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{questions(top)}{subscribe(cfg, "home")}'
                 f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_rows(top["rows"], href)}</div></section>')
         if issues[1:]:
             earlier = "".join(f'<a class="row" href="{i["slug"]}.html"><span class="row-main"><span class="row-title">{esc(i["title"])}</span>'
@@ -413,11 +421,11 @@ def main():
             'Download as <a href="sales.csv">CSV</a> or <a href="sales.json">JSON</a>.</p></header>')
     hist = sorted((r for r in rows if r.get("history")), key=lambda r: (returns(r) is None, -r["price_usd"]))
     if hist:
-        data += ('<section class="sec"><h2 class="label">Price history</h2><div class="sec-body wide">'
+        data += ('<section class="sec" id="price-history"><h2 class="label">Price history</h2><div class="sec-body wide">'
                  '<p class="standfirst">What the same object fetched the last time it changed hands, where that is on the record. '
                  'Hover or tab to a point for the sale behind it.</p>'
                  + "".join(ticker(r, heading=True) for r in hist) + '</div></section>')
-    data += '<section class="sec"><h2 class="label">Every sale</h2><div class="sec-body wide">' + sales_table(rows, sortable=True) + '</div></section>'
+    data += '<section class="sec" id="every-sale"><h2 class="label">Every sale</h2><div class="sec-body wide">' + sales_table(rows, sortable=True) + '</div></section>'
     (OUT / "data.html").write_text(page("Data", data, "Data", "The Art Moves sales dataset.", SORT_JS + TICKER_JS))
     (OUT / "sales.json").write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
     cols = [c for c in S.REQUIRED + S.OPTIONAL if c not in ("sources", "image", "history")] + ["source_urls"]

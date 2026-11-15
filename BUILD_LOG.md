@@ -593,6 +593,30 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 - The 5% a side fee is labelled illustrative. Canadian tax is not covered.
 - Built on the price-history branch. Deleting that branch after #16 merged closed the first PR (#17); this was rebased onto `main` and reopened as #19. For stacked PRs, keep the base branch until the PR on top is retargeted.
 
+## Session 15: question links and a wording pass (15 Nov 2026)
+
+**Asked for:** links under all three home-page questions like the one under the second, cleaner wording for the second and third, and a read of the whole site and the recent pull requests for copy that sounds machine-written.
+
+| Change | Detail |
+|---|---|
+| Question links | Each question on the home page ends with a link to its answer: Every sale (the table on Data), Price history (the panels on Data), This week's read (the Market signal section of the latest issue). The third follows whichever issue is latest |
+| Section anchors | Every `##` section on an issue or page now has an id taken from its heading, so sections can be linked to |
+| Questions two and three | Reworded on the home page and the Method page |
+| Wording pass | 29 "Why it matters" lines, six sentences in Issue 2, three in Issue 1 and five on the Trade page. The pattern was slogan endings ("Rarity beat medium", "No story, no premium") and "this, not that" constructions |
+| Claims removed | Five market-wide statements that no source on the row supported (Paris and early abstraction, postwar Italian art in Paris, British contemporary demand, online buying at seven figures, spinel) |
+
+**Computer on its own vs. Ryan:** Ryan chose the feature and named the two lines that read badly. Computer picked the link targets, found the pattern across the rest of the copy, and decided which lines to leave alone.
+
+**Decisions made by Computer, for the editor to check:**
+
+- No figure, name or source changed. No correction notices were added, because nothing factual was corrected.
+- Issue 2's title, "The story is the asset", is the same kind of slogan. It is left as published.
+- Issue 2 says the Romanov sapphire has been to auction three times before. Its price history lists two auctions (1971, 1992) and a 1927 private sale through Cartier. Not changed here; needs a check against the sources.
+- `email/002` was regenerated from the reworded issue. If that email has already gone out, the file no longer matches what was sent.
+- The Sunday run's voice instructions are unchanged, so the same habits can come back next week.
+
+**Would land with an enterprise buyer:** asked to check its own writing, the agent found unsupported claims as well as style problems and reported a possible factual inconsistency instead of quietly rewording it.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
