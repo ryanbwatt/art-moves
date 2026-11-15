@@ -74,7 +74,57 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 41870652,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: lot number added from Christie's lot page; estimate note now says the house published no range."
+    "update_note": "14 Nov 2026: lot number added from Christie's lot page; estimate note now says the house published no range.",
+    "history": [
+      {
+        "date": "1927-11",
+        "event": "acquired",
+        "venue": "Bought by Emanuel and Hedwig Lewenstein",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.timesofisrael.com/liveblog_entry/nazi-looted-kandinsky-painting-that-was-returned-to-jewish-heirs-fetches-42-million-at-auction/",
+        "publisher": "Times of Israel (AP)",
+        "note": null
+      },
+      {
+        "date": "1940-10-09",
+        "event": "auction",
+        "venue": "Frederik Muller & Cie, Amsterdam, under German occupation",
+        "currency": "NLG",
+        "price": 250,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://news.artprice.com/en/17033/kandinsky-sale-at-christie-s-das-bunte-leben-fetches-35-6-million",
+        "publisher": "Artprice",
+        "note": "Sold without the family's authorization; they received nothing. Bought by Salomon B. Slijper."
+      },
+      {
+        "date": "1972",
+        "event": "private_sale",
+        "venue": "Slijper's widow to Bayerische Landesbank",
+        "currency": "NLG",
+        "price": 900000,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.timesofisrael.com/liveblog_entry/nazi-looted-kandinsky-painting-that-was-returned-to-jewish-heirs-fetches-42-million-at-auction/",
+        "publisher": "Times of Israel (AP)",
+        "note": "On loan to the Lenbachhaus, Munich, from 1973 to 2023."
+      },
+      {
+        "date": "2023-06",
+        "event": "restitution",
+        "venue": "Returned to the Lewenstein heirs",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.christies.com/en/lot/lot-6609206",
+        "publisher": "Christie's lot page",
+        "note": "A transfer of title, not a sale."
+      }
+    ]
   },
   {
     "id": "2026-10-14-christies-mondrian-composition-iii",
@@ -196,7 +246,33 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 22799340,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "history": [
+      {
+        "date": "1994",
+        "event": "private_sale",
+        "venue": "Ivor Braka Ltd., London, from a private collection in Los Angeles",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.christies.com/en/lot/lot-6606831",
+        "publisher": "Christie's lot page (provenance)",
+        "note": null
+      },
+      {
+        "date": "2006",
+        "event": "private_sale",
+        "venue": "Ivor Braka Ltd. to the Peter Simon Collection",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.christies.com/en/lot/lot-6606831",
+        "publisher": "Christie's lot page (provenance)",
+        "note": "Fresh to auction in 2026. Every earlier change of hands was private, so there is no public price to compare."
+      }
+    ]
   },
   {
     "id": "2026-10-14-christies-mondrian-composition-a",
@@ -575,7 +651,33 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 12982060,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated.",
+    "history": [
+      {
+        "date": "2015-05-12",
+        "event": "auction",
+        "venue": "Sotheby's New York, lot 38",
+        "currency": "USD",
+        "price": 6100000,
+        "price_usd": 6100000,
+        "basis": "with_premium",
+        "source_url": "https://www.artnews.com/art-news/market/sothebys-london-contemporary-art-sale-61m-de-kooning-1234802516/",
+        "publisher": "ARTnews",
+        "note": "Lot number from the provenance on Sotheby's 2026 lot page."
+      },
+      {
+        "date": "2018",
+        "event": "private_sale",
+        "venue": "Private Collection, USA, to the present owner",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.sothebys.com/en/buy/auction/2026/contemporary-evening-auction-l26024/untitled?locale=en",
+        "publisher": "Sotheby's lot page (provenance)",
+        "note": "The 2015 buyer sold it privately; the present owner acquired it in 2018. Price not disclosed."
+      }
+    ]
   },
   {
     "id": "2026-10-15-sothebys-richter-abstraktes-bild",
@@ -626,7 +728,21 @@
     "fx_rate_to_usd": 1.3247,
     "fx_date": "2026-10-15",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 8875490
+    "price_usd": 8875490,
+    "history": [
+      {
+        "date": "2011-10-14",
+        "event": "auction",
+        "venue": "Christie's London, lot 23",
+        "currency": "GBP",
+        "price": 3600000,
+        "price_usd": 5710000,
+        "basis": "with_premium",
+        "source_url": "https://heni.com/news/article/gerhard-richter-abstraktes-bild-2026-10-15",
+        "publisher": "HENI News",
+        "note": "£3.6m per The Art Newspaper; $5.71m per HENI. Lot number from the provenance on Sotheby's 2026 lot page. HENI also lists a 2002 Christie's New York sale at $1.05m that the catalogue provenance does not mention, so it is left out."
+      }
+    ]
   },
   {
     "id": "2026-10-15-sothebys-rothko-untitled",
@@ -639,7 +755,7 @@
     "category": "fine_art",
     "maker": "Mark Rothko",
     "title": "Untitled",
-    "year_made": null,
+    "year_made": "1969",
     "currency": "GBP",
     "estimate_low": 3000000,
     "estimate_high": 4000000,
@@ -679,7 +795,21 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 5033860,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated.",
+    "history": [
+      {
+        "date": "1992-05-05",
+        "event": "auction",
+        "venue": "Christie's New York, lot 33",
+        "currency": "USD",
+        "price": 264000,
+        "price_usd": 264000,
+        "basis": "with_premium",
+        "source_url": "https://news.artnet.com/market/sothebys-contemporary-evening-london-2026-2824599",
+        "publisher": "Artnet News",
+        "note": "$264,000 with fees per Artnet; HENI lists $240,000, which matches the hammer before fees. Lot number from the catalogue provenance."
+      }
+    ]
   },
   {
     "id": "2026-10-15-phillips-richter-mathis",
@@ -1975,7 +2105,45 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 4967010
+    "price_usd": 4967010,
+    "history": [
+      {
+        "date": "1927",
+        "event": "private_sale",
+        "venue": "Bought through Cartier by the opera singer Ganna Walska, after sale by the Soviet state",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.townandcountrymag.com/leisure/arts-and-culture/a74423593/romanov-sapphire-cartier-bracelet-sothebys-geneva-auction-2026/",
+        "publisher": "Town & Country",
+        "note": null
+      },
+      {
+        "date": "1971",
+        "event": "auction",
+        "venue": "Sotheby's New York",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.nbcnews.com/world/europe/romanov-sapphire-bracelet-russia-empress-mughal-empire-auction-rcna608936",
+        "publisher": "NBC News (AP)",
+        "note": "Price not reported in the coverage used here."
+      },
+      {
+        "date": "1992",
+        "event": "auction",
+        "venue": "Sotheby's Geneva",
+        "currency": null,
+        "price": null,
+        "price_usd": null,
+        "basis": "undisclosed",
+        "source_url": "https://www.nbcnews.com/world/europe/romanov-sapphire-bracelet-russia-empress-mughal-empire-auction-rcna608936",
+        "publisher": "NBC News (AP)",
+        "note": "Price not reported in the coverage used here. Reset as a bracelet in 2015."
+      }
+    ]
   },
   {
     "issue": 2,
@@ -2539,7 +2707,21 @@
     "fx_rate_to_usd": 0.14988,
     "fx_date": "2026-11-13",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1803356
+    "price_usd": 1803356,
+    "history": [
+      {
+        "date": "2019-12-01",
+        "event": "auction",
+        "venue": "Ravenel, Taipei",
+        "currency": "USD",
+        "price": 2460000,
+        "price_usd": 2460000,
+        "basis": "undisclosed",
+        "source_url": "https://artsk.ai/news/zao-wou-ki-mars-christies-shanghai-loss-nov2026",
+        "publisher": "ARTSK",
+        "note": "One source, which does not say whether the figure includes fees. Treat the loss as indicative."
+      }
+    ]
   },
   {
     "issue": 2,
