@@ -510,6 +510,35 @@ Just after midnight, nine hours before the first Sunday run.
 
 **Would land with an enterprise buyer:** the instructions that run unattended are kept as a file under version control, checked against the live automation before and after every change. Anyone can see what the agent is told to do each week and when that changed.
 
+## Session 12: first unattended Sunday run, Issue 2 drafted (15 Nov 2026)
+
+The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the conversation.
+
+| Step | Result |
+|---|---|
+| Set up | Cloned the repo, read the README, the about page, the schema, Issue 1 and the dataset. No issue pull request was open, so nothing was stacked. Branch `issue/002` |
+| Window | 12 to 14 November 2026, the day after Issue 1's window through yesterday |
+| Earlier-window pickups | Sotheby's Geneva jewels sales on 11 November were not in Issue 1 because their results came out after it was drafted. Seven lots added, all checked for an existing row first |
+| Research | Christie's Shanghai results read from the house's own results pages; Sotheby's results from trade press, since Sotheby's pages do not show sold prices; Heritage from its press release. Each figure checked against a second outlet where one existed, and disagreements written into the row |
+| Rows | 13 new: 8 jewelry, 4 fine art, 1 memorabilia. One buyer named (a jewellery firm, reported by National Jeweler citing Sotheby's) |
+| Recheck of earlier anonymous rows | Issue 1's anonymous buyers searched again. None newly named. One row (the Bulgari Pink) gained a dated bidding note |
+| Images | None added. The only lot photographs found were auction-house or news-agency pictures, which the image rule does not allow |
+| Scripts | `fx.py` filled 13 rates, `validate.py` passed 47 rows, `build.py` wrote `site/002.html` with the home page leading on Issue 2, `newsletter.py` wrote `email/002.html` and `email/002.txt`. Nothing sent |
+| Pull request | Opened from `issue/002`. Not merged |
+
+**Computer on its own vs. Ryan:** all of it. Ryan's part is the Sunday edit pass and the merge.
+
+**Failures and limits:**
+
+- Sotheby's hides prices, so seven of the thirteen rows rest on press figures, several rounded to the nearest CHF 100,000 by one outlet and exact in another. They are marked medium or low confidence.
+- Two figures could not be settled: the estimate on an 8.11-carat pink diamond (two ranges published) and whether Heritage's lightsaber price includes its fee (not stated). Both are flagged in the rows and the pull request.
+- The email draft prints the house label "Other" before a city for houses outside the big three ("Other Dallas"). That is a template issue in `scripts/newsletter.py`, left alone because this run edits content, not scripts.
+- Several large sales from Issue 1's window that Issue 1 missed (outside this run's rules for pickups) are listed in the pull request for the editor to decide on.
+
+**Would land with an enterprise buyer:** the run held to rules written a week earlier with nobody watching. It left out an image it could have used, kept a weakly sourced claim out of the published text, and flagged its own uncertain numbers in the pull request instead of smoothing them over.
+
+**Elapsed time:** about one hour from start to pull request. **Cost:** credit use not measured; check the usage page for this thread.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
