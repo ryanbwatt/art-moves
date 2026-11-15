@@ -465,7 +465,7 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 |---|---|
 | Merged PR #8 | On the editor's instruction. The deploy ran in under a minute. Checked on the live address in a fresh browser: corrections showing, lot numbers showing, sign-up form absent as intended, data table still sorting, no sideways scroll at phone width |
 | Email service | The editor chose Buttondown. The form is already built for it. Switching it on needs one thing only he can do: create the account. Then one line in `src/config.json` |
-| Found an error in the correction | The note published an hour earlier said nine sale cards had shown the guarantee as unknown. One card did; the other eight were data rows with no card. Found while checking the live page, where the new label appeared once, not nine times. Fixed and dated |
+| Found an error in the correction | The note published earlier in the session said nine sale cards had shown the guarantee as unknown. One card did; the other eight were data rows with no card. Found while checking the live page, where the new label appeared once, not nine times. Fixed and dated |
 
 **Computer on its own vs. Ryan:** Ryan said "merge" and picked the service. Computer checked the live result against what it had claimed, caught its own overstatement, and opened the fix without being asked.
 
