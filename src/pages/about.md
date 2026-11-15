@@ -34,6 +34,11 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 
 Each Sunday an automated run in Perplexity Computer researches the week's results, adds them to the dataset, checks the numbers, and drafts an issue. A human editor reads, edits and approves every issue before it is published. Code, data and text are kept under version control, so every change is on the record.
 
+## Sunday email
+
+- The sign-up form sends your email address to Buttondown, the service that delivers the email. You confirm once by email before anything is sent.
+- Your address is used for the Sunday email and nothing else. Every email carries an unsubscribe link.
+
 ## Disclosure
 
 The editor works part-time with a commercial art gallery. Art Moves has no advertisers or sponsors and nothing here is investment advice.

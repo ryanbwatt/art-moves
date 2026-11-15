@@ -10,7 +10,7 @@ A free weekly brief on where serious money moves in the art and luxury markets.
 | `src/assets/` | Stylesheet and images. Images must be public domain or openly licensed, with credit recorded on the sale |
 | `scripts/fx.py` | Fills USD conversions from ECB reference rates |
 | `scripts/validate.py` | Checks every row; must pass before a pull request |
-| `src/config.json` | Site address, the sign-up form's target, and the email footer. The sign-up form stays off the site until `subscribe.action` is filled in |
+| `src/config.json` | Site address, the sign-up form's target, and the email footer. The sign-up form shows only while `subscribe.action` is filled in; it posts to Buttondown |
 | `scripts/build.py` | Renders everything into `site/` |
 | `scripts/newsletter.py` | Drafts the Sunday email for an issue into `email/` as HTML and plain text. Drafts only; the editor sends |
 | `email/` | Email drafts. Not published |
