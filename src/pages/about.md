@@ -10,8 +10,10 @@ Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and P
 
 ## Images
 
-- Images appear only where the work is in the public domain or openly licensed, and each carries its credit and licence.
-- Auction-house photographs are not used. Where no free image exists, the sale runs without one.
+- Images of the works are found through web search and used to report on the sale. Some are auction-house photographs.
+- Each image carries a credit and links to the page it came from.
+- Where a work is in the public domain or openly licensed, the caption says so. Any other image may be in copyright and belongs to its rights holder.
+- Where no usable image is found, the sale runs without one.
 
 ## Evidence labels
 
