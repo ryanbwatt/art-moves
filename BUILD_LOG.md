@@ -473,6 +473,21 @@ Two Computer threads worked this session. The build thread fixed the personal-si
 
 **Would land with an enterprise buyer:** the check after release is what found the error. The claim in the pull request and the page on the live address disagreed by a count of eight, and the agent reported it against itself.
 
+### Session 10, last step: sign-up switched on
+
+| Step | Result |
+|---|---|
+| Merged PR #9 | On the editor's instruction. Checked on the live address: the reworded correction is showing |
+| Editor opened the Buttondown account | He sent the username in a two-word message. That was the one step only he could do |
+| Form pointed at the service | One line in `src/config.json`. The form's small print and the method page now say that sign-ups go to Buttondown and are confirmed once by email, which the service requires |
+| Checked the service's public page before switching on | The newsletter was still titled with the account holder's name, not the publication's. The site's rule is that the editor is unnamed, so the pull request says to rename it before merging |
+
+**Computer on its own vs. Ryan:** Ryan created the account and said "merge". Computer read the service's public page instead of assuming the set-up was complete, and held its own pull request behind a setting it cannot reach.
+
+**Limits:** no test sign-up was sent to the live service, because that would create a real subscriber record and a real email. The form's fields were checked against the service's documentation instead. The first real sign-up is the editor's to make.
+
+**Would land with an enterprise buyer:** a standing rule written days earlier (keep the editor unnamed) was applied to a third-party page nobody asked it to look at.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:

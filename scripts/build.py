@@ -192,7 +192,7 @@ def subscribe(cfg, place):
             f'<label for="email-{place}">Email address</label>'
             f'<div class="signup-row"><input id="email-{place}" type="email" name="{esc(sub.get("email_field", "email"))}" autocomplete="email" placeholder="you@example.com" required>'
             '<button type="submit">Subscribe</button></div>'
-            '<p class="dim small">Your address is used for this email and nothing else. Unsubscribe any time.</p></form></div></section>')
+            '<p class="dim small">You will get one email asking you to confirm. Your address is used for this email and nothing else. Unsubscribe any time.</p></form></div></section>')
 
 SORT_JS = """<script>document.querySelectorAll('.sortable th').forEach(function(th,i){th.tabIndex=0;th.setAttribute('role','button');function go(){var tb=th.closest('table').tBodies[0],d=th.dataset.d==='a'?'d':'a';th.dataset.d=d;[].slice.call(tb.rows).sort(function(a,b){var x=a.cells[i].dataset.v||a.cells[i].textContent,y=b.cells[i].dataset.v||b.cells[i].textContent,n=parseFloat(x)-parseFloat(y);n=isNaN(n)||/-/.test(x)?x.localeCompare(y):n;return d==='a'?n:-n}).forEach(function(r){tb.appendChild(r)})}th.addEventListener('click',go);th.addEventListener('keydown',function(e){if(e.key==='Enter')go()})});</script>"""
 
