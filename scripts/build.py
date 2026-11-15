@@ -225,6 +225,8 @@ def main():
     OUT.mkdir()
     shutil.copytree(SRC / "assets" / "img", OUT / "img")
     shutil.copy(SRC / "assets" / "site.css", OUT / "site.css")
+    # Tells Cloudflare Pages which requests skip the visit-logging function.
+    shutil.copy(SRC / "assets" / "_routes.json", OUT / "_routes.json")
 
     def issue_meta(it):
         return f'Issue {it["number"]:02d} · {day(it["date"])} · Covers {esc(it["window"])}'
