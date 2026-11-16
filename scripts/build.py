@@ -138,13 +138,31 @@ def sources_for(rows):
 def cites(r, order):
     return " ".join(f'<a class="cite" href="#s{order[s["url"]][0]}">{order[s["url"]][0]}</a>' for s in r["sources"])
 
+def is_ai(r):
+    return (r.get("image") or {}).get("kind") == "illustration"
+
+def alt(r):
+    return (f'Illustration of {r["title"]}. AI-generated, not the work sold' if is_ai(r) else f'{r["maker"]}, {r["title"]}')
+
+def badge(r):
+    return '<span class="badge">Illustration</span>' if is_ai(r) else ""
+
 def figure(r, cls="plate"):
     img = r.get("image")
     if not img: return ""
     cap = (f'{lot_label(r)}. {esc(img["credit"])}. '
            f'<a href="{esc(img["source_url"])}">{esc(img["license"])}</a>.')
-    return (f'<figure class="{cls}"><div class="wall"><img src="img/{esc(img["file"])}" alt="{esc(r["maker"])}, {esc(r["title"])}" loading="lazy"></div>'
+    return (f'<figure class="{cls} cat-{esc(r["category"])}"><div class="wall">{badge(r)}<img src="img/{esc(img["file"])}" alt="{esc(alt(r))}" loading="lazy"></div>'
             f'<figcaption>{cap}</figcaption></figure>')
+
+def thumb(r, cls="thumb"):
+    img = r.get("image")
+    inner = (f'<img src="img/{esc(img["file"])}" alt="" loading="lazy">' if img
+             else f'<span class="tile">{esc(S.CATEGORIES[r["category"]])}</span>')
+    return f'<span class="{cls} cat-{esc(r["category"])}">{badge(r)}{inner}</span>'
+
+def chip(r):
+    return f'<span class="chip cat-{esc(r["category"])}">{esc(S.CATEGORIES[r["category"]])}</span>'
 
 # ---------- price history ----------
 
@@ -264,8 +282,8 @@ def sale_block(r, order):
     for k, label in (("record", "Record"), ("bidding_notes", "Bidding"), ("financing_notes", "Financing"), ("update_note", "Updated")):
         if r.get(k): facts.append((label, r[k]))
     dl = "".join(f"<div><dt>{esc(k)}</dt><dd>{buyer_html(r) if k == 'Buyer' else esc(v)}</dd></div>" for k, v in facts)
-    return (f'<article class="sale" id="{esc(r["id"])}">{figure(r)}'
-            f'<p class="kicker">{esc(S.CATEGORIES[r["category"]])} · {esc(S.HOUSES[r["house"]])} {esc(r["location"])}</p>'
+    return (f'<article class="sale cat-{esc(r["category"])}" id="{esc(r["id"])}">{figure(r)}'
+            f'<p class="kicker">{chip(r)} {esc(S.HOUSES[r["house"]])} {esc(r["location"])}</p>'
             f'<h3 class="sale-title">{lot_label(r)}</h3><p class="figure-price">{esc(result(r))}</p><dl class="facts">{dl}</dl>'
             f'<p class="why"><strong>Why it matters.</strong> {esc(r["why_it_matters"])} {cites(r, order)}</p>'
             f'{ticker(r) if r.get("history") else ""}</article>')
@@ -280,24 +298,29 @@ def sales_table(rows, order=None, sortable=False):
         body.append(
             f'<tr><td data-v="{r["sale_date"]}">{day(r["sale_date"])}</td>'
             f'<td>{esc(S.HOUSES[r["house"]])}<br><span class="dim">{esc(r["location"])}</span></td>'
-            f'<td>{lot_label(r)}<br><span class="dim">{esc(S.CATEGORIES[r["category"]])}</span></td>'
+            f'<td><div class="lotcell">{thumb(r, "thumb sm")}<span>{lot_label(r)}<br>{chip(r)}</span></div></td>'
             f'<td class="num" data-v="{r["price_usd"]}">{esc(result(r))}<br><span class="dim">{S.PRICE_BASIS[r["price_basis"]]}</span></td>'
             f'<td>{esc(estimate(r, True))}</td><td>{buyer_html(r, True)}</td><td>{src}</td></tr>')
     cls = "index sortable" if sortable else "index"
     return f'<div class="scroll"><table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
 
-def sale_rows(rows, href):
-    """Home-page list: image, lot, and result on one line per sale."""
+def sale_cards(rows, href):
+    """Home-page grid: one card per sale, image first, biggest price first."""
     out = []
     for r in sorted(rows, key=lambda r: -r["price_usd"]):
-        img = r.get("image")
-        thumb = (f'<img src="img/{esc(img["file"])}" alt="" loading="lazy">' if img
-                 else f'<span class="tile">{esc(S.CATEGORIES[r["category"]])}</span>')
-        out.append(f'<a class="row" href="{href}#{esc(r["id"])}"><span class="row-thumb">{thumb}</span>'
-                   f'<span class="row-main"><span class="row-title">{lot_label(r)}</span>'
-                   f'<span class="dim">{esc(S.HOUSES[r["house"]])} {esc(r["location"])} · {day(r["sale_date"])} · Buyer: {buyer_html(r, True)}</span></span>'
-                   f'<span class="row-price">{esc(result(r))}</span></a>')
-    return f'<div class="rows">{"".join(out)}</div>'
+        out.append(f'<a class="card cat-{esc(r["category"])}" href="{href}#{esc(r["id"])}">{thumb(r, "card-img")}'
+                   f'<span class="card-body">{chip(r)}<span class="card-title">{lot_label(r)}</span>'
+                   f'<span class="card-price">{esc(money(r["price_usd"], "USD"))}</span>'
+                   f'<span class="dim">{esc(S.HOUSES[r["house"]])} {esc(r["location"])} · {day(r["sale_date"])}</span></span></a>')
+    return f'<div class="cards">{"".join(out)}</div>'
+
+def stat_strip(rows):
+    """Three numbers for the latest issue: how many sales, their total, the top price."""
+    top = max(rows, key=lambda r: r["price_usd"])
+    cats = len({r["category"] for r in rows})
+    items = [(str(len(rows)), "sales tracked"), (money(sum(r["price_usd"] for r in rows), "USD"), "total, in US dollars"),
+             (money(top["price_usd"], "USD"), "highest price"), (str(cats), "categories")]
+    return '<div class="stats-strip">' + "".join(f'<div><strong>{v}</strong><span>{k}</span></div>' for v, k in items) + '</div>'
 
 def source_list(order):
     if not order: return ""
@@ -388,13 +411,18 @@ def main():
     # home
     if issues:
         top = issues[0]; href = f'{top["slug"]}.html'
-        hero = figure(top["lead_row"], "plate hero") if top.get("lead_row") else ""
-        home = (f'{banner(top)}{INTRO}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
-                f'<div><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
-                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{questions(top)}{subscribe(cfg, "home")}'
-                f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_rows(top["rows"], href)}</div></section>')
+        lead = top.get("lead_row")
+        hero = (f'<div class="hero-img">{figure(lead, "plate hero")}</div>' if lead and lead.get("image") else "")
+        home = (f'{banner(top)}<section class="home-hero">'
+                f'<div class="hero-text"><p class="eyebrow">{issue_meta(top)}</p><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
+                f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="btn" href="{href}">Read the issue</a> <a class="btn ghost" href="data.html">All {len(rows)} sales</a></p></div>'
+                f'{hero}</section>{INTRO}{stat_strip(top["rows"])}'
+                f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_cards(top["rows"], href)}</div></section>'
+                f'{questions(top)}{subscribe(cfg, "home")}')
         if issues[1:]:
-            earlier = "".join(f'<a class="row" href="{i["slug"]}.html"><span class="row-main"><span class="row-title">{esc(i["title"])}</span>'
+            earlier = "".join(f'<a class="row" href="{i["slug"]}.html">'
+                              + (thumb(max(i["rows"], key=lambda r: r["price_usd"]), "row-thumb") if i["rows"] else "")
+                              + f'<span class="row-main"><span class="row-title">{esc(i["title"])}</span>'
                               f'<span class="dim">{issue_meta(i)}</span></span></a>' for i in issues[1:6])
             home += f'<section class="sec"><h2 class="label">Earlier issues</h2><div class="sec-body wide"><div class="rows">{earlier}</div></div></section>'
     else:

@@ -71,6 +71,9 @@ def check_row(r, seen):
         for k in ("file", "credit", "license", "source_url"):
             if not img.get(k): e.append(f"image missing {k}")
         if img.get("file") and not (DATA.parents[1] / "assets" / "img" / img["file"]).exists(): e.append("image file not found")
+        if img.get("kind", "photo") not in ("photo", "illustration"): e.append("image kind must be photo or illustration")
+        if img.get("kind") == "illustration" and "AI-generated" not in img.get("credit", ""): e.append("illustration credit must say AI-generated")
+        if "sothebys.com" in str(img.get("source_url", "")): e.append("image source must not be sothebys.com")
     prev = ""
     for h in r.get("history") or []:
         for k in h:

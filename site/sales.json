@@ -67,7 +67,8 @@
       "file": "kandinsky-das-bunte-leben.jpg",
       "credit": "Photograph by Ermell, via Wikimedia Commons",
       "license": "Public domain",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Kandinsky_Das_bunte_Leben_PA291001.jpg"
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kandinsky_Das_bunte_Leben_PA291001.jpg",
+      "kind": "photo"
     },
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
@@ -181,7 +182,14 @@
     "fx_rate_to_usd": 1.3267,
     "fx_date": "2026-10-14",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 33479274
+    "price_usd": 33479274,
+    "image": {
+      "kind": "photo",
+      "file": "mondrian-composition-iii.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/stories/piet-mondrian-painting-composition-iii-pivotal-masterpiece-of-geometric-abstraction-7b9f122ee0b64ac1b9fb2972633313e9"
+    }
   },
   {
     "id": "2026-10-14-christies-bacon-figure-in-movement",
@@ -272,7 +280,14 @@
         "publisher": "Christie's lot page (provenance)",
         "note": "Fresh to auction in 2026. Every earlier change of hands was private, so there is no public price to compare."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "bacon-figure-in-movement.jpg",
+      "credit": "Image courtesy of the auction house, via Apollo",
+      "license": "Source page",
+      "source_url": "https://apollo-magazine.com/auction-report-october-2026-london-peter-simon-modern-british/"
+    }
   },
   {
     "id": "2026-10-14-christies-mondrian-composition-a",
@@ -337,7 +352,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 12882257,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "mondrian-composition-a.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6606690"
+    }
   },
   {
     "id": "2026-10-14-christies-miro-peinture-les-amants",
@@ -396,7 +418,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 11356552,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "miro-peinture-les-amants.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6606706"
+    }
   },
   {
     "id": "2026-10-14-christies-popova-painterly-architectonic",
@@ -468,7 +497,14 @@
     "price_usd": 10135988,
     "buyer_profile_url": "https://beaumontnathan.com/the-team",
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "popova-painterly-architectonic.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/liubov-popova-painterly-architectonic-2026-10-14"
+    }
   },
   {
     "id": "2026-10-14-christies-anderson-last-house",
@@ -533,7 +569,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 7564843,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "anderson-last-house.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6606660"
+    }
   },
   {
     "id": "2026-10-14-christies-riley-streak-2",
@@ -592,7 +635,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 6917414,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed. The Art Newspaper reports that all 41 lots in this sale were guaranteed; the backer of this lot is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "riley-streak-2.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/bridget-riley-streak-2-2026-10-14"
+    }
   },
   {
     "id": "2026-10-15-sothebys-de-kooning-untitled",
@@ -677,7 +727,14 @@
         "publisher": "Sotheby's lot page (provenance)",
         "note": "The 2015 buyer sold it privately; the present owner acquired it in 2018. Price not disclosed."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "de-kooning-untitled.jpg",
+      "credit": "Image courtesy of the auction house, via Art Centron",
+      "license": "Source page",
+      "source_url": "https://artcentron.com/2026/10/17/sothebys-london-contemporary-art-auction-results/"
+    }
   },
   {
     "id": "2026-10-15-sothebys-richter-abstraktes-bild",
@@ -742,7 +799,14 @@
         "publisher": "HENI News",
         "note": "£3.6m per The Art Newspaper; $5.71m per HENI. Lot number from the provenance on Sotheby's 2026 lot page. HENI also lists a 2002 Christie's New York sale at $1.05m that the catalogue provenance does not mention, so it is left out."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "richter-abstraktes-bild.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/gerhard-richter-abstraktes-bild-2026-10-15"
+    }
   },
   {
     "id": "2026-10-15-sothebys-rothko-untitled",
@@ -809,7 +873,14 @@
         "publisher": "Artnet News",
         "note": "$264,000 with fees per Artnet; HENI lists $240,000, which matches the hammer before fees. Lot number from the catalogue provenance."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "rothko-untitled.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/mark-rothko-untitled-2026-10-15"
+    }
   },
   {
     "id": "2026-10-15-phillips-richter-mathis",
@@ -860,7 +931,14 @@
     "fx_rate_to_usd": 1.3247,
     "fx_date": "2026-10-15",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 7734923
+    "price_usd": 7734923,
+    "image": {
+      "kind": "photo",
+      "file": "richter-mathis.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/gerhard-richter/236491"
+    }
   },
   {
     "id": "2026-10-22-sothebys-monet-iris",
@@ -931,7 +1009,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 56025000,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: lot number and date of the work added from Sotheby's lot page. The lot page shows the estimate but no sold price, so the price stays press-reported."
+    "update_note": "14 Nov 2026: lot number and date of the work added from Sotheby's lot page. The lot page shows the estimate but no sold price, so the price stays press-reported.",
+    "image": {
+      "kind": "photo",
+      "file": "monet-iris.jpg",
+      "credit": "Image courtesy of the auction house, via Smithsonian",
+      "license": "Source page",
+      "source_url": "https://www.smithsonianmag.com/smart-news/this-massive-mega-rare-monet-painting-is-now-the-most-expensive-artwork-ever-sold-at-auction-in-france-180989749/"
+    }
   },
   {
     "id": "2026-10-22-sothebys-monet-saule-pleureur",
@@ -988,7 +1073,14 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 10868850
+    "price_usd": 10868850,
+    "image": {
+      "kind": "illustration",
+      "file": "monet-saule-pleureur.jpg",
+      "credit": "Illustration, AI-generated for Art Moves. Not the work sold",
+      "license": "Why there is no photograph",
+      "source_url": "https://art-moves.pages.dev/about.html#images"
+    }
   },
   {
     "id": "2026-10-23-sothebys-kupka-espace-non-descriptif",
@@ -1039,7 +1131,14 @@
     "fx_rate_to_usd": 1.1193,
     "fx_date": "2026-10-23",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 10073700
+    "price_usd": 10073700,
+    "image": {
+      "kind": "photo",
+      "file": "kupka-espace-non-descriptif.jpg",
+      "credit": "Image courtesy of the auction house, via Sotheby's International Realty Czech Republic",
+      "license": "Source page",
+      "source_url": "https://sothebysrealty.cz/en/blog/detail/23-frantisek-kupka-v-sotheby-s-nepopisny-prostor-se-prodal-za-8-99-milionu-eur"
+    }
   },
   {
     "id": "2026-10-23-sothebys-giacometti-tete-crane",
@@ -1090,7 +1189,14 @@
     "fx_rate_to_usd": 1.1193,
     "fx_date": "2026-10-23",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 9737910
+    "price_usd": 9737910,
+    "image": {
+      "kind": "photo",
+      "file": "giacometti-tete-crane.jpg",
+      "credit": "Image courtesy of the auction house, via MutualArt",
+      "license": "Source page",
+      "source_url": "https://www.mutualart.com/Artwork/Tete-crane/DC23E86BE3935194DD16057605667AAD"
+    }
   },
   {
     "id": "2026-10-22-christies-monet-bord-des-falaises-a-pourville",
@@ -1141,7 +1247,14 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 14325592
+    "price_usd": 14325592,
+    "image": {
+      "kind": "photo",
+      "file": "monet-bord-des-falaises-a-pourville.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6609067"
+    }
   },
   {
     "id": "2026-10-22-christies-renoir-jeunes-filles-au-bord-de-la-mer",
@@ -1186,7 +1299,14 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 6542600
+    "price_usd": 6542600,
+    "image": {
+      "kind": "photo",
+      "file": "renoir-jeunes-filles-au-bord-de-la-mer.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6609066"
+    }
   },
   {
     "id": "2026-10-22-christies-sisley-un-verger",
@@ -1237,7 +1357,14 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 4150332
+    "price_usd": 4150332,
+    "image": {
+      "kind": "photo",
+      "file": "sisley-un-verger.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6609073"
+    }
   },
   {
     "id": "2026-10-22-christies-fontana-concetto-spaziale",
@@ -1294,7 +1421,14 @@
     "fx_rate_to_usd": 1.1205,
     "fx_date": "2026-10-22",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 7636208
+    "price_usd": 7636208,
+    "image": {
+      "kind": "photo",
+      "file": "fontana-concetto-spaziale.jpg",
+      "credit": "Image courtesy of the auction house, via Christie's press",
+      "license": "Source page",
+      "source_url": "https://press.christies.com/a-rare-vision-of-venice-lucio-fontanas-concetto-spaziale-mezzogiorno-in-piazza-s-marco-debuts-at-auction-at-christies-thinking-italian-sale/"
+    }
   },
   {
     "id": "2026-10-22-christies-modigliani-minoutcha",
@@ -1347,7 +1481,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 6952702,
     "updated_at": "2026-11-14",
-    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated."
+    "update_note": "14 Nov 2026: guarantee changed from unknown to guaranteed, matching the press report already quoted in the financing note. The type of guarantee is not stated.",
+    "image": {
+      "kind": "photo",
+      "file": "modigliani-minoutcha.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/amedeo-modigliani-minoutcha-2026-10-22"
+    }
   },
   {
     "id": "2026-11-06-sothebys-printz-desk",
@@ -1392,7 +1533,14 @@
     "fx_rate_to_usd": 1.1165,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 400154
+    "price_usd": 400154,
+    "image": {
+      "kind": "illustration",
+      "file": "printz-desk.jpg",
+      "credit": "Illustration, AI-generated for Art Moves. Not the work sold",
+      "license": "Why there is no photograph",
+      "source_url": "https://art-moves.pages.dev/about.html#images"
+    }
   },
   {
     "id": "2026-11-07-phillips-journe-resonance-regence",
@@ -1449,7 +1597,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 10600627
+    "price_usd": 10600627,
+    "image": {
+      "kind": "photo",
+      "file": "journe-resonance-regence.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/fp-journe/232379"
+    }
   },
   {
     "id": "2026-11-07-phillips-patek-1436-steel",
@@ -1506,7 +1661,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 7653260
+    "price_usd": 7653260,
+    "image": {
+      "kind": "photo",
+      "file": "patek-1436-steel.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/patek-philippe/237684"
+    }
   },
   {
     "id": "2026-11-07-phillips-journe-resonance-tokyo",
@@ -1557,7 +1719,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 7505495
+    "price_usd": 7505495,
+    "image": {
+      "kind": "photo",
+      "file": "journe-resonance-tokyo.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/f.p.-journe/237101"
+    }
   },
   {
     "id": "2026-11-07-phillips-journe-vagabondage-iii",
@@ -1608,7 +1777,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 6175608
+    "price_usd": 6175608,
+    "image": {
+      "kind": "photo",
+      "file": "journe-vagabondage-iii.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/fp-journe/236407"
+    }
   },
   {
     "id": "2026-11-07-phillips-journe-resonance-022-99r",
@@ -1666,7 +1842,14 @@
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 6027843,
-    "buyer_profile_url": "https://manofthehour.tv/episode-8-mb-f/"
+    "buyer_profile_url": "https://manofthehour.tv/episode-8-mb-f/",
+    "image": {
+      "kind": "photo",
+      "file": "journe-resonance-022-99r.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/fp-journe/229873"
+    }
   },
   {
     "id": "2026-11-07-phillips-cartier-portico-mystery-clock-4",
@@ -1717,7 +1900,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 5880078
+    "price_usd": 5880078,
+    "image": {
+      "kind": "photo",
+      "file": "cartier-portico-mystery-clock-4.jpg",
+      "credit": "Image: Phillips",
+      "license": "Source page",
+      "source_url": "https://www.phillips.com/detail/cartier/237488"
+    }
   },
   {
     "id": "2026-11-09-christies-journe-vagabondage-pink-gold",
@@ -1774,7 +1964,14 @@
     "fx_rate_to_usd": 1.2214,
     "fx_date": "2026-11-09",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 3097470
+    "price_usd": 3097470,
+    "image": {
+      "kind": "photo",
+      "file": "journe-vagabondage-pink-gold.jpg",
+      "credit": "Image courtesy of the auction house, via Montre24",
+      "license": "Source page",
+      "source_url": "https://montre24.com/news/2026-11-10/4517/"
+    }
   },
   {
     "id": "2026-11-08-sothebys-patek-3970-first",
@@ -1825,7 +2022,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 2501018
+    "price_usd": 2501018,
+    "image": {
+      "kind": "photo",
+      "file": "patek-3970-first.jpg",
+      "credit": "Image courtesy of the auction house, via Robb Report",
+      "license": "Source page",
+      "source_url": "https://robbreport.com/style/watch-collector/patek-philippe-ref-3970-auction-record-1238831249/"
+    }
   },
   {
     "id": "2026-11-10-christies-bulgari-pink",
@@ -1884,7 +2088,14 @@
     "fx_source": "ECB reference rate via Frankfurter",
     "price_usd": 14726791,
     "updated_at": "2026-11-15",
-    "update_note": "15 Nov 2026: bidding note added. Christie's says the buyer intends the ring as a gift; still unnamed."
+    "update_note": "15 Nov 2026: bidding note added. Christie's says the buyer intends the ring as a gift; still unnamed.",
+    "image": {
+      "kind": "photo",
+      "file": "bulgari-pink.jpg",
+      "credit": "Image courtesy of the auction house, via Christie's press",
+      "license": "Source page",
+      "source_url": "https://press.christies.com/christies-presents-the-bulgari-pink/"
+    }
   },
   {
     "id": "2026-11-08-christies-ferrari-499p-modificata",
@@ -1941,7 +2152,14 @@
     "fx_rate_to_usd": 1.2212,
     "fx_date": "2026-11-06",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 10035211
+    "price_usd": 10035211,
+    "image": {
+      "kind": "photo",
+      "file": "ferrari-499p-modificata.jpg",
+      "credit": "Image courtesy of the auction house, via Classic Car Auctions",
+      "license": "Source page",
+      "source_url": "https://www.classic-car-auctions.info/european/2026-gooding-christies-geneva-sale-auction-results/"
+    }
   },
   {
     "id": "2026-10-31-other-ferrari-f50",
@@ -1986,7 +2204,14 @@
     "fx_rate_to_usd": 1.0,
     "fx_date": "2026-10-31",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 18705000
+    "price_usd": 18705000,
+    "image": {
+      "kind": "photo",
+      "file": "ferrari-f50.jpg",
+      "credit": "Image: Broad Arrow Auctions",
+      "license": "Source page",
+      "source_url": "https://www.broadarrowauctions.com/vehicles/lv26_r0080/1997-ferrari-f50"
+    }
   },
   {
     "id": "2026-10-31-other-ferrari-daytona-sp3",
@@ -2031,7 +2256,14 @@
     "fx_rate_to_usd": 1.0,
     "fx_date": "2026-10-31",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 18540000
+    "price_usd": 18540000,
+    "image": {
+      "kind": "photo",
+      "file": "ferrari-daytona-sp3.jpg",
+      "credit": "Image courtesy of the auction house, via Hagerty",
+      "license": "Source page",
+      "source_url": "https://www.hagerty.com/media/market-trends/18-54m-for-a-ferrari-daytona-sp3-is-crazy-but-so-2026/"
+    }
   },
   {
     "issue": 2,
@@ -2143,7 +2375,14 @@
         "publisher": "NBC News (AP)",
         "note": "Price not reported in the coverage used here. Reset as a bracelet in 2015."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "romanov-sapphire-bracelet.jpg",
+      "credit": "Image courtesy of the auction house, via National Jeweler",
+      "license": "Source page",
+      "source_url": "https://nationaljeweler.com/articles/15500-historic-romanov-sapphire-achieves-4-9m-at-sotheby-s"
+    }
   },
   {
     "issue": 2,
@@ -2197,7 +2436,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 5408040
+    "price_usd": 5408040,
+    "image": {
+      "kind": "photo",
+      "file": "fancy-intense-pink-863.jpg",
+      "credit": "Image courtesy of the auction house, via JCK",
+      "license": "Source page",
+      "source_url": "https://www.jckonline.com/editorial-article/sothebys-geneva-sale/"
+    }
   },
   {
     "issue": 2,
@@ -2252,7 +2498,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 2005120
+    "price_usd": 2005120,
+    "image": {
+      "kind": "illustration",
+      "file": "tanzanian-spinel-5179.jpg",
+      "credit": "Illustration, AI-generated for Art Moves. Not the work sold",
+      "license": "Why there is no photograph",
+      "source_url": "https://art-moves.pages.dev/about.html#images"
+    }
   },
   {
     "issue": 2,
@@ -2313,7 +2566,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 2005120
+    "price_usd": 2005120,
+    "image": {
+      "kind": "photo",
+      "file": "devonshire-cartier-opal-tiara.jpg",
+      "credit": "Image courtesy of the auction house, via Haute Living",
+      "license": "Source page",
+      "source_url": "https://hauteliving.com/2026/10/devonshire-opal-tiara-sothebys-geneva/800496/"
+    }
   },
   {
     "issue": 2,
@@ -2362,7 +2622,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1881728
+    "price_usd": 1881728,
+    "image": {
+      "kind": "illustration",
+      "file": "fancy-pink-811.jpg",
+      "credit": "Illustration, AI-generated for Art Moves. Not the work sold",
+      "license": "Why there is no photograph",
+      "source_url": "https://art-moves.pages.dev/about.html#images"
+    }
   },
   {
     "issue": 2,
@@ -2410,7 +2677,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1850880
+    "price_usd": 1850880,
+    "image": {
+      "kind": "photo",
+      "file": "graff-fancy-deep-blue-ring.jpg",
+      "credit": "Image courtesy of the auction house, via JCK",
+      "license": "Source page",
+      "source_url": "https://www.jckonline.com/editorial-article/sothebys-geneva-sale/"
+    }
   },
   {
     "issue": 2,
@@ -2478,7 +2752,14 @@
     "fx_rate_to_usd": 1.205,
     "fx_date": "2026-11-11",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1349600
+    "price_usd": 1349600,
+    "image": {
+      "kind": "photo",
+      "file": "padparadscha-brooch-swedish-royal.jpg",
+      "credit": "Image courtesy of the auction house, via La Revue du Luxe",
+      "license": "Source page",
+      "source_url": "https://larevueduluxe.com/en/watches-jewellery/princess-birgitta-sweden-jewels-sothebys/"
+    }
   },
   {
     "issue": 2,
@@ -2530,7 +2811,14 @@
     "fx_rate_to_usd": 1.0,
     "fx_date": "2026-11-12",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 4875000
+    "price_usd": 4875000,
+    "image": {
+      "kind": "photo",
+      "file": "darth-vader-lightsaber.jpg",
+      "credit": "Image courtesy of the auction house, via ARTnews",
+      "license": "Source page",
+      "source_url": "https://www.artnews.com/art-news/news/star-wars-lightsaber-sale-heritage-auctions-1234805883"
+    }
   },
   {
     "issue": 2,
@@ -2591,7 +2879,14 @@
     "fx_rate_to_usd": 0.14988,
     "fx_date": "2026-11-13",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1918464
+    "price_usd": 1918464,
+    "image": {
+      "kind": "photo",
+      "file": "picasso-homme-assis.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/pablo-picasso-homme-assis-2026-11-14"
+    }
   },
   {
     "issue": 2,
@@ -2646,7 +2941,14 @@
     "fx_rate_to_usd": 0.14988,
     "fx_date": "2026-11-13",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1899279
+    "price_usd": 1899279,
+    "image": {
+      "kind": "photo",
+      "file": "kusama-pumpkin.jpg",
+      "credit": "Image courtesy of the auction house, via MutualArt",
+      "license": "Source page",
+      "source_url": "https://www.mutualart.com/Artwork/Pumpkin/F41CF05275B8F1A97D4032A5724ED7AF"
+    }
   },
   {
     "issue": 2,
@@ -2721,7 +3023,14 @@
         "publisher": "ARTSK",
         "note": "One source, which does not say whether the figure includes fees. Treat the loss as indicative."
       }
-    ]
+    ],
+    "image": {
+      "kind": "photo",
+      "file": "zao-wou-ki-mars.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/article/zao-wou-ki-mars-03-04-2003-2026-11-14"
+    }
   },
   {
     "issue": 2,
@@ -2777,7 +3086,14 @@
     "fx_rate_to_usd": 0.14988,
     "fx_date": "2026-11-13",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1630694
+    "price_usd": 1630694,
+    "image": {
+      "kind": "photo",
+      "file": "liu-ye-miffy-the-artist.jpg",
+      "credit": "Image courtesy of the auction house, via HENI News",
+      "license": "Source page",
+      "source_url": "https://heni.com/news/view/b3b8108e-3f98-5406-b4dd-7ba2e401c7b4"
+    }
   },
   {
     "issue": 2,
@@ -2825,6 +3141,13 @@
     "fx_rate_to_usd": 0.14988,
     "fx_date": "2026-11-13",
     "fx_source": "ECB reference rate via Frankfurter",
-    "price_usd": 1247002
+    "price_usd": 1247002,
+    "image": {
+      "kind": "photo",
+      "file": "william-goldberg-starlight-necklace.jpg",
+      "credit": "Image: Christie's",
+      "license": "Source page",
+      "source_url": "https://www.christies.com/en/lot/lot-6610247"
+    }
   }
 ]

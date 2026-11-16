@@ -617,6 +617,33 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 
 **Would land with an enterprise buyer:** asked to check its own writing, the agent found unsupported claims as well as style problems and reported a possible factual inconsistency instead of quietly rewording it.
 
+## Session 16: images on every sale, colour, and a build retrospective (16 Nov 2026)
+
+**Asked for:** a bullet look back at how the site was built and where it got stuck, and a friendlier, more colourful design with an image on every sale, using the real lot images where possible and an AI image otherwise.
+
+| Change | Detail |
+|---|---|
+| Images | All 47 sales now have an image. 43 are photographs of the exact lot; 4 are AI illustrations |
+| Photo sources | Christie's lot pages (8) and press pages (2), HENI News (8), Phillips lot pages (7), MutualArt (2), JCK (2), and one each from Apollo, Art Centron, Smithsonian, Sotheby's International Realty CZ, Montre24, Robb Report, Classic Car Auctions, Broad Arrow, Hagerty, National Jeweler, Haute Living, La Revue du Luxe, ARTnews; the Kandinsky stays on Wikimedia Commons. None from sothebys.com |
+| Illustrations | Monet, Saule pleureur; Printz desk; 51.79-carat spinel; 8.11-carat pink diamond. Only sothebys.com had photos of these. Each is marked "Illustration" on the image and "AI-generated for Art Moves. Not the work sold" in the caption, and shows a generic object, not the work |
+| Data | New `image.kind` field: `photo` or `illustration`. The validator now rejects an illustration whose credit does not say AI-generated, and any image sourced from sothebys.com |
+| Colour | One accent per category (red fine art, blue watches, pink jewelry, green cars, amber design, violet other) on chips, image walls and card edges. Warm paper background, pill navigation, sticky header |
+| Home page | Headline beside the lead image; a strip of four numbers for the issue; sales as a grid of image cards, biggest price first; thumbnails on earlier issues |
+| Issues and Data | Every featured sale sits on its category colour; the Data table has a thumbnail and category chip on every row |
+| Method page | Images section explains the illustration rule and the colour key |
+
+**Where it got stuck:** Christie's image server timed out from the cloud machine, and so did an image proxy. Workarounds, in order: HENI and MutualArt article pages, then images pulled out of Christie's press-release PDFs (matched to lots by reading the captions on each page), then a different download route that did reach Christie's lot images, which replaced seven small press-kit images with full-size ones. Four lots had photos only on sothebys.com, which is off-limits, so they got illustrations.
+
+**Computer on its own vs. Ryan:** Ryan asked for images on every line and allowed AI fallbacks. Computer chose the sources, checked each image against its caption or lot page, picked the illustration style and the colour scheme, and decided which lots needed illustrations.
+
+**Decisions made by Computer, for the editor to check:**
+
+- Two images are matched by article context rather than an explicit caption: Kupka (Sotheby's Realty CZ) and the 8.63-carat pink diamond (JCK's lead image on an article about that stone).
+- `WEEKLY_RUN.md` is unchanged, so next Sunday's rows will not get illustrations automatically; the image step there still says to run a sale without one when no photo is found.
+- Image folder is now about 7 MB. Pages lazy-load images below the fold.
+
+**Would land with an enterprise buyer:** when the obvious route was blocked, the agent found three others, verified each image against a caption before using it, and labelled every AI image so a reader cannot mistake it for the real lot.
+
 ## Explaining Computer to a customer new to AI agents
 
 Based on this build:
