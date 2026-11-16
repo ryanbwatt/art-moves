@@ -74,7 +74,7 @@ def content(meta, rows, picks, cfg):
         sections.append(("One term", [("lead", meta["email_term"] + ".", meta.get("email_term_line", ""))]))
     return {"subject": meta["title"], "plus": meta.get("email_plus", ""), "sections": sections, "url": url,
             "meta": f"Issue {meta['number']:02d} · {day(meta['date'])} · Covers {meta['window']}",
-            "about": [f"Art Moves. {TAGLINE} Free, every Sunday.",
+            "about": [f"Art Moves. {TAGLINE} Every Sunday.",
                       "Reply to this email and tell me what was useful and what was not. I read every reply.",
                       "The editor works part-time with a commercial art gallery. Art Moves has no advertisers or sponsors, and nothing here is investment advice.",
                       cfg["email"].get("unsubscribe", ""), cfg["email"].get("postal_address", "")]}

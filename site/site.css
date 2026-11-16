@@ -172,3 +172,7 @@ main > .scroll { padding-bottom: 72px; }
   .ticker-chart .axis { font-size: 20px; }
 }
 .prose-table { min-width: 0; } .prose-table td, .prose-table th { vertical-align: top; }
+
+/* Home page: one line saying what Art Moves is, above the latest issue */
+.intro { font-size: 22px; line-height: 1.4; max-width: 760px; margin: 28px 0 32px; }
+@media (max-width: 820px) { .intro { font-size: 19px; margin: 16px 0 24px; } }

@@ -1,6 +1,6 @@
 ## What this is
 
-Art Moves is a free weekly brief on notable sales at Sotheby's, Christie's and Phillips, across fine art and other collectibles: watches, jewelry, cars, design and fashion. It is written for a reader who knows finance and is new to the art market.
+Art Moves is a weekly brief on notable sales at Sotheby's, Christie's and Phillips, across fine art and other collectibles: watches, jewelry, cars, design and fashion. It is written for a reader who knows finance and is new to the art market.
 
 Every issue asks three questions:
 

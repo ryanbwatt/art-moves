@@ -18,6 +18,8 @@ NAV = [("Latest", "index.html"), ("Issues", "archive.html"), ("Data", "data.html
 FONTS = ["https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap",
          "https://api.fontshare.com/v2/css?f[]=gambetta@400,401&display=swap"]
 TAGLINE = "Where serious money moves in art and luxury."
+# One line above everything on the home page, for a first-time visitor.
+INTRO = '<p class="intro">The week\'s biggest auction sales in art and luxury, explained for people who know money but not the art market.</p>'
 esc = html.escape
 
 # ---------- formatting ----------
@@ -309,12 +311,12 @@ def subscribe(cfg, place):
     if not sub.get("action"): return ""
     hidden = "".join(f'<input type="hidden" name="{esc(k)}" value="{esc(str(v))}">' for k, v in (sub.get("hidden") or {}).items())
     return (f'<section class="sec" id="subscribe-{place}"><h2 class="label">Sunday email</h2><div class="sec-body">'
-            '<p class="standfirst">The week\'s biggest sales in art, watches and cars, in three minutes. One email, every Sunday. Free.</p>'
+            '<p class="standfirst">The week\'s biggest sales in art, watches and cars. One email, every Sunday.</p>'
             f'<form class="signup" action="{esc(sub["action"])}" method="{esc(sub.get("method", "post"))}" target="_blank" rel="noopener">{hidden}'
             f'<label for="email-{place}">Email address</label>'
             f'<div class="signup-row"><input id="email-{place}" type="email" name="{esc(sub.get("email_field", "email"))}" autocomplete="email" placeholder="you@example.com" required>'
             '<button type="submit">Subscribe</button></div>'
-            '<p class="dim small">You will get one email asking you to confirm. Your address is used for this email and nothing else. Unsubscribe any time.</p></form></div></section>')
+            '<p class="dim small">You will get one email asking you to confirm. Your address is used for this email and nothing else.</p></form></div></section>')
 
 SORT_JS = """<script>document.querySelectorAll('.sortable th').forEach(function(th,i){th.tabIndex=0;th.setAttribute('role','button');function go(){var tb=th.closest('table').tBodies[0],d=th.dataset.d==='a'?'d':'a';th.dataset.d=d;[].slice.call(tb.rows).sort(function(a,b){var x=a.cells[i].dataset.v||a.cells[i].textContent,y=b.cells[i].dataset.v||b.cells[i].textContent,n=parseFloat(x)-parseFloat(y);n=isNaN(n)||/-/.test(x)?x.localeCompare(y):n;return d==='a'?n:-n}).forEach(function(r){tb.appendChild(r)})}th.addEventListener('click',go);th.addEventListener('keydown',function(e){if(e.key==='Enter')go()})});</script>"""
 
@@ -327,7 +329,7 @@ def page(title, body, current=None, description="", script=""):
             f'<body><a class="skip" href="#main">Skip to content</a><header class="top"><a class="wordmark" href="index.html">Art Moves</a><nav aria-label="Main">{nav}</nav></header>'
             f'<main id="main">\n{body}\n</main>'
             f'<footer class="foot"><span>Art Moves. {TAGLINE} Published Sundays.</span>'
-            f'<span>Researched and drafted with Perplexity Computer; edited by a human. <a href="about.html">Method</a></span></footer>{script}</body></html>\n')
+            f'<span><a href="about.html">Method</a></span></footer>{script}</body></html>\n')
 
 def questions(top):
     """The three questions on the home page. Each ends with a link to where the latest answer is."""
@@ -387,7 +389,7 @@ def main():
     if issues:
         top = issues[0]; href = f'{top["slug"]}.html'
         hero = figure(top["lead_row"], "plate hero") if top.get("lead_row") else ""
-        home = (f'{banner(top)}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
+        home = (f'{banner(top)}{INTRO}{hero}<section class="lead"><p class="label">{issue_meta(top)}</p>'
                 f'<div><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
                 f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="more" href="{href}">Read the issue</a></p></div></section>{questions(top)}{subscribe(cfg, "home")}'
                 f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_rows(top["rows"], href)}</div></section>')
@@ -397,7 +399,7 @@ def main():
             home += f'<section class="sec"><h2 class="label">Earlier issues</h2><div class="sec-body wide"><div class="rows">{earlier}</div></div></section>'
     else:
         home = '<section class="lead"><p class="label">Coming soon</p><div><h1 class="display">The first issue is on its way.</h1></div></section>'
-    home += ('<section class="sec"><h2 class="label">About</h2><div class="sec-body"><p class="standfirst">A free weekly brief on who is buying, what they paid, '
+    home += ('<section class="sec"><h2 class="label">About</h2><div class="sec-body"><p class="standfirst">A weekly brief on who is buying, what they paid, '
              'and what it says about how wealthy families protect and grow capital. Written for readers who know finance and are new to art.</p>'
              '<p><a class="more" href="about.html">How it is made</a></p></div></section>')
     (OUT / "index.html").write_text(page("Art Moves", home, "Latest"))

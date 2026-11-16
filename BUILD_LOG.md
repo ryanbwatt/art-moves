@@ -622,3 +622,13 @@ The scheduled automation ran on its own at 9:00 AM ET. Nobody was in the convers
 Based on this build:
 
 Perplexity Computer is an assistant that does the work instead of describing it. You give it a goal in plain language. It plans the steps, searches and reads sources, writes and runs code on its own cloud machine, uses the accounts you connect (here, GitHub), and comes back with a finished thing: in this build, a live website, a sourced dataset of 34 sales and a first issue, inside a day. Three things make it safe to hand real work to. It shows its sources, so every number can be checked. It stops where you tell it to: nothing reached the live site without a person merging a pull request, and the weekly scheduled run is held to the same rule. And it tells you what it could not do: here it could not read one auction house's prices, guessed the site's framework wrong from the outside, and could not see a hosting setting, and each time it said so and offered a way round. Treat it like a capable new analyst. Give it a clear brief, access to the right systems and a review step, and it will take a multi-step job from research to a recurring process while you keep the final say.
+
+## Session 14: home page intro and copy trims (15 Nov 2026)
+
+| Change | Detail |
+|---|---|
+| Home page | One line above the latest issue saying what Art Moves is: "The week's biggest auction sales in art and luxury, explained for people who know money but not the art market." |
+| Footer | Removed "Researched and drafted with Perplexity Computer; edited by a human." The Method link stays. How the issue is made is still described on the Method page |
+| "Free" | Removed from the Sunday email section, the home page About blurb, the Method intro and the email footer |
+| Sunday email section | Removed "in three minutes" and "Unsubscribe any time" |
+| Email footer | Removed the "reply and say so" unsubscribe line; Buttondown adds its own unsubscribe link to every send |
