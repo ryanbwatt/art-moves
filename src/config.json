@@ -9,7 +9,7 @@
     }
   },
   "email": {
-    "unsubscribe": "To stop getting this email, reply and say so.",
+    "unsubscribe": "",
     "postal_address": ""
   }
 }
