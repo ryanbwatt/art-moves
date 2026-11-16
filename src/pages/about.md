@@ -19,7 +19,8 @@ Every issue asks three questions:
 - Images of the works are found through web search and used to report on the sale. Some are auction-house photographs.
 - Each image carries a credit and links to the page it came from.
 - Where a work is in the public domain or openly licensed, the caption says so. Any other image may be in copyright and belongs to its rights holder.
-- Where no usable image is found, the sale runs without one.
+- Where no photograph of the exact lot can be found outside sothebys.com, the sale shows an illustration made with an AI image model instead. Illustrations are marked "Illustration" on the image and "AI-generated for Art Moves. Not the work sold" in the caption. They show the kind of object, not the object itself, and never copy a specific artwork, signature or brand mark.
+- Each image sits on a colour that matches its category: red for fine art, blue for watches, pink for jewelry, green for cars, amber for design, violet for anything else.
 
 ## Evidence labels
 
