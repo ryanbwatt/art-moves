@@ -14,6 +14,8 @@ import schema as S
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC, OUT = ROOT / "src", ROOT / "site"
+CFG = json.loads((SRC / "config.json").read_text())
+SHARE = {"image": None}  # default link-preview image: the latest issue's lead picture, set in main()
 NAV = [("Latest", "index.html"), ("Issues", "archive.html"), ("Data", "data.html"), ("Trade", "trade.html"), ("Method", "about.html")]
 FONTS = ["https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap",
          "https://api.fontshare.com/v2/css?f[]=gambetta@400,401&display=swap"]
@@ -147,12 +149,15 @@ def alt(r):
 def badge(r):
     return '<span class="badge">Illustration</span>' if is_ai(r) else ""
 
+LOAD_LAZY = 'loading="lazy"'
+LOAD_HERO = 'fetchpriority="high"'
+
 def figure(r, cls="plate"):
     img = r.get("image")
     if not img: return ""
     cap = (f'{lot_label(r)}. {esc(img["credit"])}. '
            f'<a href="{esc(img["source_url"])}">{esc(img["license"])}</a>.')
-    return (f'<figure class="{cls} cat-{esc(r["category"])}"><div class="wall">{badge(r)}<img src="img/{esc(img["file"])}" alt="{esc(alt(r))}" loading="lazy"></div>'
+    return (f'<figure class="{cls} cat-{esc(r["category"])}"><div class="wall">{badge(r)}<img src="img/{esc(img["file"])}" alt="{esc(alt(r))}" {LOAD_HERO if "hero" in cls else LOAD_LAZY}></div>'
             f'<figcaption>{cap}</figcaption></figure>')
 
 def thumb(r, cls="thumb"):
@@ -315,11 +320,11 @@ def sale_cards(rows, href):
     return f'<div class="cards">{"".join(out)}</div>'
 
 def stat_strip(rows):
-    """Three numbers for the latest issue: how many sales, their total, the top price."""
+    """Four numbers for the latest issue: how many sales, their total, the top price, how many buyers are on the record."""
     top = max(rows, key=lambda r: r["price_usd"])
-    cats = len({r["category"] for r in rows})
+    named = sum(1 for r in rows if r.get("buyer_name"))
     items = [(str(len(rows)), "sales tracked"), (money(sum(r["price_usd"] for r in rows), "USD"), "total, in US dollars"),
-             (money(top["price_usd"], "USD"), "highest price"), (str(cats), "categories")]
+             (money(top["price_usd"], "USD"), "highest price"), (str(named), "buyer on the record" if named == 1 else "buyers on the record")]
     return '<div class="stats-strip">' + "".join(f'<div><strong>{v}</strong><span>{k}</span></div>' for v, k in items) + '</div>'
 
 def source_list(order):
@@ -343,12 +348,25 @@ def subscribe(cfg, place):
 
 SORT_JS = """<script>document.querySelectorAll('.sortable th').forEach(function(th,i){th.tabIndex=0;th.setAttribute('role','button');function go(){var tb=th.closest('table').tBodies[0],d=th.dataset.d==='a'?'d':'a';th.dataset.d=d;[].slice.call(tb.rows).sort(function(a,b){var x=a.cells[i].dataset.v||a.cells[i].textContent,y=b.cells[i].dataset.v||b.cells[i].textContent,n=parseFloat(x)-parseFloat(y);n=isNaN(n)||/-/.test(x)?x.localeCompare(y):n;return d==='a'?n:-n}).forEach(function(r){tb.appendChild(r)})}th.addEventListener('click',go);th.addEventListener('keydown',function(e){if(e.key==='Enter')go()})});</script>"""
 
-def page(title, body, current=None, description="", script=""):
+def share_tags(title, description, path, image):
+    """Link-preview tags, so a link pasted into iMessage, WhatsApp, Slack or LinkedIn shows a card."""
+    base = CFG["site_url"].rstrip("/")
+    url = f"{base}/{path}" if path else f"{base}/"
+    tags = [("og:site_name", "Art Moves"), ("og:type", "article" if path and path[:1].isdigit() else "website"),
+            ("og:title", title), ("og:description", description), ("og:url", url)]
+    image = image or SHARE["image"]
+    if image: tags += [("og:image", f"{base}/img/{image['file']}"), ("og:image:alt", image.get("alt") or title)]
+    out = "".join(f'<meta property="{k}" content="{esc(v)}">' for k, v in tags)
+    out += f'<meta name="twitter:card" content="{"summary_large_image" if image else "summary"}"><link rel="canonical" href="{esc(url)}">'
+    return out
+
+def page(title, body, current=None, description="", script="", path="", image=None):
     nav = "".join(f'<a href="{h}"' + (' aria-current="page"' if n == current else "") + f">{n}</a>" for n, h in NAV)
     full = "Art Moves" if title == "Art Moves" else f"{title} · Art Moves"
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             f'<title>{esc(full)}</title><meta name="description" content="{esc(description or TAGLINE)}">'
-            f'<link rel="icon" href="data:,"><link rel="preconnect" href="https://api.fontshare.com">{"".join(f'<link rel="stylesheet" href="{u}">' for u in FONTS)}<link rel="stylesheet" href="site.css"></head>'
+            f'{share_tags(full, description or TAGLINE, path, image)}'
+            f'<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://api.fontshare.com">{"".join(f'<link rel="stylesheet" href="{u}">' for u in FONTS)}<link rel="stylesheet" href="site.css"></head>'
             f'<body><a class="skip" href="#main">Skip to content</a><header class="top"><a class="wordmark" href="index.html">Art Moves</a><nav aria-label="Main">{nav}</nav></header>'
             f'<main id="main">\n{body}\n</main>'
             f'<footer class="foot"><span>Art Moves. {TAGLINE} Published Sundays.</span>'
@@ -378,10 +396,12 @@ def main():
         meta["lead_row"] = by_id.get(meta.get("lead", ""))
         issues.append(meta)
     issues.sort(key=lambda i: -i["number"])
+    SHARE["image"] = (issues[0].get("lead_row") or {}).get("image") if issues else None
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(SRC / "assets" / "img", OUT / "img")
     shutil.copy(SRC / "assets" / "site.css", OUT / "site.css")
+    shutil.copy(SRC / "assets" / "favicon.svg", OUT / "favicon.svg")
     # Tells Cloudflare Pages which requests skip the visit-logging function.
     shutil.copy(SRC / "assets" / "_routes.json", OUT / "_routes.json")
 
@@ -406,17 +426,18 @@ def main():
                 f'<h1 class="display">{esc(it["title"])}</h1><p class="standfirst">{esc(it.get("topline", ""))}</p></header>'
                 f'\n{markdown(it["text"], directive)}\n{subscribe(cfg, "issue")}{source_list(order)}<nav class="pager" aria-label="Issues">{pager}</nav>')
         js = TICKER_JS if 'class="ticker"' in body else ""
-        (OUT / f"{it['slug']}.html").write_text(page(it["title"], body, description=it.get("topline", ""), script=js))
+        lead_img = (it.get("lead_row") or {}).get("image")
+        (OUT / f"{it['slug']}.html").write_text(page(it["title"], body, description=it.get("topline", ""), script=js, path=it["slug"], image=lead_img))
 
     # home
     if issues:
         top = issues[0]; href = f'{top["slug"]}.html'
         lead = top.get("lead_row")
         hero = (f'<div class="hero-img">{figure(lead, "plate hero")}</div>' if lead and lead.get("image") else "")
-        home = (f'{banner(top)}<section class="home-hero">'
+        home = (f'{banner(top)}{INTRO}<section class="home-hero">'
                 f'<div class="hero-text"><p class="eyebrow">{issue_meta(top)}</p><h1 class="display"><a href="{href}">{esc(top["title"])}</a></h1>'
                 f'<p class="standfirst">{esc(top.get("topline", ""))}</p><p><a class="btn" href="{href}">Read the issue</a> <a class="btn ghost" href="data.html">All {len(rows)} sales</a></p></div>'
-                f'{hero}</section>{INTRO}{stat_strip(top["rows"])}'
+                f'{hero}</section>{stat_strip(top["rows"])}'
                 f'<section class="sec"><h2 class="label">Sales in this issue</h2><div class="sec-body wide">{sale_cards(top["rows"], href)}</div></section>'
                 f'{questions(top)}{subscribe(cfg, "home")}')
         if issues[1:]:
@@ -430,7 +451,7 @@ def main():
     home += ('<section class="sec"><h2 class="label">About</h2><div class="sec-body"><p class="standfirst">A weekly brief on who is buying, what they paid, '
              'and what it says about how wealthy families protect and grow capital. Written for readers who know finance and are new to art.</p>'
              '<p><a class="more" href="about.html">How it is made</a></p></div></section>')
-    (OUT / "index.html").write_text(page("Art Moves", home, "Latest"))
+    (OUT / "index.html").write_text(page("Art Moves", home, "Latest", "The week's biggest auction sales in art and luxury, explained for people who know money but not the art market."))
 
     # archive
     trs = []
@@ -443,7 +464,7 @@ def main():
     arch = ('<header class="issue-head"><p class="label">Archive</p><h1 class="display">Issues</h1></header>'
             '<div class="scroll"><table class="index"><thead><tr><th>No.</th><th>Date</th><th>Issue</th>'
             f'<th>Top sale</th><th class="num">Tracked value</th></tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
-    (OUT / "archive.html").write_text(page("Issues", arch, "Issues", "Every issue of Art Moves."))
+    (OUT / "archive.html").write_text(page("Issues", arch, "Issues", "Every issue of Art Moves.", path="archive"))
 
     # data
     data = (f'<header class="issue-head"><p class="label">{len(rows)} sales tracked</p><h1 class="display">Data</h1>'
@@ -456,7 +477,7 @@ def main():
                  'Hover or tab to a point for the sale behind it.</p>'
                  + "".join(ticker(r, heading=True) for r in hist) + '</div></section>')
     data += '<section class="sec" id="every-sale"><h2 class="label">Every sale</h2><div class="sec-body wide">' + sales_table(rows, sortable=True) + '</div></section>'
-    (OUT / "data.html").write_text(page("Data", data, "Data", "The Art Moves sales dataset.", SORT_JS + TICKER_JS))
+    (OUT / "data.html").write_text(page("Data", data, "Data", "The Art Moves sales dataset.", SORT_JS + TICKER_JS, path="data"))
     (OUT / "sales.json").write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n")
     cols = [c for c in S.REQUIRED + S.OPTIONAL if c not in ("sources", "image", "history")] + ["source_urls"]
     buf = io.StringIO(); w = csv.DictWriter(buf, cols, extrasaction="ignore"); w.writeheader()
@@ -466,14 +487,21 @@ def main():
     # method
     _, about = read_md(SRC / "pages" / "about.md")
     body = '<header class="issue-head"><p class="label">How it is made</p><h1 class="display">Method</h1></header>' + markdown(about)
-    (OUT / "about.html").write_text(page("Method", body, "Method", "How Art Moves is sourced and made."))
+    (OUT / "about.html").write_text(page("Method", body, "Method", "How Art Moves is sourced and made.", path="about"))
     # trade (concept page)
     _, trade = read_md(SRC / "pages" / "trade.md")
     body = ('<header class="issue-head"><p class="label">Concept</p><h1 class="display">Trade</h1>'
             '<p class="standfirst">An idea Art Moves is thinking through: helping people who inherit art they do not want find it a good home, '
             'and bring home something they will live with.</p></header>'
             '<p class="banner">A concept, not a service. Art Moves is not taking submissions, holding works or arranging trades.</p>' + markdown(trade))
-    (OUT / "trade.html").write_text(page("Trade", body, "Trade", "A concept for trading inherited art."))
+    (OUT / "trade.html").write_text(page("Trade", body, "Trade", "A concept for trading inherited art.", path="trade"))
+
+    # 404: Cloudflare Pages serves this for any path that does not exist. The base tag keeps
+    # the stylesheet and links working at nested paths such as /a/b.
+    nf = ('<section class="lead"><p class="label">Page not found</p><div><h1 class="display">Nothing here.</h1>'
+          '<p class="standfirst">The link may be old or mistyped.</p>'
+          '<p><a class="btn" href="index.html">Latest issue</a> <a class="btn ghost" href="archive.html">All issues</a></p></div></section>')
+    (OUT / "404.html").write_text(page("Page not found", nf, description="Page not found.").replace("<head>", '<head><base href="/"><meta name="robots" content="noindex">', 1))
     print(f"build: {len(issues)} issue(s), {len(rows)} row(s) -> {OUT}")
 
 if __name__ == "__main__":

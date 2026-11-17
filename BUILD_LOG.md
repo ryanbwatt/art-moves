@@ -659,3 +659,15 @@ Perplexity Computer is an assistant that does the work instead of describing it.
 | "Free" | Removed from the Sunday email section, the home page About blurb, the Method intro and the email footer |
 | Sunday email section | Removed "in three minutes" and "Unsubscribe any time" |
 | Email footer | Removed the "reply and say so" unsubscribe line; Buttondown adds its own unsubscribe link to every send |
+
+## Session 15: share previews and polish (16 Nov 2026)
+
+| Change | Detail |
+|---|---|
+| Link previews | Every page now has Open Graph and Twitter tags: title, description, canonical URL and an image (the issue's lead picture; other pages use the latest issue's). Pasted links show a card instead of a bare URL |
+| Icon | `favicon.svg`, the three dots from the wordmark |
+| Intro line | Back above everything on the home page; #23 had moved it below the hero |
+| Houses and categories | New house keys `heritage` (Heritage Auctions) and `broad_arrow` (Broad Arrow), and category `memorabilia`. The lightsaber and both Las Vegas Ferraris no longer read "Other". Row ids are unchanged, so old links still work |
+| Phones | One sale card per row, picture on the left, at 820px and below |
+| 404 | `404.html` for any path that does not exist, instead of the home page. `/000` now returns 404 |
+| Small fixes | The home hero image loads first (`fetchpriority="high"`) instead of lazily. The fourth stat is now buyers on the record instead of the number of categories. `favicon.svg` skips the visit-logging function |

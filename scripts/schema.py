@@ -1,7 +1,8 @@
 """Field definitions for one sale. Shared by validate.py and build.py."""
-HOUSES = {"sothebys": "Sotheby's", "christies": "Christie's", "phillips": "Phillips", "other": "Other"}
+HOUSES = {"sothebys": "Sotheby's", "christies": "Christie's", "phillips": "Phillips", "heritage": "Heritage Auctions",
+          "broad_arrow": "Broad Arrow", "other": "Other"}
 CATEGORIES = {"fine_art": "Fine art", "design": "Design", "watches": "Watches", "jewelry": "Jewelry",
-              "cars": "Cars", "fashion": "Fashion", "other": "Other"}
+              "cars": "Cars", "fashion": "Fashion", "memorabilia": "Memorabilia", "other": "Other"}
 PRICE_BASIS = {"hammer": "hammer", "with_premium": "incl. premium"}
 VS_ESTIMATE = {"below", "within", "above", "no_estimate"}
 # "guaranteed" means a source says the lot was guaranteed but not by whom. "unknown" means nothing was reported.
