@@ -322,9 +322,9 @@ def sale_cards(rows, href):
 def stat_strip(rows):
     """Four numbers for the latest issue: how many sales, their total, the top price, how many buyers are on the record."""
     top = max(rows, key=lambda r: r["price_usd"])
-    named = sum(1 for r in rows if r.get("buyer_name"))
+    above = sum(1 for r in rows if r.get("vs_estimate") == "above")
     items = [(str(len(rows)), "sales tracked"), (money(sum(r["price_usd"] for r in rows), "USD"), "total, in US dollars"),
-             (money(top["price_usd"], "USD"), "highest price"), (str(named), "buyer on the record" if named == 1 else "buyers on the record")]
+             (money(top["price_usd"], "USD"), "highest price"), (str(above), "sold above estimate")]
     return '<div class="stats-strip">' + "".join(f'<div><strong>{v}</strong><span>{k}</span></div>' for v, k in items) + '</div>'
 
 def source_list(order):

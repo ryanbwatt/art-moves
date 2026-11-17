@@ -670,4 +670,4 @@ Perplexity Computer is an assistant that does the work instead of describing it.
 | Houses and categories | New house keys `heritage` (Heritage Auctions) and `broad_arrow` (Broad Arrow), and category `memorabilia`. The lightsaber and both Las Vegas Ferraris no longer read "Other". Row ids are unchanged, so old links still work |
 | Phones | One sale card per row, picture on the left, at 820px and below |
 | 404 | `404.html` for any path that does not exist, instead of the home page. `/000` now returns 404 |
-| Small fixes | The home hero image loads first (`fetchpriority="high"`) instead of lazily. The fourth stat is now buyers on the record instead of the number of categories. `favicon.svg` skips the visit-logging function |
+| Small fixes | The home hero image loads first (`fetchpriority="high"`) instead of lazily. The fourth stat is now the number sold above estimate instead of the number of categories. `favicon.svg` skips the visit-logging function |
