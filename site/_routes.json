@@ -1,5 +1,5 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": ["/img/*", "/site.css", "/sales.csv", "/sales.json"]
+  "exclude": ["/img/*", "/site.css", "/sales.csv", "/sales.json", "/favicon.svg"]
 }
